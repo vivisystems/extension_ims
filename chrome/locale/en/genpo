@@ -1,0 +1,11 @@
+#!/bin/sh
+APP_DIR=`dirname $0`/../../;
+
+xgettext -o messages1.po --from-code UTF-8 --msgid-bugs-address=support@vivipos.com.tw -Lpython -k_:1 $APP_DIR/content/*.js $APP_DIR/content/controllers/*.js $APP_DIR/content/models/*.js
+
+sed 's/charset=CHARSET/charset=UTF-8/g' messages1.po > messages.po
+
+#combine pot and po to properties and append default msgstr
+msgcat messages.pot messages.po -o messages.properties.po
+rm messages.po messages1.po
+

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE overlay [
+  <!ENTITY % DialogOverlay SYSTEM "chrome://viviecr/locale/dialog.dtd">
+  %DialogOverlay;
+  <!ENTITY % AddPO SYSTEM "chrome://spims/locale/add_po.dtd">
+  %AddPO;
+]>
+
+<?xml-stylesheet href="chrome://viviecr/skin/common/viviecr.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/layouts.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/containers.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/content.css" type="text/css"?>
+
+<overlay id="promptAddPODialogOverlay"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript" src="chrome://spims/content/dialogs/prompt_addPO.js"/>
+
+    <popupset id="dialogs">
+
+        <vivipanel id="promptAddPOPanel" noautohide="true"  class="container-dialog layout-dialog">
+
+            <hbox flex="1" class="layout-popup-prompt">
+
+                <vbox flex="1" class="container-main">
+
+                    <label id="promptAddPO-caption" value="&addPO.title;" class="label-page-title"/>
+                    <label id="promptAddPO-desc" value="&addPO.description;"/>
+                    <grid class="data-form-2" flex="1">
+                        <columns>
+                            <column flex="1"/>
+                        </columns>
+                        <rows>
+                            <row id="promptAddPO-row-ponumber">
+                                <vbox flex="1">
+                                    <label id="promptAddPO-field-ponumber-title" value="&addPO.field.ponumber.label;" control="promptAddPO-field-ponumber"/>
+                                    <textbox id="promptAddPO-field-ponumber" flex="1" value=""
+                                             oninput="promptAddPO_validateForm()" onfocus="this.select()"/>
+                                </vbox>
+                            </row>
+                            <row id="promptAddPO-row-desc">
+                                <vbox>
+                                    <label id="promptAddPO-field-desc-title" value="&addPO.field.desc.label;" control="promptAddPO-field-desc"/>
+                                    <textbox id="promptAddPO-field-desc" flex="1" value=""
+                                             oninput="promptAddPO_validateForm()" onfocus="this.select()"/>
+                                </vbox>
+                            </row>
+                            <row id="promptAddPO-row-supplier" flex="1">
+                                <vbox flex="1">
+                                    <label id="promptAddPO-field-supplier-title" value="&addPO.field.supplier.label;" control="promptAddPO-field-suppliers"/>
+                                    <vivitree id="promptAddPO-field-suppliers" flex="1" class="standard"
+                                              fields="supplier"
+                                              hidecolumnpicker="true"
+                                              onselect="promptAddPO_validateForm();"/>
+                                </vbox>
+                            </row>
+                        </rows>
+                    </grid>
+
+                    <hbox>
+                        <hbox flex="1" pack="center" class="toolbar" toolbarmode="horizontal">
+                            <button id="promptAddPO-ok" label="&dialog.okButton.label;" disabled="false" default="true"
+                                    oncommand="$.hidePanel('promptAddPOPanel', true)"/>
+                            <button id="promptAddPO-cancel" label="&dialog.cancelButton.label;" disabled="false" default="true"
+                                    oncommand="$.hidePanel('promptAddPOPanel', false)"/>
+                        </hbox>
+                        <hbox id="dialogButtons" class="exitbar">
+                            <button class="button-vkb" oncommand="VirtualKeyboard.toggle();"/>
+                        </hbox>
+                    </hbox>
+
+                </vbox>
+
+            </hbox>
+
+        </vivipanel>
+
+    </popupset>
+
+</overlay>

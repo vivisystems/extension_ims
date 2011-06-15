@@ -1,0 +1,29 @@
+<!ENTITY purchasing.title "Purchase Orders">
+<!ENTITY purchasing.tab.search "Search">
+<!ENTITY purchasing.tab.po "Purchase Order">
+<!ENTITY purchasing.field.created "Date">
+<!ENTITY purchasing.field.no "PO Number">
+<!ENTITY purchasing.field.desc "Description">
+<!ENTITY purchasing.field.supplier "Supplier">
+<!ENTITY purchasing.field.total "Total">
+<!ENTITY purchasing.field.status "Status">
+<!ENTITY purchasing.result.count "Matching Count: ">
+<!ENTITY purchasing.result.displayed "Display Count: ">
+<!ENTITY purchasing.result.total "Total Count: ">
+<!ENTITY purchasing.filter.startdate "Start Date">
+<!ENTITY purchasing.filter.enddate "End Date">
+<!ENTITY purchasing.filter.po.number "PO Number">
+<!ENTITY purchasing.filter.start "Start Record">
+<!ENTITY purchasing.filter.limit "Record Limit">
+<!ENTITY purchasing.filter.supplier "Supplier">
+<!ENTITY purchasing.filter.status "Status">
+<!ENTITY purchasing.filter.status.open "Open">
+<!ENTITY purchasing.filter.status.closed "Closed">
+<!ENTITY purchasing.filter.goods.status "Goods Received">
+<!ENTITY purchasing.filter.goods.received "Received">
+<!ENTITY purchasing.filter.goods.notreceived "Not Received">
+<!ENTITY purchasing.button.search "Search">
+<!ENTITY purchasing.button.add "Add">
+<!ENTITY purchasing.button.delete "Delete">
+<!ENTITY purchasing.button.modify "Modify">
+

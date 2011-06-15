@@ -1,0 +1,51 @@
+# extracted from ../locale/en/add_po.dtd
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-13 18:41+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"X-Accelerator-Marker: &\n"
+
+#: addPO.title
+msgid "New Purchase Order"
+msgstr ""
+
+#: addPO.description
+msgid "Please fill in the following information"
+msgstr ""
+
+#: addPO.field.ponumber.label
+msgid "PO Number"
+msgstr ""
+
+#: addPO.field.desc.label
+msgid "Description"
+msgstr ""
+
+#: addPO.field.supplier.label
+msgid "Supplier"
+msgstr ""
+
+#: addPO.item.title
+msgid "Please enter quantity and price:"
+msgstr ""
+
+#: addPO.item.qty.label
+msgid "Quantity"
+msgstr ""
+
+#: addPO.item.price.label
+msgid "Price"
+msgstr ""
+
+#: addPO.item.cost.label
+msgid "Total Cost"
+msgstr ""

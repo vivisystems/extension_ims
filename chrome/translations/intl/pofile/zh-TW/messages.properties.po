@@ -1,0 +1,111 @@
+#. extracted from ../locale/en/messages.properties
+# #-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: support@vivipos.com.tw\n"
+"POT-Creation-Date: 2011-06-13 10:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  messages.pot  #-#-#-#-#\n"
+"#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
+
+# #######################################################################
+#
+# List of Control Panels
+#
+# #######################################################################
+# ##########
+# PRODUCT
+# ##########
+msgid "vivipos.fec.settings.controlpanels.product.spims-po.label"
+msgstr "Purchasing"
+
+msgid "vivipos.fec.settings.controlpanels.product.spims-gr.label"
+msgstr "Receiving"
+
+# #######################################################################
+#
+# List of Reports
+#
+# #######################################################################
+# #######################################################################
+#
+# List of Reports ACLs
+#
+# #######################################################################
+# #######################################################################
+#
+# List of ACLs
+#
+# #######################################################################
+msgid "acl_spims_manage_purchasing"
+msgstr "Manage Purchasing"
+
+msgid "acl_spims_manage_receiving"
+msgstr "Manage Goods Receiving"
+
+# #######################################################################
+#
+# Stock Unit display
+#
+# #######################################################################
+msgid "(spims)unit"
+msgstr "unit"
+
+msgid "(spims)PO Status Open"
+msgstr ""
+
+msgid "(spims)PO Status Closed"
+msgstr ""
+
+msgid "Access to Purchase Orders Not Available"
+msgstr ""
+
+msgid ""
+"Purchase Orders may only be managed from the designated Stock Control "
+"Service Master at [%S]"
+msgstr ""
+
+msgid "confirm delete PO [%S]"
+msgstr ""
+
+msgid "Are you sure you want to delete PO [%S]?"
+msgstr ""
+
+msgid "Duplicate PO Number"
+msgstr ""
+
+msgid "PO Number [%S] already exists, please enter a different PO number."
+msgstr ""
+
+msgid "unknown user"
+msgstr ""
+
+msgid "Purchase Order Updated"
+msgstr ""
+
+msgid "Purchase Order [%S] successfully updated"
+msgstr ""
+
+msgid "New Purchase Order Created"
+msgstr ""
+
+msgid "Purchase Order [%S] successfully created"
+msgstr ""
+
+msgid "Discard PO Changes"
+msgstr ""
+
+msgid "Are you sure you want to discard changes made to this PO?"
+msgstr ""

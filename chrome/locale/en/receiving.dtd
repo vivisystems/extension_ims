@@ -1,0 +1,52 @@
+<!ENTITY receiving.title "Goods Receiving">
+<!ENTITY receiving.tab.search "Search">
+<!ENTITY receiving.tab.detail "Goods Receiving">
+<!ENTITY receiving.field.created "Date">
+<!ENTITY receiving.field.detail "GR Number">
+<!ENTITY receiving.field.desc "Description">
+<!ENTITY receiving.field.no "GR Number">
+<!ENTITY receiving.field.po "PO Number">
+<!ENTITY receiving.field.supplier "Supplier">
+<!ENTITY receiving.field.total "Total">
+<!ENTITY receiving.field.qty "Ordered">
+<!ENTITY receiving.field.recv.qty "Recvd">
+<!ENTITY receiving.field.status "Status">
+<!ENTITY receiving.field.row "Row">
+<!ENTITY receiving.field.plu "No.">
+<!ENTITY receiving.field.pluname "Product">
+<!ENTITY receiving.field.stockunit "Unit">
+<!ENTITY receiving.field.unitprice "Price">
+<!ENTITY receiving.field.cost "Cost">
+<!ENTITY receiving.field.buy.price "Cost">
+<!ENTITY receiving.result.count "Matching Count: ">
+<!ENTITY receiving.result.displayed "Display Count: ">
+<!ENTITY receiving.result.total "Total Count: ">
+<!ENTITY receiving.filter.startdate "Start Date">
+<!ENTITY receiving.filter.enddate "End Date">
+<!ENTITY receiving.filter.gr.number "GR Number">
+<!ENTITY receiving.filter.po.number "PO Number">
+<!ENTITY receiving.filter.start "Start Record">
+<!ENTITY receiving.filter.limit "Record Limit">
+<!ENTITY receiving.filter.supplier "Supplier">
+<!ENTITY receiving.filter.status "Status">
+<!ENTITY receiving.filter.status.open "Open">
+<!ENTITY receiving.filter.status.closed "Closed">
+<!ENTITY receiving.filter.goods.status "Goods Received">
+<!ENTITY receiving.filter.goods.received "Received">
+<!ENTITY receiving.filter.goods.notreceived "Not Received">
+<!ENTITY receiving.button.search "Search">
+<!ENTITY receiving.button.add "Add">
+<!ENTITY receiving.button.delete "Delete">
+<!ENTITY receiving.button.save "Save">
+<!ENTITY receiving.button.discard "Discard Changes">
+<!ENTITY receiving.button.create "Create">
+<!ENTITY receiving.button.cancel "Cancel GR">
+<!ENTITY receiving.button.close "Close PO/GR">
+<!ENTITY receiving.form.number "GR Number">
+<!ENTITY receiving.form.date "Date">
+<!ENTITY receiving.form.status "Status">
+<!ENTITY receiving.form.supplier "Supplier">
+<!ENTITY receiving.form.total "Total">
+<!ENTITY receiving.form.po "PO Number">
+<!ENTITY receiving.form.description "Description">
+

@@ -1,0 +1,9 @@
+<!ENTITY addPO.title "New Purchase Order">
+<!ENTITY addPO.description "Please fill in the following information">
+<!ENTITY addPO.field.ponumber.label "PO Number">
+<!ENTITY addPO.field.desc.label "Description">
+<!ENTITY addPO.field.supplier.label "Supplier">
+<!ENTITY addPO.item.title "Please enter quantity and price:">
+<!ENTITY addPO.item.qty.label "Quantity">
+<!ENTITY addPO.item.price.label "Price">
+<!ENTITY addPO.item.cost.label "Total Cost">

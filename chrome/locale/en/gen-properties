@@ -1,0 +1,3 @@
+#!/bin/sh
+
+msgcat messages.properties.po -p | sed 's/^!\(.*\)=$/\1=\1/g' | sed 's/\\ / /g' | sed 's/\\!/!/g' | sed 's/\\:/:/g' | sed 's/\\#/#/g' > messages.properties

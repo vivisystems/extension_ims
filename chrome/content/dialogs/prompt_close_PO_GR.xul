@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE overlay [
+  <!ENTITY % DialogOverlay SYSTEM "chrome://viviecr/locale/dialog.dtd">
+  %DialogOverlay;
+  <!ENTITY % ClosePOGR SYSTEM "chrome://spims/locale/close_po_gr.dtd">
+  %ClosePOGR;
+]>
+
+<?xml-stylesheet href="chrome://viviecr/skin/common/viviecr.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/layouts.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/containers.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/content.css" type="text/css"?>
+
+<?xml-stylesheet href="chrome://spims/skin/be/receiving.css" type="text/css"?>
+
+<overlay id="promptClosePOGRDialogOverlay"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript" src="chrome://spims/content/dialogs/prompt_close_PO_GR.js"/>
+
+    <popupset id="dialogs">
+
+        <vivipanel id="promptClosePOGRPanel" noautohide="true"  class="container-dialog layout-dialog">
+
+            <hbox flex="1" class="layout-popup-custom-prompt">
+
+                <vbox flex="1" class="container-main">
+
+                    <label id="promptClosePOGR-caption" value="" class="label-page-title"/>
+
+                    <button id="promptClosePOGR-po" label="&closePOGR.closePOButton.label;" class="button-execute label-sub-title"
+                            oncommand="$do('closePOGR', 1, 'Receiving');"/>
+                    <button id="promptClosePOGR-gr" label="&closePOGR.closeGRButton.label;" class="button-execute label-sub-title"
+                            oncommand="$do('closePOGR', 2, 'Receiving');"/>
+                    <button id="promptClosePOGR-pogr" label="&closePOGR.closePOGRButton.label;" class="button-execute label-sub-title"
+                            oncommand="$do('closePOGR', 3, 'Receiving');"/>
+                    <button id="promptClosePOGR-cancel" label="&closePOGR.cancelButton.label;" class="button-execute label-sub-title" default="true"
+                            oncommand="$do('closePOGR', 0, 'Receiving');"/>
+
+                </vbox>
+
+            </hbox>
+
+        </vivipanel>
+
+    </popupset>
+
+</overlay>

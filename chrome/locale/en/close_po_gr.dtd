@@ -1,0 +1,4 @@
+<!ENTITY closePOGR.closePOButton.label "Close PO">
+<!ENTITY closePOGR.closeGRButton.label "Close GR">
+<!ENTITY closePOGR.closePOGRButton.label "Close PO and GR">
+<!ENTITY closePOGR.cancelButton.label "Do Not Close PO or GR">

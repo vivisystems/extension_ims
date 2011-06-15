@@ -1,0 +1,261 @@
+# #-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"#-#-#-#-#  messages.pot  #-#-#-#-#\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: support@vivipos.com.tw\n"
+"POT-Creation-Date: 2011-06-15 11:45+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# #######################################################################
+#
+# List of Control Panels
+#
+# #######################################################################
+# ##########
+# PRODUCT
+# ##########
+msgid "vivipos.fec.settings.controlpanels.product.spims-po.label"
+msgstr "Purchasing"
+
+msgid "vivipos.fec.settings.controlpanels.product.spims-gr.label"
+msgstr "Receiving"
+
+# #######################################################################
+#
+# List of Reports
+#
+# #######################################################################
+# #######################################################################
+#
+# List of Reports ACLs
+#
+# #######################################################################
+# #######################################################################
+#
+# List of ACLs
+#
+# #######################################################################
+msgid "acl_spims_manage_purchasing"
+msgstr "Manage Purchasing"
+
+msgid "acl_spims_manage_receiving"
+msgstr "Manage Goods Receiving"
+
+# #######################################################################
+#
+# Stock Unit display
+#
+# #######################################################################
+msgid "(spims)unit"
+msgstr "unit"
+
+# #######################################################################
+#
+# PO status
+#
+# #######################################################################
+msgid "(spims)PO Status Open"
+msgstr "Open"
+
+msgid "(spims)PO Status Closed"
+msgstr "Closed"
+
+# #######################################################################
+#
+# GR status
+#
+# #######################################################################
+msgid "(spims)GR Status Open"
+msgstr "Open"
+
+msgid "(spims)GR Status Closed"
+msgstr "Closed"
+
+#: ../..//content/controllers/plusearch_overlay_controller.js:68
+msgid "Purchase Details"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:23
+#: ../..//content/controllers/receiving_controller.js:23
+msgid "unknown user"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:24
+#: ../..//content/controllers/receiving_controller.js:24
+msgid "unknown username"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:76
+msgid "Access to Purchase Orders Not Available"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:77
+msgid ""
+"Purchase Orders may only be managed from the designated Stock Control "
+"Service Master at [%S]"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:270
+msgid "confirm delete PO [%S]"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:271
+msgid "Are you sure you want to delete PO [%S]?"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:301
+msgid "Duplicate PO Number"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:302
+msgid "PO Number [%S] already exists, please enter a different PO number."
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:375
+msgid "Purchase Order Updated"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:376
+msgid "Purchase Order [%S] successfully updated"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:391
+msgid "New Purchase Order Created"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:392
+msgid "Purchase Order [%S] successfully created"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:517
+#: ../..//content/controllers/receiving_controller.js:659
+msgid "Product Search"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:741
+msgid "Discard PO Changes"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:742
+msgid "Are you sure you want to discard changes made to this PO?"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:745
+msgid "Discard New PO"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:746
+msgid "Are you sure you want to discard this PO?"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:74
+msgid "Access to Goods Receiving Not Available"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:75
+msgid ""
+"Goods Receiving may only be managed from the designated Stock Control "
+"Service Master at [%S]"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:245
+msgid "confirm delete GR [%S]"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:246
+msgid "Are you sure you want to delete GR [%S]?"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:276
+msgid "Duplicate GR Number"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:277
+msgid "GR Number [%S] already exists, please enter a different GR number."
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:401
+msgid "Goods Receiving Updated"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:402
+#: ../..//content/controllers/receiving_controller.js:466
+msgid "Goods Receiving [%S] successfully updated"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:408
+msgid "New Goods Receiving Created"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:409
+msgid "Goods Receiving [%S] successfully created"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:470
+msgid "Goods Receiving [%S] successfully created and committed"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:473
+msgid "New Goods Receiving [%S] successfully updated and committed"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:476
+msgid "Goods Receiving [%S] successfully committed"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:497
+msgid "Goods Receiving Committed"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:754
+msgid "Remove Committed GR"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:755
+msgid ""
+"The selected entry has been committed to inventory. Are you sure you want to "
+"remove it by changing its quantity to 0?"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:908
+msgid "Discard GR Changes"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:909
+msgid "Are you sure you want to discard changes made to this GR?"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:912
+msgid "Discard New GR"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:913
+msgid "Are you sure you want to discard this GR?"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:976
+msgid "Save & Commit"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:978
+msgid "Create & Commit"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:981
+msgid "Commit"
+msgstr ""

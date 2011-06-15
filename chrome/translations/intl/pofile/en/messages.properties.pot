@@ -1,0 +1,130 @@
+# #-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"#-#-#-#-#  messages.pot  #-#-#-#-#\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: support@vivipos.com.tw\n"
+"POT-Creation-Date: 2011-06-13 10:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# #######################################################################
+#
+# List of Control Panels
+#
+# #######################################################################
+# ##########
+# PRODUCT
+# ##########
+msgid "vivipos.fec.settings.controlpanels.product.spims-po.label"
+msgstr "Purchasing"
+
+msgid "vivipos.fec.settings.controlpanels.product.spims-gr.label"
+msgstr "Receiving"
+
+# #######################################################################
+#
+# List of Reports
+#
+# #######################################################################
+# #######################################################################
+#
+# List of Reports ACLs
+#
+# #######################################################################
+# #######################################################################
+#
+# List of ACLs
+#
+# #######################################################################
+msgid "acl_spims_manage_purchasing"
+msgstr "Manage Purchasing"
+
+msgid "acl_spims_manage_receiving"
+msgstr "Manage Goods Receiving"
+
+# #######################################################################
+#
+# Stock Unit display
+#
+# #######################################################################
+msgid "(spims)unit"
+msgstr "unit"
+
+# #######################################################################
+#
+# PO status
+#
+# #######################################################################
+msgid "(spims)PO Status Open"
+msgstr "Open"
+
+msgid "(spims)PO Status Closed"
+msgstr "Closed"
+
+#: ../..//content/controllers/purchasing_controller.js:48
+msgid "Access to Purchase Orders Not Available"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:49
+msgid ""
+"Purchase Orders may only be managed from the designated Stock Control "
+"Service Master at [%S]"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:233
+msgid "confirm delete PO [%S]"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:234
+msgid "Are you sure you want to delete PO [%S]?"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:264
+msgid "Duplicate PO Number"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:265
+msgid "PO Number [%S] already exists, please enter a different PO number."
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:274
+msgid "unknown user"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:326
+msgid "Purchase Order Updated"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:327
+msgid "Purchase Order [%S] successfully updated"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:337
+msgid "New Purchase Order Created"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:338
+msgid "Purchase Order [%S] successfully created"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:480
+msgid "Discard PO Changes"
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:481
+msgid "Are you sure you want to discard changes made to this PO?"
+msgstr ""

@@ -1,0 +1,3 @@
+INSERT INTO "suppliers" VALUES('1','S0001','Supplier 1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'superuser','administrator','TPE0101',0,0);
+INSERT INTO "suppliers" VALUES('2','S0002','Supplier 2',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'superuser','administrator','TPE0101',0,0);
+INSERT INTO "suppliers" VALUES('3','S0003','Supplier 3',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'superuser','administrator','TPE0101',0,0);

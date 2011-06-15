@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE overlay [
+  <!ENTITY % DialogOverlay SYSTEM "chrome://viviecr/locale/dialog.dtd">
+  %DialogOverlay;
+  <!ENTITY % AddGR SYSTEM "chrome://spims/locale/add_gr.dtd">
+  %AddGR;
+]>
+
+<?xml-stylesheet href="chrome://viviecr/skin/common/viviecr.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/layouts.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/containers.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/content.css" type="text/css"?>
+
+<overlay id="promptAddGRDialogOverlay"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript" src="chrome://spims/content/dialogs/prompt_addGR.js"/>
+
+    <popupset id="dialogs">
+
+        <vivipanel id="promptAddGRPanel" noautohide="true"  class="container-dialog layout-dialog">
+
+            <hbox flex="1" class="layout-popup-prompt">
+
+                <vbox flex="1" class="container-main">
+
+                    <label id="promptAddGR-caption" value="&addGR.title;" class="label-page-title"/>
+                    <label id="promptAddGR-desc" value="&addGR.description;"/>
+                    <grid class="data-form-2" flex="1">
+                        <columns>
+                            <column flex="1"/>
+                        </columns>
+                        <rows>
+                            <row id="promptAddGR-row-grnumber">
+                                <vbox flex="1">
+                                    <label id="promptAddGR-field-grnumber-title" value="&addGR.field.grnumber.label;" control="promptAddGR-field-grnumber"/>
+                                    <textbox id="promptAddGR-field-grnumber" flex="1" value=""
+                                             oninput="promptAddGR_validateForm()" onfocus="this.select()"/>
+                                </vbox>
+                            </row>
+                            <row id="promptAddGR-row-desc">
+                                <vbox>
+                                    <label id="promptAddGR-field-desc-title" value="&addGR.field.desc.label;" control="promptAddGR-field-desc"/>
+                                    <textbox id="promptAddGR-field-desc" flex="1" value=""
+                                             oninput="promptAddGR_validateForm()" onfocus="this.select()"/>
+                                </vbox>
+                            </row>
+                            <row id="promptAddGR-row-po" flex="1">
+                                <vbox flex="1">
+                                    <label id="promptAddGR-field-po-title" value="&addGR.field.po.label;" control="promptAddGR-field-pos"/>
+                                    <vivitree id="promptAddGR-field-pos" flex="1" class="standard"
+                                              headers="&addGR.field.po.label;,&addGR.field.supplier.label;"
+                                              fields="no,supplier"
+                                              hidecolumnpicker="true"
+                                              onselect="promptAddGR_validateForm();"/>
+                                </vbox>
+                            </row>
+                        </rows>
+                    </grid>
+
+                    <hbox>
+                        <hbox flex="1" pack="center" class="toolbar" toolbarmode="horizontal">
+                            <button id="promptAddGR-ok" label="&dialog.okButton.label;" disabled="false" default="true"
+                                    oncommand="$.hidePanel('promptAddGRPanel', true)"/>
+                            <button id="promptAddGR-cancel" label="&dialog.cancelButton.label;" disabled="false" default="true"
+                                    oncommand="$.hidePanel('promptAddGRPanel', false)"/>
+                        </hbox>
+                        <hbox id="dialogButtons" class="exitbar">
+                            <button class="button-vkb" oncommand="VirtualKeyboard.toggle();"/>
+                        </hbox>
+                    </hbox>
+
+                </vbox>
+
+            </hbox>
+
+        </vivipanel>
+
+    </popupset>
+
+</overlay>

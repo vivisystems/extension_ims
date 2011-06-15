@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE window [
+  <!ENTITY % DialogOverlay SYSTEM "chrome://viviecr/locale/dialog.dtd">
+  %DialogOverlay;
+  <!ENTITY % Numberpad SYSTEM "chrome://viviecr/locale/numberpad.dtd">
+  %Numberpad;
+  <!ENTITY % AddPO SYSTEM "chrome://spims/locale/add_po.dtd">
+  %AddPO;
+]>
+
+<?xml-stylesheet href="chrome://vivipos/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/common/viviecr.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/layouts.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/containers.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/content.css" type="text/css"?>
+
+<?xul-overlay href="chrome://global/content/dialogOverlay.xul" ?>
+
+<window id="spimsPromptQtyPrice"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+
+  <!-- include VIVIPOS App Engine -->
+  <script type="application/x-javascript" src="chrome://vivipos/content/init_geckojs.js"/>
+  
+  <script src="chrome://spims/content/dialogs/prompt_qty_price.js" type="application/x-javascript;version=1.7"/>
+
+    <vbox class="container-dialog" flex="1">
+        <vbox class="container-main" flex="1">
+
+            <label id="detail-caption" value="&addPO.item.title;" class="label-page-title"/>
+            <hbox pack="center">
+                <label id="detail-product" value="" class="label-sub-title"/>
+            </hbox>
+            <grid flex="1" class="data-form-2">
+                <columns>
+                    <column/>
+                    <column flex="1"/>
+                </columns>
+                <rows>
+                    <row id="row-qty">
+                        <label id="qty-label" value="&addPO.item.qty.label;" control="qty" class="label-sub-title"/>
+                        <textbox id="qty" flex="1" type="number" value="" decimalplaces="Infinity" min="0" max="Infinity" hidespinbuttons="true"
+                                 onfocus="select()" onchange="validateInput('qty')"/>
+                    </row>
+                    <row id="row-price">
+                        <label id="price-label" value="&addPO.item.price.label;" control="promptQtyPrice-price" class="label-sub-title"/>
+                        <textbox id="price" flex="1" type="number" value="" decimalplaces="Infinity" min="0" max="Infinity" hidespinbuttons="true"
+                                 onfocus="select()" onchange="validateInput('price')"/>
+                    </row>
+                    <row id="row-cost">
+                        <label id="cost-label" value="&addPO.item.cost.label;" control="promptQtyPrice-cost" class="label-sub-title"/>
+                        <textbox id="cost" flex="1" type="number" value="" decimalplaces="Infinity" min="" max="Infinity" hidespinbuttons="true"
+                                 onfocus="select()" onchange="validateInput('cost')"/>
+                    </row>
+                </rows>
+            </grid>
+
+            <hbox id="numpad" pack="center">
+                <numberpad id="multinumberpad" class="numpad"/>
+                <vbox>
+                    <sendkeybutton id="bkeyBtn" label="&numberpad.keylabel.del;" keyCode="0x08" class="button-fixed"/>
+                    <sendkeybutton id="clearBtn" label="&numberpad.keylabel.clear;" class="button-fixed"
+                                   oncommand="clearFocusedElement()"/>
+                </vbox>
+            </hbox>
+
+            <hbox>
+                <hbox flex="1" pack="center" class="toolbar" toolbarmode="horizontal">
+                    <button id="ok" label="&dialog.okButton.label;" default="true" oncommand="doOKButton();"/>
+                    <button id="cancel" label="&dialog.cancelButton.label;" default="false" oncommand="doCancelButton();"/>
+                </hbox>
+                <hbox id="dialogButtons" class="exitbar">
+                    <button class="button-vkb" oncommand="alert(VirtualKeyboard); VirtualKeyboard.toggle();"/>
+                </hbox>
+            </hbox>
+
+        </vbox>
+
+    </vbox>
+
+</window>

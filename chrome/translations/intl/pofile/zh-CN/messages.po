@@ -1,0 +1,80 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-13 18:41+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+
+########################################################################
+#
+# List of Control Panels
+#
+########################################################################
+
+###########
+# PRODUCT
+###########
+
+msgid "vivipos.fec.settings.controlpanels.product.spims-po.label"
+msgstr "Purchasing"
+
+msgid "vivipos.fec.settings.controlpanels.product.spims-gr.label"
+msgstr "Receiving"
+
+########################################################################
+#
+# List of Reports
+#
+########################################################################
+
+########################################################################
+#
+# List of Reports ACLs
+#
+########################################################################
+
+########################################################################
+#
+# List of ACLs
+#
+########################################################################
+
+msgid "acl_spims_manage_purchasing"
+msgstr "Manage Purchasing"
+
+msgid "acl_spims_manage_receiving"
+msgstr "Manage Goods Receiving"
+
+########################################################################
+#
+# Stock Unit display
+#
+########################################################################
+
+msgid "(spims)unit"
+msgstr "unit"
+
+########################################################################
+#
+# PO status
+#
+########################################################################
+
+msgid "(spims)PO Status Open"
+msgstr "Open"
+
+msgid "(spims)PO Status Closed"
+msgstr "Closed"
+
+########################################################################
+#
+# END OF STATIC MESSAGES
+#
+########################################################################

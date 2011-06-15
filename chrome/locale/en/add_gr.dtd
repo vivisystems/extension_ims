@@ -1,0 +1,10 @@
+<!ENTITY addGR.title "New Goods Receiving">
+<!ENTITY addGR.description "Please fill in the following information">
+<!ENTITY addGR.field.grnumber.label "GR Number">
+<!ENTITY addGR.field.desc.label "Description">
+<!ENTITY addGR.field.po.label "PO Number">
+<!ENTITY addGR.field.supplier.label "Supplier">
+<!ENTITY addGR.item.title "Please enter quantity and price:">
+<!ENTITY addGR.item.qty.label "Quantity">
+<!ENTITY addGR.item.price.label "Price">
+<!ENTITY addGR.item.cost.label "Total Cost">

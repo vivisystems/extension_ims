@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+    <Description about="urn:mozilla:install-manifest">
+        <em:id>customers-zh-HK@firich.com.tw</em:id>
+        <em:name>Simple Customer Management Language Pack (zh-HK)</em:name>
+        <em:version>1.2.0.6</em:version>
+        <em:description>This language pack provides Traditional Chinese (Hong Kong) translation for Simple Customer Management extension.</em:description>
+        <em:creator>Chris Lai @ Firich Enterprises Co., Ltd.</em:creator>
+        <em:homepageURL>http://www.vivipos.com.tw</em:homepageURL>
+        <em:type>8</em:type> <!-- type=extension -->
+	<em:extensionHash>sha1:</em:extensionHash>
+        <em:updateKey>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC6prvsPdRm+3c4etUSLoJVT5GyYUogo5c5L3dyWgu3yu6weYS9q5aQBlbSFVyfCyIfexacXanGFqVRuBvpVq5Px6LpjisHvXukknGnY6nr5S1zelV9CXgv+17mTMVPpxCUEe2oVB3AFX+l+XWx4fUdW3sTX+uSHo/Pno+8PD79FQIDAQAB</em:updateKey>
+
+        <em:targetApplication>
+          <!-- VIVIPOS APP ENGINE -->
+          <Description>
+            <em:id>{7aacc14f-1abc-4243-b48e-63b953c0476a}</em:id>
+            <em:minVersion>1.2.0.0</em:minVersion>
+            <em:maxVersion>1.2.*</em:maxVersion>
+          </Description>
+        </em:targetApplication>
+        
+    </Description>
+</RDF>

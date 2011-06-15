@@ -1,0 +1,12 @@
+content spims chrome/content/ xpcnativewrappers=yes
+locale spims en chrome/locale/en/
+
+skin spims traditional-800x600/1.0 chrome/skin/traditional-800x600/
+skin spims traditional-1024x768/1.0 chrome/skin/traditional-1024x768/
+skin spims traditional-1280x1024/1.0 chrome/skin/traditional-1280x1024/
+skin spims compacttable-1024x768/1.0 chrome/skin/compacttable-1024x768/
+skin spims ecr-800x600/1.0 chrome/skin/ecr-800x600/
+
+overlay chrome://vivipos/content/mainUIOverlay.xul chrome://spims/content/overlays/main_overlay.xul
+overlay chrome://viviecr/content/plusearch.xul chrome://spims/content/overlays/plusearch_overlay.xul
+overlay chrome://viviecr/content/plus.xul chrome://spims/content/overlays/plus_overlay.xul

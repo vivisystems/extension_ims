@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE overlay [
+  <!ENTITY % Receiving SYSTEM "chrome://spims/locale/receiving.dtd">
+  %Receiving;
+  <!ENTITY % PLUSearch SYSTEM "chrome://viviecr/locale/plus.dtd">
+  %PLUSearch;
+]>
+
+<?xml-stylesheet href="chrome://spims/skin/dialogs/plusearch.css" type="text/css"?>
+
+<overlay id="spimsPLUSearchOverlay"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+
+  <!-- include models -->
+  <script src="chrome://spims/content/models/PO.js" type="application/x-javascript;version=1.7"/>
+  <script src="chrome://spims/content/models/GR.js" type="application/x-javascript;version=1.7"/>
+  <script src="chrome://spims/content/models/GR_detail.js" type="application/x-javascript;version=1.7"/>
+
+  <!-- include code for PLU search overlay -->
+  <script src="chrome://spims/content/controllers/components/utilities.js" type="application/x-javascript;version=1.7"/>
+  <script src="chrome://spims/content/controllers/plusearch_overlay_controller.js" type="application/x-javascript;version=1.7"/>
+
+    <tabpanel hidden="true">
+        <row id="product-extra">
+            <vbox>
+                <label value="&receiving.field.buy.price;"/>
+                <textbox id="product_buy_price" readonly="true"
+                         form="productForm" name="buy_price"/>
+            </vbox>
+            <vbox>
+                <label value="&plus.stock.unit;"/>
+                <menulist id="stock_unit" value="" disabled="true"
+                          form="productForm" name="stock_unit">
+                    <menupopup>
+                        <menuitem label="" value=""/>
+                        <menuitem label="&plus.sale.unit.individual;" value="unit"/>
+                        <menuitem label="&plus.sale.unit.gram;" value="g"/>
+                        <menuitem label="&plus.sale.unit.kilogram;" value="kg"/>
+                        <menuitem label="&plus.sale.unit.milligram;" value="mg"/>
+                        <menuitem label="&plus.sale.unit.ounce;" value="oz"/>
+                        <menuitem label="&plus.sale.unit.pound;" value="lb"/>
+                        <menuitem label="&plus.sale.unit.carat;" value="ct"/>
+                    </menupopup>
+                </menulist>
+            </vbox>
+        </row>
+        <vivitree id="lastpricecrollablepanel" flex="1" class="standard last-price-list"
+                  headers="&receiving.field.created;,&receiving.field.no;,&receiving.field.supplier;,&receiving.field.qty;,&receiving.field.unitprice;"
+                  fields="modified,grnumber,supplier,qty,unitprice"
+                  />
+    </tabpanel>
+
+</overlay>

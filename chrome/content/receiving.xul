@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE window [
+  <!ENTITY % Dialog SYSTEM "chrome://viviecr/locale/dialog.dtd">
+  %Dialog;
+  <!ENTITY % Receiving SYSTEM "chrome://spims/locale/receiving.dtd">
+  %Receiving;
+  <!ENTITY % AddGR SYSTEM "chrome://spims/locale/add_gr.dtd">
+  %AddGR;
+  ]>
+<?xml-stylesheet href="chrome://vivipos/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/common/viviecr.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/be/layouts.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/be/containers.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/be/content.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/containers.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/content.css" type="text/css"?>
+<?xml-stylesheet href="chrome://spims/skin/be/receiving.css" type="text/css"?>
+
+<?xul-overlay href="chrome://global/content/dialogOverlay.xul" ?>
+<?xul-overlay href="chrome://spims/content/dialogs/prompt_addGR.xul" ?>
+<?xul-overlay href="chrome://spims/content/dialogs/prompt_close_PO_GR.xul" ?>
+
+<window title="&receiving.title;"
+        hidechrome="true"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <!-- include VIVIPOS App Engine -->
+  <script type="application/x-javascript" src="chrome://vivipos/content/init_geckojs.js"/>
+
+  <!-- include startup script -->
+  <script src="chrome://spims/content/receiving.js" type="application/x-javascript;version=1.7"/>
+
+    <keyset id="keyset_extensions">
+        <key id="key_clear" keycode="VK_ESCAPE" oncommand="document.getElementById('search_ok').click()"/>
+    </keyset>
+
+    <vbox class="container-be layout-be" flex="1">
+        <vbox flex="1" class="container-main layout-a">
+            <tabbox id="main_tabbox" flex="1" class="content-tabbox">
+                <tabs id="main_tabs">
+                    <tab id="tab_search" label="&receiving.tab.search;" oncommand="$do('searchMode', null, 'Receiving')"/>
+                    <tab id="tab_detail" label="&receiving.tab.detail;" oncommand="$do('editMode', null, 'Receiving')"/>
+                </tabs>
+                <tabpanels flex="1">
+
+                    <!-- Search Panel -->
+
+                    <tabpanel id="panel_search" flex="1" orient="vertical" oncommand="event.stopPropagation()">
+                        <vbox flex="1" class="container-top">
+                            <vbox flex="1" class="content-listbox">
+                                <vivitree id="grscrollabletree" flex="1" dir="normal"
+                                          class="standard custom-be-content-gr-list"
+                                          headers="&receiving.field.created;,&receiving.field.no;,&receiving.field.desc;,&receiving.field.po;,&receiving.field.supplier;,&receiving.field.status;"
+                                          fields="created_date,no,desc,po_no,supplier,status"
+                                          onselect="$do('selectGR',this.selectedIndex, 'Receiving');"/>
+                            </vbox>
+                            <hbox>
+                                <label value="&receiving.result.count;"/><label id="search_result_count" value="0"/>
+                                <spacer class="space"/>
+                                <label value="&receiving.result.displayed;"/><label id="search_result_displayed" value="0"/>
+                                <spacer class="space"/>
+                                <label value="&receiving.result.total;"/><label id="search_result_total" value="0"/>
+                            </hbox>
+
+                            <grid class="data-form">
+                                <columns>
+                                    <column/>
+                                    <column/>
+                                    <column flex="1"/>
+                                    <column/>
+                                </columns>
+                                <rows>
+                                    <row>
+                                        <vbox>
+                                            <label control="retrieve_start" value="&receiving.filter.startdate;"/>
+                                            <vividatetimepicker id="filter_startdate" class="search_date" flex="1" type="popup" mode="date"
+                                                                name="filter_startdate" form="searchForm"/>
+                                        </vbox>
+                                        <vbox>
+                                            <label control="retrieve_end" value="&receiving.filter.enddate;"/>
+                                            <vividatetimepicker id="filter_enddate" class="search_date" flex="1" type="popup" mode="date"
+                                                                name="filter_enddate" form="searchForm"/>
+                                        </vbox>
+                                        <vbox>
+                                            <label control="filter_supplier" value="&receiving.filter.supplier;"/>
+                                            <menulist id="filter_supplier" class="search_supplier" flex="1" value=""
+                                                      name="filter_supplier" form="searchForm" default="">
+                                                <menupopup id="filter_supplier-popup">
+                                                    <menuitem value="" label="-" selected="true"/>
+                                                </menupopup>
+                                            </menulist>
+                                        </vbox>
+                                        <vbox>
+                                            <label value="&receiving.filter.start;"/>
+                                            <vivitextbox id="search_limit_start" numpadClass="numpad" class="search_limit" fixedbtnClass="button-fixed"
+                                                         popupKeypad="true" keypad="numpad" type="number" decimalplaces="0" min="1" value="1"
+                                                         form="searchForm" default="1" name="search_limit_start"/>
+                                        </vbox>
+                                    </row>
+                                    <row>
+                                        <vbox>
+                                            <label control="filter_gr_number" value="&receiving.filter.gr.number;"/>
+                                            <vivitextbox numpadClass="numpad" class="search_gr_number" fixedbtnClass="button-fixed"
+                                                         popupKeypad="true" keypad="numpad" decimalplaces="0" hidespinbuttons="true" value=""
+                                                         id="filter_gr_number" form= "searchForm" default="" name="filter_gr_number"/>
+                                        </vbox>
+                                        <vbox>
+                                            <label control="filter_po_number" value="&receiving.filter.po.number;"/>
+                                            <vivitextbox numpadClass="numpad" class="search_po_number" fixedbtnClass="button-fixed"
+                                                         popupKeypad="true" keypad="numpad" decimalplaces="0" hidespinbuttons="true" value=""
+                                                         id="filter_po_number" form= "searchForm" default="" name="filter_po_number"/>
+                                        </vbox>
+                                        <vbox>
+                                            <label control="filter_status" value="&receiving.filter.status;"/>
+                                            <menulist id="filter_status" class="search_status" flex="1" value="1"
+                                                      name="filter_status" form="searchForm" default="1">
+                                                <menupopup id="filter_status-popup">
+                                                    <menuitem value="" label="-"/>
+                                                    <menuitem value="1" label="&receiving.filter.status.open;" selected="true"/>
+                                                    <menuitem value="0" label="&receiving.filter.status.closed;"/>
+                                                </menupopup>
+                                            </menulist>
+                                        </vbox>
+                                        <vbox>
+                                            <label  value="&receiving.filter.limit;"/>
+                                            <vivitextbox numpadClass="numpad" class="search_limit" fixedbtnClass="button-fixed"
+                                                         popupKeypad="true" keypad="numpad" type="number" decimalplaces="0" min="1" value="100"
+                                                         id="search_limit_size" form= "searchForm" default="100" name="search_limit_size"/>
+                                        </vbox>
+                                    </row>
+                                </rows>
+                            </grid>
+                        </vbox>
+                        <hbox>
+                            <hbox flex="1" class="toolbar" toolbarmode="horizontal">
+                                <button id="search_gr" label="&receiving.button.search;" class="button-search" oncommand="$do('updateGRList', null, 'Receiving');"/>
+                                <spacer flex="1"/>
+                                <button id="search_add_gr" label="&receiving.button.add;" class="button-add" oncommand="$do('addGR', true, 'Receiving');"/>
+                                <spacer flex="1"/>
+                                <button id="search_delete_gr" label="&receiving.button.delete;" class="button-delete" oncommand="$do('deleteGR', null, 'Receiving');"/>
+                            </hbox>
+                            <hbox id="search_dialogButtons" pack="end" class="exitbar">
+                                <button id="search_vkb" class="button-vkb" oncommand="VirtualKeyboard.toggle();"/>
+                                <button id="search_ok" label="&dialog.closeButton.label;" default="true" class="button-exit" oncommand="doOKButton();"/>
+                            </hbox>
+                        </hbox>
+                    </tabpanel>
+
+                    <!-- Goods Receiving Panel -->
+
+                    <tabpanel id="panel_detail" orient="vertical" oncommand="event.stopPropagation()">
+                        <!-- hidden form data -->
+                        <textbox id="editForm_id" readonly="true" hidden="true"
+                                 form="editForm" name="id"/>
+                        <textbox id="editForm_supplier_name" readonly="true" hidden="true"
+                                 form="editForm" name="supplier_name"/>
+                        <textbox id="editForm_supplier_code" readonly="true" hidden="true"
+                                 form="editForm" name="supplier_code"/>
+                        <textbox id="editForm_total" readonly="true" hidden="true"
+                                 form="editForm" name="total"/>
+                        <textbox id="editForm_open" readonly="true" hidden="true"
+                                 form="editForm" name="open" />
+                        <textbox id="editForm_po_open" readonly="true" hidden="true"
+                                 form="editForm" name="po_open" />
+                        <textbox id="editForm_count" readonly="true" hidden="true"
+                                 form="editForm" name="count" />
+                        <textbox id="editForm_committed" readonly="true" hidden="true"
+                                 form="editForm" name="commited" />
+                        <textbox id="editForm_clerk" readonly="true" hidden="true"
+                                 form="editForm" name="clerk"/>
+                        <textbox id="editForm_clerk_name" readonly="true" hidden="true"
+                                 form="editForm" name="clerk_name"/>
+                        <textbox id="editForm_terminal" readonly="true" hidden="true"
+                                 form="editForm" name="terminal"/>
+                        <grid class="data-form">
+                            <columns>
+                                <column flex="1"/>
+                                <column flex="1"/>
+                                <column flex="1"/>
+                                <column flex="1"/>
+                            </columns>
+                            <rows>
+                                <row>
+                                    <vbox>
+                                        <label control="editForm_no" value="&receiving.form.number;"/>
+                                        <textbox id="editForm_no" readonly="true"
+                                                 form="editForm" name="no"/>
+                                    </vbox>
+                                    <vbox>
+                                        <label control="editForm_created_date" value="&receiving.form.date;"/>
+                                        <textbox id="editForm_created_date" readonly="true"
+                                                 form="editForm" name="created_date"/>
+                                    </vbox>
+                                    <vbox>
+                                        <label control="editForm_status" value="&receiving.form.status;"/>
+                                        <textbox id="editForm_status" readonly="true"
+                                                 form="editForm" name="status"/>
+                                    </vbox>
+                                    <vbox>
+                                        <label control="editForm_total_display" value="&receiving.form.total;"/>
+                                        <textbox id="editForm_total_display" readonly="true"
+                                                 form="editForm" name="total_display"/>
+                                    </vbox>
+                                </row>
+                            </rows>
+                        </grid>
+                        <grid class="data-form">
+                            <columns>
+                                <column flex="1"/>
+                                <column/>
+                                <column/>
+                            </columns>
+                            <rows>
+                                <row>
+                                    <vbox>
+                                        <label control="editForm_po" value="&receiving.form.po;"/>
+                                        <textbox id="editForm_po" readonly="true"
+                                                 form="editForm" name="po_no"/>
+                                    </vbox>
+                                    <vbox>
+                                        <label control="editForm_supplier" value="&receiving.form.supplier;"/>
+                                        <textbox id="editForm_supplier" readonly="true" class="edit_supplier"
+                                                 form="editForm" name="supplier"/>
+                                    </vbox>
+                                    <vbox>
+                                        <label control="editForm_desc" value="&receiving.form.description;"/>
+                                        <textbox id="editForm_desc" flex="1" class="edit_description"
+                                                 oninput="$do('validateSaveDiscard', null, 'Receiving');"
+                                                 form="editForm" name="desc"
+                                                 onfocus="this.select();"/>
+                                     </vbox>
+                                 </row>
+                             </rows>
+                         </grid>
+
+                        <vbox flex="1" class="content-listbox">
+                            <viviscrollabletree id="detailscrollabletree" flex="1" scrollUnit="line" scrollMode="cursor"
+                                                headers=",&receiving.field.row;,&receiving.field.plu;,&receiving.field.pluname;,&receiving.field.qty;,&receiving.field.stockunit;,&receiving.field.recv.qty;,&receiving.field.unitprice;,&receiving.field.cost;"
+                                                fields="pending,seq,no,name,order_qty,unit_display,qty,price_display,total_display"
+                                                types="checkbox,,,,,,,,"
+                                                class="custom-be-content-detail-list" treeClass="standard"
+                                                scrollUpClass="scroll-up-button" scrollDownClass="scroll-down-button"
+                                                onselect="$do('selectItem', null, 'Receiving');">
+                                <vivibutton id="+" class="button-systool button-plus" onclick="event.stopPropagation()" oncommand="$do('addItem', null, 'Receiving');" />
+                                <vivibutton id="-" class="button-systool button-minus" onclick="event.stopPropagation()" oncommand="$do('removeItem', null, 'Receiving');"/>
+                                <vivibutton id="up" class="button-systool button-up" onclick="event.stopPropagation()" oncommand="$do('moveItem', -1, 'Receiving');" />
+                                <vivibutton id="down" class="button-systool button-down" onclick="event.stopPropagation()" oncommand="$do('moveItem', 1, 'Receiving');"/>
+                            </viviscrollabletree>
+                        </vbox>
+
+                        <hbox align="top">
+                            <grid class="data-form-2" flex="1">
+                                <columns>
+                                    <column flex="1"/>
+                                    <column flex="1"/>
+                                    <column flex="1"/>
+                                </columns>
+                                <rows>
+                                    <row id="item-row">
+                                        <hbox id="item-row-qty">
+                                            <label id="item-qty-label" value="&addGR.item.qty.label;" control="qty" class="label-sub-title"/>
+                                            <vivitextbox id="item-qty" flex="1" type="number" value="" decimalplaces="Infinity" min="0" max="Infinity" hidespinbuttons="true"
+                                                         onfocus="select()" onchange="$do('validateItemForm', 'qty', 'Receiving')"
+                                                         numpadClass="numpad" fixedbtnClass="button-fixed" popupKeypad="true" keypad="numpad"
+                                                         form="itemForm" name="qty" default=""/>
+                                        </hbox>
+                                        <hbox id="item-row-price">
+                                            <label id="item-price-label" value="&addGR.item.price.label;" control="promptQtyPrice-price" class="label-sub-title"/>
+                                            <vivitextbox id="item-price" flex="1" type="number" value="" decimalplaces="Infinity" min="0" max="Infinity" hidespinbuttons="true"
+                                                         onfocus="select()" onchange="$do('validateItemForm', 'price', 'Receiving')"
+                                                         numpadClass="numpad" fixedbtnClass="button-fixed" popupKeypad="true" keypad="numpad"
+                                                         form="itemForm" name="price" default=""/>
+                                        </hbox>
+                                        <hbox id="item-row-cost">
+                                            <label id="item-cost-label" value="&addGR.item.cost.label;" control="promptQtyPrice-cost" class="label-sub-title"/>
+                                            <vivitextbox id="item-cost" flex="1" type="number" value="" decimalplaces="Infinity" min="0" max="Infinity" hidespinbuttons="true"
+                                                         onfocus="select()" onchange="$do('validateItemForm', 'cost', 'Receiving')"
+                                                         numpadClass="numpad" fixedbtnClass="button-fixed" popupKeypad="true" keypad="numpad"
+                                                         form="itemForm" name="total" default=""/>
+                                        </hbox>
+                                    </row>
+                                </rows>
+                            </grid>
+                            <button id="modify-item" label="update" disabled="true" class="button-modify button-execute"
+                                    oncommand="$do('modifyItem', null, 'Receiving');" />
+                        </hbox>
+
+                        <hbox>
+                            <hbox flex="1" class="toolbar" toolbarmode="horizontal" oncommand="event.stopPropagation()">
+                                <button id="create_gr" label="&receiving.button.create;" hidden="true" class="button-modify" oncommand="$do('saveChanges', null, 'Receiving');"/>
+                                <button id="save_changes" label="&receiving.button.save;" hidden="true" class="button-modify" oncommand="$do('saveChanges', null, 'Receiving');"/>
+                                <spacer flex="1"/>
+                                <button id="commit" label="" hidden="true" class="button-modify" oncommand="$do('commitGR', null, 'Receiving');"/>
+                                <button id="close" label="&receiving.button.close;" hidden="true" class="button-modify" oncommand="$do('closePOGR', null, 'Receiving');"/>
+                                <spacer flex="1"/>
+                                <button id="discard_changes" label="&receiving.button.discard;" hidden="true" class="button-cancel" oncommand="$do('discardChanges', null, 'Receiving');"  />
+                                <button id="cancel_create" label="&receiving.button.cancel;" hidden="true" class="button-cancel" oncommand="$do('cancelCreate', null, 'Receiving');"  />
+                            </hbox>
+                            <hbox id="edit_dialogButtons" pack="end" class="exitbar">
+                                <button id="edit_vkb" class="button-vkb" oncommand="VirtualKeyboard.toggle();"/>
+                                <button id="edit_ok" label="&dialog.closeButton.label;" default="true" class="button-exit" oncommand="$do('exit', null, 'Receiving');"/>
+                            </hbox>
+                        </hbox>
+                    </tabpanel>
+                </tabpanels>
+            </tabbox>
+        </vbox>
+    </vbox>
+    
+    <!-- overlay the waiting panel. -->
+    <popupset id="dialogs"/>
+
+</window>
