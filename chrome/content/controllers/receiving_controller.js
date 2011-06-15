@@ -4,7 +4,7 @@
 
         name: 'Receiving',
 
-        uses: ['PO', 'PODetail', 'GR', 'GRDetail', 'StockRecord', 'ProductCost', 'Supplier'],
+        uses: ['PO', 'PODetail', 'GR', 'GRDetail', 'StockRecord', 'ProductCost', 'Supplier', 'InventoryCommitment', 'InventoryRecord'],
 
         components: ['Utility'],
         
@@ -22,6 +22,7 @@
         _terminal: GeckoJS.Session.get('terminal_no'),
         _user: _('unknown user'),
         _username: _('unknown username'),
+        _branchId: '',
         _precision: GeckoJS.Configure.read('vivipos.fec.settings.PrecisionPrices') || 0,
         _grAttrs: ['id',
                    'no',
@@ -46,6 +47,10 @@
                         this._username = clerk.description || clerk.username;
                     }
                 }
+
+                var storeContact = GeckoJS.Session.get('storeContact');
+                if (storeContact)
+                    this._branchId = storeContact.branch_id;
 
                 // load open POs
                 this.loadOpenPOs();
@@ -348,8 +353,13 @@
 
         filterEmptyItems: function(items) {
             var filteredItems = [];
+            var count = 1;
             items.forEach(function(p) {
-                if (p.qty > 0) filteredItems.push(p);
+                if (p.qty > 0) {
+                    var q = GREUtils.extend({}, p);
+                    q.seq = count++;
+                    filteredItems.push(q);
+                }
             })
             return filteredItems;
         },
@@ -426,9 +436,16 @@
             var data = GeckoJS.FormHelper.serializeToObject('editForm');
             if (pendingCommit) {
                 this._detailList.forEach(function(p) {
+                    delete p.last_price;
+                    delete p.last_qty;
+
                     if (p.pending) {
                         var weight_delta;
                         var qty_delta;
+
+                        // save original price & qty
+                        p.last_price = p.commit_price;
+                        p.last_qty = p.commit_qty;
 
                         // compute change in qty and weight
                         if (isNaN(parseFloat(p.commit_qty))) {
@@ -445,57 +462,153 @@
                         p.commit_clerk_name = this._username;
                         p.commit_price = p.price;
                         p.commit_qty = p.qty;
-
                         this.updateLastCost(data, p, weight_delta, qty_delta);
                     }
                 }, this);
                 committed = true;
             }
 
-            if (modified || pendingCommit) {
-                if (data.id && data.id.length > 0) {
-                    this.updateGR(data, true);
-                    updated = true;
+            // create inventory commitment records
+            var rc = committed ? this.updateInventory(data) : true;
+
+            if (rc) {
+                if (modified || pendingCommit) {
+                    if (data.id && data.id.length > 0) {
+                        this.updateGR(data, true);
+                        updated = true;
+                    }
+                    else {
+                        this.createGR(data, true);
+                        created = true;
+                    }
                 }
-                else {
-                    this.createGR(data, true);
-                    created = true;
+
+                var args = {title: _('Goods Receiving [%S] successfully updated', [data.no])};
+
+                if (committed) {
+                    if (created) {
+                        args.title = _('Goods Receiving [%S] successfully created and committed', [data.no]);
+                    }
+                    else if (updated) {
+                        args.title = _('New Goods Receiving [%S] successfully updated and committed', [data.no]);
+                    }
+                    else {
+                        args.title = _('Goods Receiving [%S] successfully committed', [data.no]);
+                    }
                 }
-            }
 
-            var args = {title: _('Goods Receiving [%S] successfully updated', [data.no])};
+                // rebuild supplier filter menu if new GR has been created
+                if (created) this.buildSupplierFilterMenu();
 
-            if (committed) {
-                if (created) {
-                    args.title = _('Goods Receiving [%S] successfully created and committed', [data.no]);
-                }
-                else if (updated) {
-                    args.title = _('New Goods Receiving [%S] successfully updated and committed', [data.no]);
-                }
-                else {
-                    args.title = _('Goods Receiving [%S] successfully committed', [data.no]);
-                }
-            }
+                this._gr = data;
 
-            // rebuild supplier filter menu if new GR has been created
-            if (created) this.buildSupplierFilterMenu();
-
-            this._gr = data;
-
-            // prompt to close PO and/or GR
-            args.closePO = data.po_open > 0;
-            args.closeGR = data.open > 0;
-
-            if (args.closePO || args.closeGR) {
                 // prompt to close PO and/or GR
-                $.popupPanel('promptClosePOGRPanel', args);
-            }
-            else {
-                // switch to editMode
-                this.editMode(this._gr);
+                args.closePO = data.po_open > 0;
+                args.closeGR = data.open > 0;
 
-                GREUtils.Dialog.alert(this.topmostWindow, _('Goods Receiving Committed'), args.title);
+                if (args.closePO || args.closeGR) {
+                    // prompt to close PO and/or GR
+                    $.popupPanel('promptClosePOGRPanel', args);
+                }
+                else {
+                    // switch to editMode
+                    this.editMode(this._gr);
+
+                    GREUtils.Dialog.alert(this.topmostWindow, _('Goods Receiving Committed'), args.title);
+                }
             }
+        },
+
+        updateInventory: function(gr) {
+            var commitmentID = GeckoJS.String.uuid();
+
+            // insert inventory commitment record
+            if (!this.InventoryCommitment.set({
+                    id: commitmentID,
+                    type: 'procure',
+                    memo: gr.no,
+                    supplier: gr.supplier,
+                    clerk: this._user
+                })) {
+                this._dbError(this.InventoryCommitment.lastError, this.InventoryCommitment.lastErrorString,
+                              _('An error was encountered while saving stock adjustment records (error code %S) [message #8611].', [this.InventoryCommitment.lastError]));
+                return false;
+            }
+
+            // insert stock records
+            var producstById = GeckoJS.Session.get('productsById');
+            var barcodeIndexes = GeckoJS.Session.get('barcodesIndexes');
+
+            this._detailList.forEach(function(item) {
+                if (item.pending) {
+                    // retrieve existing stock record
+                    var stockRecord = this.StockRecord.findById(item.no);
+                    var lastQty = isNaN(item.last_qty) ? 0 : item.last_qty;
+                    var stockDelta = parseFloat(item.commit_qty - lastQty);
+
+                    // prepare stock record
+                    if (stockRecord) {
+                        stockRecord.quantity += stockDelta;
+                        stockRecord.warehouse = this._branchId;
+                    }
+                    else {
+                        var pid = barcodeIndexes[item.no];
+                        var prod = producstById[pid];
+
+                        stockRecord = {
+                            id: item.no,
+                            barcode: prod.barcode,
+                            warehouse: this._branchId,
+                            quantity: stockDelta,
+                            delta: stockDelta
+                        };
+                    }
+                    this.StockRecord.id = stockRecord.id;
+                    if (!this.StockRecord.save(stockRecord)) {
+                        this._dbError(this.StockRecord.lastError, this.StockRecord.lastErrorString,
+                                      _('An error was encountered while saving stock records (error code %S) [message #8612].', [this.StockRecord.lastError]));
+                        return false;
+                    }
+
+                    // if price has changed, then need to return previous batch
+                    var inventoryDelta = (lastQty > 0 && item.last_price != item.commit_price) ? item.commit_qty : stockDelta;
+
+                    // prepare inventory record
+                    this.InventoryRecord.id = '';
+                    if (!this.InventoryRecord.save({commitment_id: commitmentID,
+                                                    product_no: stockRecord.id,
+                                                    barcode: stockRecord.barcode,
+                                                    warehouse: stockRecord.warehouse,
+                                                    value: inventoryDelta,
+                                                    price: item.commit_price,
+                                                    memo: '',
+                                                    delta: inventoryDelta})) {
+                        this._dbError(this.InventoryRecord.lastError, this.InventoryRecord.lastErrorString,
+                                      _('An error was encountered while saving stock adjustment details (error code %S) [message #8613].', [this.InventoryRecord.lastError]));
+                        return false;
+                    }
+
+                    // need to return inventory?
+                    if (inventoryDelta != stockDelta) {
+                        this.InventoryRecord.id = '';
+                        if (!this.InventoryRecord.save({commitment_id: commitmentID,
+                                                        product_no: stockRecord.id,
+                                                        barcode: stockRecord.barcode,
+                                                        warehouse: stockRecord.warehouse,
+                                                        value: -item.last_qty,
+                                                        price: item.last_price,
+                                                        memo: _('Price Change'),
+                                                        delta: -item.last_qty
+                                                        })) {
+                            this._dbError(this.InventoryRecord.lastError, this.InventoryRecord.lastErrorString,
+                                          _('An error was encountered while saving stock adjustment details (error code %S) [message #8613].', [this.InventoryRecord.lastError]));
+                            return false;
+                        }
+                    }
+                }
+            }, this);
+            
+            return true;
         },
 
         closePOGR: function(target) {
@@ -525,15 +638,11 @@
             var doRemove = false;
 
             if (qty_delta != 0 || weight_delta != 0) {
-                var priceRecord = this.ProductCost.findByIndex('first', {
-                    index: 'no',
-                    value: item.no
-                });
+                var priceRecord = this.ProductCost.getProductCosts(item.no);
 
                 if (!priceRecord) {
                     priceRecord = {
-                        id: GeckoJS.String.uuid(),
-                        no: item.no,
+                        id: item.no,
                         avg_cost: item.price,
                         last_cost: item.price,
                         acc_qty: qty_delta,
@@ -1013,6 +1122,13 @@
             else {
 
             }
+        },
+
+        _dbError: function(errno, errstr, errmsg) {
+            this.log('ERROR', errmsg + '\nDatabase Error [' +  errno + ']: [' + errstr + ']');
+            GREUtils.Dialog.alert(this.topmostWindow,
+                                  _('Data Operation Error'),
+                                  errmsg + '\n\n' + _('Please restart the machine, and if the problem persists, please contact technical support immediately.'));
         }
     };
 

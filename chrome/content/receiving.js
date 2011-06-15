@@ -2,6 +2,8 @@
     
     // include required models
     GeckoJS.include('chrome://viviecr/content/utils/syncbase_http_service.js');
+    GeckoJS.include('chrome://viviecr/content/models/inventory_commitment.js');
+    GeckoJS.include('chrome://viviecr/content/models/inventory_record.js');
     GeckoJS.include('chrome://viviecr/content/models/stock_record.js');
     
     GeckoJS.include('chrome://spims/content/models/supplier.js');

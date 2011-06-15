@@ -4,6 +4,8 @@
 
         name: 'SPIMS-InitController',
 
+        uses: ['ProductCost'],
+        
         initial: function() {
 
             // load in String Bundles
@@ -46,6 +48,8 @@
             var orderItemCostModel = new OrderItemCostModel();
             orderItemCostModel.createStore();
 
+            // cache product costs
+            this.ProductCost.cacheProductCosts();
         }
     };
 

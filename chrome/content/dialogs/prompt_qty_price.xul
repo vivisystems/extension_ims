@@ -69,11 +69,11 @@
 
             <hbox>
                 <hbox flex="1" pack="center" class="toolbar" toolbarmode="horizontal">
-                    <button id="ok" label="&dialog.okButton.label;" default="true" oncommand="doOKButton();"/>
+                    <button id="ok" label="&dialog.okButton.label;" default="true" oncommand="this.focus(); doOKButton();"/>
                     <button id="cancel" label="&dialog.cancelButton.label;" default="false" oncommand="doCancelButton();"/>
                 </hbox>
                 <hbox id="dialogButtons" class="exitbar">
-                    <button class="button-vkb" oncommand="alert(VirtualKeyboard); VirtualKeyboard.toggle();"/>
+                    <button class="button-vkb" oncommand="VirtualKeyboard.toggle();"/>
                 </hbox>
             </hbox>
 

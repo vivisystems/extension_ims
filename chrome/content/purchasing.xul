@@ -278,7 +278,7 @@
                                 </rows>
                             </grid>
                             <button id="modify-item" label="update" disabled="true" class="button-modify button-execute"
-                                    oncommand="$do('modifyItem', null, 'Purchasing');" />
+                                    oncommand="this.focus(); $do('modifyItem', null, 'Purchasing');" />
                         </hbox>
 
                         <hbox>
