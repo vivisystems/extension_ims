@@ -142,6 +142,7 @@
                                 <button id="search_po" label="&purchasing.button.search;" class="button-search" oncommand="$do('updatePOList', null, 'Purchasing');"/>
                                 <spacer flex="1"/>
                                 <button id="search_add_po" label="&purchasing.button.add;" class="button-add" oncommand="$do('addPO', true, 'Purchasing');"/>
+                                <button id="search_clone_po" label="&purchasing.button.clone;" class="button-add" oncommand="$do('clonePO', true, 'Purchasing');"/>
                                 <spacer flex="1"/>
                                 <button id="search_delete_po" label="&purchasing.button.delete;" class="button-delete" oncommand="$do('deletePO', null, 'Purchasing');"/>
                             </hbox>

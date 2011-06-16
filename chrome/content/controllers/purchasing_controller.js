@@ -294,7 +294,20 @@
                                               scope: this});
         },
 
-        createMode: function(ponumber, description, supplier_code, self) {
+        clonePO: function(clear) {
+            var selectedIndex = this.getPOListObj().selectedIndex;
+            if (selectedIndex > -1) {
+                var po = this._poList[selectedIndex];
+
+                $.popupPanel('promptAddPOPanel', {suppliers: this._suppliers,
+                                                  okCB: this.createMode,
+                                                  clear: clear,
+                                                  clone: po,
+                                                  scope: this});
+            }
+        },
+
+        createMode: function(ponumber, description, supplier_code, clone_po, self) {
             // check for duplicate po number
             var po = self.PO.findByIndex('first', {index: 'no', value: ponumber});
             if (po) {
@@ -346,7 +359,17 @@
             self._mode = document.getElementById('main_tabs').selectedIndex = 1;
 
             // initialize detail List
-            self.getDetailListObj().datasource = self._detailList = self._savedDetailList = [];
+            self._detailList = self._savedDetailList = [];
+            if (clone_po && clone_po.id) {
+                self._detailList = self.loadPODetails(clone_po) || [];
+                self._detailList.forEach(function(p) {
+                    p.po_id = '';
+                    p.id = GeckoJS.String.uuid();
+                    p.clerk = self._user;
+                    p.clerk_name = self._username;
+                })
+            }
+            self.getDetailListObj().datasource = self._detailList;
         },
 
         saveChanges: function() {
@@ -431,6 +454,23 @@
             else item.unit_display = item.unit;
         },
 
+        loadPODetails: function(po) {
+            // load PO details
+            var detailList = [];
+            if (po.id != null && po.id.length > 0) {
+                detailList = this.PODetail.findByIndex('all', {
+                    index: 'po_id',
+                    value: po.id,
+                    order: 'seq ASC'
+                });
+                if (detailList) detailList.forEach(function(p) {
+                    this.formatItem(p);
+                }, this);
+            }
+
+            return detailList;
+        },
+
         editMode: function(po) {
             var poListObj = this.getPOListObj();
             if (!po) {
@@ -442,11 +482,7 @@
             // load PO details
             this._detailList = [];
             if (po.id != null && po.id.length > 0) {
-                this._detailList = this.PODetail.findByIndex('all', {
-                    index: 'po_id',
-                    value: po.id,
-                    order: 'seq ASC'
-                });
+                this._detailList = this.loadPODetails(po);
             }
 
             // save a copy of PO details
@@ -462,7 +498,6 @@
                     price: p.price,
                     total: p.total
                 });
-                this.formatItem(p);
             }, this)
 
             // populate form with PO data
@@ -532,10 +567,10 @@
                         let prod = productsById[pid];
                         if (prod) {
 
-                            var count = this._detailList.length;
+                            let count = this._detailList.length;
 
                             // append to detailList
-                            var item = {
+                            let item = {
                                 id: GeckoJS.String.uuid(),
                                 po_id: this._po.id,
                                 seq: 1 + count,
@@ -548,7 +583,6 @@
                                 clerk: this._user,
                                 clerk_name: this._username
                             }
-
                             this.formatItem(item);
 
                             this._detailList.push(item);
@@ -803,6 +837,7 @@
             if (this._mode == 0) {
                 // search mode
                 var selectedIndex = this.getPOListObj().selectedIndex;
+                var cloneBtnObj = document.getElementById('search_clone_po');
                 var deleteBtnObj = document.getElementById('search_delete_po');
                 var editTabObj = document.getElementById('tab_detail');
                 
@@ -817,9 +852,11 @@
                 // purchase order tab
                 if (selectedIndex > -1) {
                     editTabObj.removeAttribute('disabled');
+                    cloneBtnObj.removeAttribute('disabled');
                 }
                 else {
                     editTabObj.setAttribute('disabled', 'true');
+                    cloneBtnObj.setAttribute('disabled', 'true');
                 }
             }
             else {

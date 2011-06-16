@@ -63,7 +63,6 @@
             this._super(id);
 
             // update cache
-            alert('deleted cache [' + myId + ']');
             var cache = GeckoJS.Session.get('spims_product_costs');
             delete cache[myId];
         },

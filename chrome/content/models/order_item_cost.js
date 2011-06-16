@@ -25,15 +25,15 @@
             var sql = 'CREATE TABLE IF NOT EXISTS "order_item_costs" \
                        ("id" VARCHAR PRIMARY KEY  NOT NULL , \
                         "order_item_id" VARCHAR NOT NULL  UNIQUE , \
-                        "avg_cost" FLOAT NOT NULL, \
-                        "last_cost" FLOAT NOT NULL, \
-                        "manual_cost" FLOAT NOT NULL, \
+                        "avg_cost" FLOAT, \
+                        "last_cost" FLOAT, \
+                        "manual_cost" FLOAT, \
                         "created" INTEGER NOT NULL , \
                         "modified" INTEGER NOT NULL );';
             ds.execute(sql);
         },
 
-            getHttpService: function() {
+        getHttpService: function() {
 
             try {
                 if (!this.httpService) {
@@ -89,17 +89,34 @@
 
             }else {
                 var productsById = GeckoJS.Session.get('productsById');
+                var productCostModel = new ProductCostModel();
+                var itemCosts = [];
                 for (var id in items) {
                     var item = items[id];
                     var prod = productsById[item.id];
-                    var manual_cost = 0;
-                    if (prod) {
-                        manual_cost = prod.buy_price;
+                    var itemCost = {
+                        manual_cost: null,
+                        order_item_id: id,
+                        avg_cost: null,
+                        last_cost: null
                     }
 
+                    // get manual cost
+                    if (prod && prod.buy_price != null && prod.buy_price != '') {
+                        itemCost.manual_cost = prod.buy_price;
+                    }
 
+                    // get last prices from cache
+                    var costs = productCostModel.getProductCosts(prod.no);
+                    if (costs) {
+                        itemCost.avg_cost = costs.avg_cost;
+                        itemCost.last_cost = costs.last_cost;
+                    }
 
+                    itemCosts.push(itemCost);
                 }
+
+                this.saveAll(itemCosts);
 
                 this.lastReadyState = 4;
                 this.lastStatus = 200;

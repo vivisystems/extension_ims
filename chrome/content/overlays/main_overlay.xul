@@ -18,5 +18,6 @@
 
   <!-- include code for initialization -->
   <script src="chrome://spims/content/controllers/init_controller.js" type="application/x-javascript;version=1.7"/>
+  <script src="chrome://spims/content/controllers/sales_controller.js" type="application/x-javascript;version=1.7"/>
 
 </overlay>

@@ -56,7 +56,7 @@ var promptAddPO_data;
                     desc = desc.trim();
                     var supplier = promptAddPO_data.suppliers[promptAddPO_data.supplierIndex];
                     if (ponumber.length > 0 && supplier)
-                        promptAddPO_data.okCB(ponumber, desc, supplier.code, promptAddPO_data.scope);
+                        promptAddPO_data.okCB(ponumber, desc, supplier.code, promptAddPO_data.clone, promptAddPO_data.scope);
                 }
             }
 

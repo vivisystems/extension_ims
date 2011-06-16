@@ -32,6 +32,7 @@
 <!ENTITY purchasing.filter.goods.notreceived "Not Received">
 <!ENTITY purchasing.button.search "Search">
 <!ENTITY purchasing.button.add "Add">
+<!ENTITY purchasing.button.clone "Clone">
 <!ENTITY purchasing.button.delete "Delete">
 <!ENTITY purchasing.button.save "Save">
 <!ENTITY purchasing.button.discard "Discard Changes">
