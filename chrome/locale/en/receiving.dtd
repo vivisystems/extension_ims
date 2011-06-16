@@ -42,6 +42,7 @@
 <!ENTITY receiving.button.create "Create">
 <!ENTITY receiving.button.cancel "Cancel GR">
 <!ENTITY receiving.button.close "Close PO/GR">
+<!ENTITY receiving.button.more "Select">
 <!ENTITY receiving.form.number "GR Number">
 <!ENTITY receiving.form.date "Date">
 <!ENTITY receiving.form.status "Status">

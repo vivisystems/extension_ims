@@ -2,7 +2,7 @@
 
     var __controller__ = {
 
-        name: 'SPIMS-PLUSearchController',
+        name: 'IMS-PLUSearchController',
 
         uses: ['GRDetail'],
 
@@ -18,6 +18,7 @@
         initial: function() {
             this._priceListObj = document.getElementById('lastpricecrollablepanel');
             this._productRowObj = document.getElementById('product-extra');
+            this._moreBtnObj = document.getElementById('more');
             
             // should we be visible?
             if (this._priceListObj && window.arguments && (window.arguments.length > 0)) {
@@ -53,6 +54,16 @@
                             var rows = saleUnitObj.parentNode.parentNode.parentNode;
                             rows.appendChild(this._productRowObj);
                     }
+
+                    // identify more button target since desired target does not have any identifying attribute associated with it
+                    var selectBtnObj = document.getElementById('ok');
+                    if (selectBtnObj &&
+                        selectBtnObj.parentNode) { // hbox
+                            var hbox = selectBtnObj.parentNode;
+                            hbox.insertBefore(this._moreBtnObj, selectBtnObj);
+
+                            selectBtnObj.setAttribute('label', _('Select & Close'));
+                    }
                 }
             }
         },
@@ -86,6 +97,14 @@
             }
         },
 
+        selectMoreProducts: function() {
+            $do('setSelections', null, 'PluSearch');
+            var args = window.arguments[0];
+            if (args && args.item && args.moreCB && args.scope) {
+                args.moreCB(args.item.id, args.qty, args.price, args.cost, args.scope);
+            }
+        },
+        
         updateLastPrices: function(evt) {
             var no = '';
             var selectedTab = document.getElementById('mode_tabs').selectedIndex;
@@ -114,17 +133,31 @@
                     order: 'GR_details.commit_date DESC'
                 });
 
-                lastPriceRecords.forEach(function(p) {
-                    lastPrices.push({
-                        modified: new Date(p.commit_date * 1000).toLocaleDateString(),
-                        grnumber: p.GR.no,
-                        qty: p.commit_qty,
-                        supplier: p.GR.supplier_name + ' (' + p.GR.supplier_code + ')',
-                        unitprice: this.Utility.formatPrice(p.commit_price)
-                    })
-                }, this)
+                if (lastPriceRecords) {
+                    lastPriceRecords.forEach(function(p) {
+                        lastPrices.push({
+                            modified: new Date(p.commit_date * 1000).toLocaleDateString(),
+                            grnumber: p.GR.no,
+                            qty: p.commit_qty,
+                            supplier: p.GR.supplier_name + ' (' + p.GR.supplier_code + ')',
+                            unitprice: this.Utility.formatPrice(p.commit_price)
+                        })
+                    }, this)
+                }
+                else {
+                    this._dbError(this.GRDetail.lastError,
+                                  this.GRDetail.lastErrorString,
+                                  _('An error was encountered while retrieving goods receiving records (error code %S) [message #IMS-03-01].', [this.GRDetail.lastError]));
+                }
             }
             this._priceListObj.datasource = lastPrices;
+        },
+
+        _dbError: function(errno, errstr, errmsg) {
+            this.log('ERROR', errmsg + '\nDatabase Error [' +  errno + ']: [' + errstr + ']');
+            GREUtils.Dialog.alert(this.topmostWindow,
+                                  _('Data Operation Error'),
+                                  errmsg + '\n\n' + _('Please restart the machine, and if the problem persists, please contact technical support immediately.'));
         }
     };
 
@@ -132,6 +165,6 @@
 
     // register onload
     window.addEventListener('load', function() {
-        $do('initial', null, 'SPIMS-PLUSearchController')
+        $do('initial', null, 'IMS-PLUSearchController')
     }, false);
 })();

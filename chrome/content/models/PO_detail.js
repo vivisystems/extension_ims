@@ -38,29 +38,31 @@
                     "clerk_name" VARCHAR NOT NULL , \
                     "created" INTEGER NOT NULL , \
                     "modified" INTEGER NOT NULL );';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "PO_details_no" ON "PO_details" ("no" ASC);';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "PO_details_seq" ON "PO_details" ("seq" ASC);';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "PO_details_po_id" ON "PO_details" ("po_id" ASC);';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "PO_details_clerk" ON "PO_details" ("clerk" ASC);';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
+
+            return true;
         },
 
         deleteByIndex: function(index, value) {
             var sql = 'DELETE from PO_details WHERE ' + index + ' = "' + value + '"';
 
-            this.datasource.execute(sql);
+            return this.datasource.execute(sql);
         },
 
         replaceRecords: function(parentId, newRecords) {
             var sql = 'DELETE from PO_details WHERE po_id = "' + parentId + '"';
 
-            this.datasource.execute(sql);
+            if (!this.datasource.execute(sql)) return false;
 
-            this.saveAll(newRecords);
+            return this.saveAll(newRecords);
         }
     };
 

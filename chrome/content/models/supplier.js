@@ -36,19 +36,21 @@
                         "terminal" VARCHAR NOT NULL , \
                         "created" INTEGER, \
                         "modified" INTEGER)';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "suppliers_code_name" ON "suppliers" ("code" ASC, "name" ASC);';
-            ds.execute(sql, []);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "suppliers_status" ON "suppliers" ("status" ASC);';
-            ds.execute(sql, []);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "suppliers_clerk" ON "suppliers" ("clerk" ASC);';
-            ds.execute(sql, []);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "suppliers_terminal" ON "suppliers" ("terminal" ASC);';
-            ds.execute(sql, []);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "suppliers_created" ON "suppliers" ("created" ASC);';
-            ds.execute(sql, []);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "suppliers_modified" ON "suppliers" ("modified" ASC);';
-            ds.execute(sql, []);
+            if (!ds.execute(sql)) return false;
+
+            return true;
         }
     };
 

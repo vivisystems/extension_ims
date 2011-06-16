@@ -23,9 +23,13 @@
                         "last_gr_no" VARCHAR, \
                         "created" INTEGER NOT NULL , \
                         "modified" INTEGER NOT NULL );';
-            ds.execute(sql);
+
+            if (!ds.execute(sql)) return false;
+
             sql = 'CREATE INDEX IF NOT EXISTS "product_costs_last_gr_no" ON "product_costs" ("last_gr_no" ASC);';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
+
+            return true;
         },
 
         cacheProductCosts: function() {
@@ -60,19 +64,35 @@
 
         del: function(id) {
             var myId = (id || this.id);
-            this._super(id);
+            var rc = this._super(id);
 
             // update cache
-            var cache = GeckoJS.Session.get('spims_product_costs');
-            delete cache[myId];
+            if (rc) {
+                var cache = GeckoJS.Session.get('spims_product_costs');
+                delete cache[myId];
+            }
+            return rc;
         },
 
         save: function(data) {
-            this._super(data);
+            var rc = this._super(data);
 
             // update cache
-            var cache = GeckoJS.Session.get('spims_product_costs');
-            cache[data.id || this.id] = data;
+            if (rc) {
+                var cache = GeckoJS.Session.get('spims_product_costs');
+                cache[data.id || this.id] = data;
+            }
+            return rc;
+        },
+
+        truncate: function() {
+            var rc = this._super();
+
+            // update cache
+            if (rc) {
+                GeckoJS.Session.get('spims_product_costs', {});
+            }
+            return rc;
         }
     };
 

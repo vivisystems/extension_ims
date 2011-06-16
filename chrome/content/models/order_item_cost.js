@@ -10,6 +10,12 @@
         useDbConfig: 'order',
 
         belongsTo: ['OrderItem'],
+        belongsTo: [{
+            name: 'OrderItem',
+            table: 'order_items',
+            primaryKey: 'id',
+            foreignKey: 'id'
+        }],
 
         behaviors: ['Sync'],
 
@@ -18,19 +24,36 @@
         httpService: null,
 
         createStore: function() {
-
+            
             var ds = this.datasource;
             
             // table order_item_costs
             var sql = 'CREATE TABLE IF NOT EXISTS "order_item_costs" \
                        ("id" VARCHAR PRIMARY KEY  NOT NULL , \
-                        "order_item_id" VARCHAR NOT NULL  UNIQUE , \
                         "avg_cost" FLOAT, \
                         "last_cost" FLOAT, \
                         "manual_cost" FLOAT, \
                         "created" INTEGER NOT NULL , \
                         "modified" INTEGER NOT NULL );';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
+
+            // create table in history database
+            var rc = true;
+            var attachedOrderHistory = this.attachOrderHistory();
+            if (attachedOrderHistory) {
+                try {
+                    sql = sql.replace('"order_item_costs"', 'order_history."order_item_costs"');
+                    if (!ds.execute(sql)) throw 'failed to create';
+                }
+                catch(e) {
+                    rc = false;
+                }
+                finally {
+                    this.detachOrderHistory();
+                }
+            }
+
+            return rc;
         },
 
         getHttpService: function() {
@@ -95,8 +118,8 @@
                     var item = items[id];
                     var prod = productsById[item.id];
                     var itemCost = {
+                        id: id,
                         manual_cost: null,
-                        order_item_id: id,
                         avg_cost: null,
                         last_cost: null
                     }
@@ -115,12 +138,12 @@
 
                     itemCosts.push(itemCost);
                 }
-
-                this.saveAll(itemCosts);
+                var rc = this.saveAll(itemCosts);
 
                 this.lastReadyState = 4;
                 this.lastStatus = 200;
 
+                return rc;
             }
         }
     };

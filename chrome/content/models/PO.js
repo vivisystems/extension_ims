@@ -42,21 +42,23 @@
                         "created" INTEGER NOT NULL , \
                         "modified" INTEGER NOT NULL );';
             
-            ds.execute(sql, []);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "POs_supplier_code_name" ON "POs" ("supplier_code" ASC, "supplier_name" ASC);';
-            ds.execute(sql, []);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "POs_open" ON "POs" ("open" ASC);';
-            ds.execute(sql, []);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "POs_clerk" ON "POs" ("clerk" ASC);';
-            ds.execute(sql, []);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "POs_terminal" ON "POs" ("terminal" ASC);';
-            ds.execute(sql, []);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "POs_supplier_code_name" ON "POs" ("supplier_code" ASC, "supplier_name" ASC);';
-            ds.execute(sql, []);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "POs_created" ON "POs" ("created" ASC);';
-            ds.execute(sql, []);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "POs_modified" ON "POs" ("modified" ASC);';
-            ds.execute(sql, []);
+            if (!ds.execute(sql)) return false;
+
+            return true;
         },
 
         findPOList: function(startTimestamp, endTimestamp, poNumber, supplierCode, supplierName, status, startIndex, limit) {
@@ -106,7 +108,7 @@
             var records = this.getDataSource().fetchAll(sql);
 
             if (!records) {
-                return null;
+                return records;
             }
 
             var count = this.findCount(conditionStr);
@@ -122,8 +124,7 @@
 
         findGoodsReceiving: function(id) {
             var record = this.findById(id || this.id, 2);
-
-            return record.GR || [];
+            return (record == false) ? false : (record.GR || []);
         },
 
         getItems: function(id) {
@@ -131,21 +132,23 @@
                 index: 'po_id',
                 value: id || this.id,
                 order: 'seq ASC'
-            }) || [];
+            });
         },
 
         closeByNumber: function(no) {
             var sql = 'UPDATE POs set open = 0 WHERE no = "' + no + '"';
 
-            this.getDataSource().execute(sql);
+            return this.getDataSource().execute(sql);
         },
 
         del: function(id, cascade) {
-            this._super(id || this.id, cascade);
+            var rc = this._super(id || this.id, cascade);
 
-            if (cascade) {
-                this.PODetail.deleteByIndex('po_id', id || this.id);
+            if (rc && cascade) {
+                rc = this.PODetail.deleteByIndex('po_id', id || this.id);
             }
+
+            return rc;
         }
     };
 

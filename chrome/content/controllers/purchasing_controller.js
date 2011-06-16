@@ -91,10 +91,12 @@
             });
 
             if (!suppliers) {
-                this.log('ERROR', 'Failed to retrieve suppliers from database');
+                this._dbError(this.Supplier.lastError,
+                              this.Supplier.lastErrorString,
+                              _('Failed to retrieve supplier records from database (error code %S) [message #IMS-04-01].', [this.Supplier.lastError]));
                 suppliers = [];
             }
-
+            
             this._suppliers = suppliers;
         },
 
@@ -118,8 +120,10 @@
         countAllPOs: function() {
             var count = this.PO.findCount();
 
-            if (isNaN(parseInt(count))) {
-                this.log('ERROR', 'Failed to retrieve PO count');
+            if (this.PO.lastError != 0) {
+                this._dbError(this.PO.lastError,
+                              this.PO.lastErrorString,
+                              _('Failed to retrieve purchase order record count from database (error code %S) [message #IMS-04-02].', [this.PO.lastError]));
                 count = 0;
             }
 
@@ -146,7 +150,10 @@
             var supplierFilter = this.PO.findSuppliers();
 
             if (!supplierFilter) {
-                this.log('ERROR', 'Failed to retrieve list of suppliers from database');
+                supplierFilter = [];
+                this._dbError(this.PO.lastError,
+                              this.PO.lastErrorString,
+                              _('Failed to retrieve supplier records from database (error code %S) [message #IMS-04-03].', [this.PO.lastError]));
             }
             else {
                 var filterMenuObj = document.getElementById('filter_supplier');
@@ -158,9 +165,8 @@
                         filterMenuObj.appendItem(s.supplier_name + ' (' + s.supplier_code + ')', index, '');
                     });
                 }
-
-                this._supplierFilter = supplierFilter;
             }
+            this._supplierFilter = supplierFilter;
         },
 
         buildSupplierEditMenu: function() {
@@ -208,10 +214,17 @@
             var outList = [];
 
             if (!poList) {
-                this.log('ERROR', 'Failed to fetch POs from database');
+                this._dbError(this.PO.lastError,
+                              this.PO.lastErrorString,
+                              _('Failed to retrieve purchase order records from database (error code %S) [message #IMS-04-04].', [this.PO.lastError]));
+                poList = {list: [],
+                          count: 0};
             }
             else {
                 if (isNaN(goodsReceived)) goodsReceived = -1;
+
+                var err = false;
+                var lastError, lastErrorString;
 
                 poList.list.forEach(function(po, index) {
                     po.status = po.open ? _('(spims)PO Status Open') : _('(spims)PO Status Closed');
@@ -221,16 +234,29 @@
 
                     // any GR associated with this PO?
                     let grRecords = this.PO.findGoodsReceiving(po.id);
-                    po.locked = grRecords.length > 0;
-
+                    if (!grRecords) {
+                        err = true;
+                        lastError = this.PO.lastError;
+                        lastErrorString = this.PO.lastErrorString;
+                        po.locked = true;
+                    }
+                    else {
+                        po.locked = grRecords.length > 0;
+                    }
+                    
                     // filter by goods received
                     if (goodsReceived == -1 || (goodsReceived == 1 && po.locked) || (goodsReceived == 0 && !po.locked)) {
                         outList.push(po);
                     }
                 }, this)
-            }
-            poList.list = outList;
-            
+                poList.list = outList;
+
+                if (err) {
+                    this._dbError(lastError,
+                                  lastErrorString,
+                                  _('Errors were encounterd while retrieving goods receiving records from database (error code %S) [message #IMS-04-14].', [lastError]));
+                }
+            }            
             return poList;
         },
 
@@ -273,17 +299,23 @@
                 }
 
                 // delete PO record
-                this.PO.del(po.id, true);
-                
-                // update cached PO list
-                this._poList.splice(selectedIndex, 1);
-                poListObj.datasource = this._poList;
-                
-                // update selected index
-                if (selectedIndex >= this._poList.length) selectedIndex--;
-                poListObj.selection.select(selectedIndex);
+                if (this.PO.del(po.id, true)) {
 
-                this.validateForm();
+                    // update cached PO list
+                    this._poList.splice(selectedIndex, 1);
+                    poListObj.datasource = this._poList;
+
+                    // update selected index
+                    if (selectedIndex >= this._poList.length) selectedIndex--;
+                    poListObj.selection.select(selectedIndex);
+
+                    this.validateForm();
+                }
+                else {
+                    this._dbError(this.PO.lastError,
+                                  this.PO.lastErrorString,
+                                  _('Failed to delete purchase order record from database (error code %S) [message #IMS-04-05].', [this.PO.lastError]));
+                }
             }
         },
 
@@ -314,6 +346,12 @@
                 GREUtils.Dialog.alert(self.topmostWindow, _('Duplicate PO Number'),
                                                           _('PO Number [%S] already exists, please enter a different PO number.', [ponumber]))
                 self.addPO(false);
+                return;
+            }
+            else if (po == false) {
+                this._dbError(this.PO.lastError,
+                              this.PO.lastErrorString,
+                              _('An error was encountered while validating purchase order number (error code %S) [message #IMS-04-06].', [this.PO.lastError]));
                 return;
             }
 
@@ -389,9 +427,30 @@
 
                 // edit
                 this.PO.id = data.id;
-                this.PO.save(data);
+                if (!this.PO.save(data)) {
+                    this._dbError(this.PO.lastError,
+                                  this.PO.lastErrorString,
+                                  _('Failed to update purchase order (error code %S) [message #IMS-04-07].', [this.PO.lastError]));
+                    return;
+                }
 
-                this.PODetail.replaceRecords(data.id, this._detailList);
+                let rc = this.PODetail.replaceRecords(data.id, this._detailList);
+                if (!rc) {
+                    this._dbError(this.PODetail.lastError,
+                                  this.PODetail.lastErrorString,
+                                  _('Failed to store purchase order detail into database (error code %S) [message #IMS-04-08].', [this.PODetail.lastError]));
+                    return;
+                }
+                else {
+                    for (let i = 0; i < rc.length; i++) {
+                        if (!rc[i]) {
+                            this._dbError(this.PODetail.lastError,
+                                          this.PODetail.lastErrorString,
+                                          _('Failed to store purchase order detail into database (error code %S) [message #IMS-04-09].', [this.PODetail.lastError]));
+                            return;
+                        }
+                    }
+                }
 
                 this.editMode(data);
 
@@ -401,12 +460,33 @@
             else {
                 // create
                 this.PO.id = data.id = GeckoJS.String.uuid();
-                this.PO.save(data);
+                if (!this.PO.save(data)) {
+                    this._dbError(this.PO.lastError,
+                                  this.PO.lastErrorString,
+                                  _('Failed to create purchase order (error code %S) [message #IMS-04-10].', [this.PO.lastError]));
+                    return;
+                }
 
                 this._detailList.forEach(function(p) {
                     p.po_id = data.id;
                 })
-                this.PODetail.saveAll(this._detailList);
+                let rc = this.PODetail.saveAll(this._detailList);
+                if (!rc) {
+                    this._dbError(this.PODetail.lastError,
+                                  this.PODetail.lastErrorString,
+                                  _('Failed to insert purchase order detail (error code %S) [message #IMS-04-11].', [this.PODetail.lastError]));
+                    return;
+                }
+                else {
+                    for (let i = 0; i < rc.length; i++) {
+                        if (!rc[i]) {
+                            this._dbError(this.PODetail.lastError,
+                                          this.PODetail.lastErrorString,
+                                          _('Failed to insert purchase order detail (error code %S) [message #IMS-04-12].', [this.PODetail.lastError]));
+                            return;
+                        }
+                    }
+                }
 
                 // switch to editMode
                 this.editMode(data);
@@ -417,34 +497,6 @@
 
             // rebuild supplier filter menu
             this.buildSupplierFilterMenu();
-        },
-
-        updateLastPrice: function(po, items) {
-            items.forEach(function(p) {
-                let priceRecord = this.ProductCost.findByIndex('first', {
-                    index: 'no',
-                    value: p.no
-                });
-
-                if (!priceRecord) {
-                    priceRecord = {
-                        id: GeckoJS.String.uuid(),
-                        no: p.no,
-                        avg_cost: 0,
-                        last_cost: p.price,
-                        manual_cost: 0,
-                        last_po_no: po.no,
-                        last_gr_id: ''
-                    };
-                }
-                else {
-                    priceRecord.last_cost = p.price;
-                    last_po_no = po.no;
-                }
-
-                this.ProductCost.id = priceRecord.id;
-                this.ProductCost.save(priceRecord);
-            }, this)
         },
 
         formatItem: function(item) {
@@ -463,9 +515,14 @@
                     value: po.id,
                     order: 'seq ASC'
                 });
-                if (detailList) detailList.forEach(function(p) {
-                    this.formatItem(p);
-                }, this);
+                if (detailList)
+                    detailList.forEach(function(p) {
+                        this.formatItem(p);
+                    }, this);
+                else if (detailList == false)
+                    this._dbError(this.PODetail.lastError,
+                                  this.PODetail.lastErrorString,
+                                  _('An error was encountered while retrieving purchase order detail from database (error code %S) [message #IMS-04-13].'));
             }
 
             return detailList;
@@ -544,6 +601,39 @@
             this.validateSaveDiscard();
         },
 
+        createItem: function(pid, qty, price, total, scope) {
+            var productsById = GeckoJS.Session.get('productsById');
+            var prod = productsById[pid];
+            if (prod) {
+
+                var count = scope._detailList.length;
+
+                // append to detailList
+                var item = {
+                    id: GeckoJS.String.uuid(),
+                    po_id: scope._po.id,
+                    seq: 1 + count,
+                    no: prod.no,
+                    name: prod.name,
+                    price: price,
+                    qty: qty,
+                    unit: prod.stock_unit,
+                    total: total,
+                    clerk: scope._user,
+                    clerk_name: scope._username
+                }
+                scope.formatItem(item);
+
+                scope._detailList.push(item);
+                scope.getDetailListObj().treeBoxObject.rowCountChanged(1, 1);
+
+                scope.getDetailListObj().selection.select(count);
+
+                scope.updatePOTotal();
+                scope.validateSaveDiscard();
+            }
+        },
+
         addItem: function () {
 
             var item = null;
@@ -555,44 +645,17 @@
                 buffer: '',
                 item: item,
                 select: true,
-                showLastPrices: true
+                showLastPrices: true,
+                moreCB: this.createItem,
+                scope: this
             };
 
             GREUtils.Dialog.openWindow(this.topmostWindow, aURL, aName, aFeatures, aArguments);
             if (aArguments.ok) {
                 if (aArguments.item) {
-                    let pid = aArguments.item.id;
+                    var pid = aArguments.item.id;
                     if (pid) {
-                        let productsById = GeckoJS.Session.get('productsById');
-                        let prod = productsById[pid];
-                        if (prod) {
-
-                            let count = this._detailList.length;
-
-                            // append to detailList
-                            let item = {
-                                id: GeckoJS.String.uuid(),
-                                po_id: this._po.id,
-                                seq: 1 + count,
-                                no: prod.no,
-                                name: prod.name,
-                                price: aArguments.price,
-                                qty: aArguments.qty,
-                                unit: prod.stock_unit,
-                                total: aArguments.cost,
-                                clerk: this._user,
-                                clerk_name: this._username
-                            }
-                            this.formatItem(item);
-
-                            this._detailList.push(item);
-                            this.getDetailListObj().treeBoxObject.rowCountChanged(1, 1);
-
-                            this.getDetailListObj().selection.select(count);
-
-                            this.updatePOTotal();
-                            this.validateSaveDiscard();
-                        }
+                        this.createItem(pid, aArguments.qty, aArguments.price, aArguments.cost, this);
                     }
                 }
             }
@@ -862,6 +925,13 @@
             else {
 
             }
+        },
+
+        _dbError: function(errno, errstr, errmsg) {
+            this.log('ERROR', errmsg + '\nDatabase Error [' +  errno + ']: [' + errstr + ']');
+            GREUtils.Dialog.alert(this.topmostWindow,
+                                  _('Data Operation Error'),
+                                  errmsg + '\n\n' + _('Please restart the machine, and if the problem persists, please contact technical support immediately.'));
         }
     };
 

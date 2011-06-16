@@ -45,21 +45,23 @@
                         "terminal" VARCHAR NOT NULL , \
                         "created" INTEGER NOT NULL , \
                         "modified" INTEGER NOT NULL );';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "GRs_po_no" ON "GRs" ("po_no" ASC);';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "GRs_open" ON "GRs" ("open" ASC);';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "GRs_committed" ON "GRs" ("committed" ASC);';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "GRs_clerk" ON "GRs" ("clerk" ASC);';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "GRs_terminal" ON "GRs" ("terminal" ASC);';
-            ds.execute(sql, []);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "GRs_created" ON "GRs" ("created" ASC);';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "GRs_modified" ON "GRs" ("modified" ASC);';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
+
+            return true;
         },
 
         findGRList: function(startTimestamp, endTimestamp, grNumber, poNumber, supplierCode, supplierName, status, startIndex, limit) {
@@ -115,7 +117,7 @@
             var records = this.getDataSource().fetchAll(sql);
 
             if (!records) {
-                return null;
+                return records;
             }
 
             var count = this.findCount(conditionStr);
@@ -132,15 +134,16 @@
         closeByNumber: function(no) {
             var sql = 'UPDATE GRs set open = 0 WHERE no = "' + no + '"';
 
-            this.getDataSource().execute(sql);
+            return this.getDataSource().execute(sql);
         },
 
         del: function(id, cascade) {
-            this._super(id, cascade);
+            var rc = this._super(id, cascade);
 
-            if (cascade) {
-                this.GRDetail.deleteByIndex('gr_id', id);
+            if (rc && cascade) {
+                rc = this.GRDetail.deleteByIndex('gr_id', id);
             }
+            return rc;
         }
 
     };

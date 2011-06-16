@@ -94,7 +94,9 @@
             });
 
             if (!POs) {
-                this.log('ERROR', 'Failed to retrieve open Purchase Orders from database');
+                this._dbError(this.PO.lastError,
+                              this.PO.lastErrorString,
+                              _('Failed to retrieve purchase orders from database (error code %S) [message #IMS-05-01].', [this.PO.lastError]));
                 POs = [];
             }
 
@@ -149,7 +151,10 @@
             var supplierFilter = this.GR.findSuppliers();
 
             if (!supplierFilter) {
-                this.log('ERROR', 'Failed to retrieve list of suppliers from database');
+                this._dbError(this.GR.lastError,
+                              this.GR.lastErrorString,
+                              _('Failed to retrieve supplier records from database (error code %S) [message #IMS-05-02].', [this.GR.lastError]));
+                supplierFilter = [];
             }
             else {
                 var filterMenuObj = document.getElementById('filter_supplier');
@@ -161,9 +166,9 @@
                         filterMenuObj.appendItem(s.supplier_name + ' (' + s.supplier_code + ')', index, '');
                     });
                 }
-
-                this._supplierFilter = supplierFilter;
             }
+            
+            this._supplierFilter = supplierFilter;
         },
 
         setSearchDateRange: function(startDate, endDate) {
@@ -198,7 +203,11 @@
             var grList = this.GR.findGRList(startTimestamp, endTimestamp, grNumber, poNumber, supplierCode, supplierName, status, startIndex, limit);
 
             if (!grList) {
-                this.log('ERROR', 'Failed to fetch POs from database');
+                this._dbError(this.GR.lastError,
+                              this.GR.lastErrorString,
+                              _('Failed to retrieve goods receiving records from database (error code %S) [message #IMS-05-03].', [this.GR.lastError]));
+                grList = {list: [],
+                          count: 0};
             }
             else {
                 grList.list.forEach(function(gr, index) {
@@ -253,17 +262,23 @@
                 }
 
                 // delete GR record
-                this.GR.del(gr.id, true);
-                
-                // update cached GR list
-                this._grList.splice(selectedIndex, 1);
-                grListObj.datasource = this._grList;
-                
-                // update selected index
-                if (selectedIndex >= this._grList.length) selectedIndex--;
-                grListObj.selection.select(selectedIndex);
+                if (this.GR.del(gr.id, true)) {
 
-                this.validateForm();
+                    // update cached GR list
+                    this._grList.splice(selectedIndex, 1);
+                    grListObj.datasource = this._grList;
+
+                    // update selected index
+                    if (selectedIndex >= this._grList.length) selectedIndex--;
+                    grListObj.selection.select(selectedIndex);
+
+                    this.validateForm();
+                }
+                else {
+                    this._dbError(this.GR.lastError,
+                                  this.GR.lastErrorString,
+                                  _('Failed to delete goods receiving record from database (error code %S) [message #IMS-05-04].', [this.GR.lastError]));
+                }
             }
         },
 
@@ -281,6 +296,12 @@
                 GREUtils.Dialog.alert(self.topmostWindow, _('Duplicate GR Number'),
                                                           _('GR Number [%S] already exists, please enter a different GR number.', [grnumber]))
                 self.addGR(false);
+                return;
+            }
+            else if (gr == false) {
+                this._dbError(this.GR.lastError,
+                              this.GR.lastErrorString,
+                              _('An error was encountered while validating goods receiving number (error code %S) [message #IMS-05-05].', [this.GR.lastError]));
                 return;
             }
 
@@ -373,10 +394,32 @@
             data.committed = this.isGRCommitted(this._detailList);
 
             this.GR.id = data.id;
-            this.GR.save(data);
+            if (!this.GR.save(data)) {
+                this._dbError(this.GR.lastError,
+                              this.GR.lastErrorString,
+                              _('Failed to update goods receiving record (error code %S) [message #IMS-05-06].', [this.GR.lastError]));
+                return false;
+            }
 
             var detailList = commit ? this.filterEmptyItems(this._detailList) : this._detailList;
-            this.GRDetail.replaceRecords(data.id, detailList);
+            var rc = this.GRDetail.replaceRecords(data.id, detailList);
+            if (!rc) {
+                this._dbError(this.GRDetail.lastError,
+                              this.GRDetail.lastErrorString,
+                              _('Failed to store goods receiving detail into database (error code %S) [message #IMS-05-07].', [this.GRDetail.lastError]));
+                return false;
+            }
+            else {
+                for (var i = 0; i < rc.length; i++) {
+                    if (!rc[i]) {
+                        this._dbError(this.GRDetail.lastError,
+                                      this.GRDetail.lastErrorString,
+                                      _('Failed to store goods receiving detail into database (error code %S) [message #IMS-05-08].', [this.GRDetail.lastError]));
+                        return false;
+                    }
+                }
+            }
+            return true;
         },
 
         createGR: function(data, commit) {
@@ -388,7 +431,12 @@
             data.committed = this.isGRCommitted(this._detailList);
 
             this.GR.id = data.id = GeckoJS.String.uuid();
-            this.GR.save(data);
+            if (!this.GR.save(data)) {
+                this._dbError(this.GR.lastError,
+                              this.GR.lastErrorString,
+                              _('Failed to create goods receiving record (error code %S) [message #IMS-05-09].', [this.GR.lastError]));
+                return false;
+            }
 
             this._detailList.forEach(function(p) {
                 p.id = GeckoJS.String.uuid();
@@ -398,7 +446,24 @@
             }, this);
 
             var detailList = commit ? this.filterEmptyItems(this._detailList) : this._detailList;
-            this.GRDetail.saveAll(detailList);
+            var rc = this.GRDetail.saveAll(detailList);
+            if (!rc) {
+                this._dbError(this.GRDetail.lastError,
+                              this.GRDetail.lastErrorString,
+                              _('Failed to insert goods receiving detail into database (error code %S) [message #IMS-05-10].', [this.GRDetail.lastError]));
+                return false;
+            }
+            else {
+                for (var i = 0; i < rc.length; i++) {
+                    if (!rc[i]) {
+                        this._dbError(this.GRDetail.lastError,
+                                      this.GRDetail.lastErrorString,
+                                      _('Failed to insert goods receiving detail into database (error code %S) [message #IMS-05-11].', [this.GRDetail.lastError]));
+                        return false;
+                    }
+                }
+            }
+            return true;
         },
 
         saveChanges: function() {
@@ -435,86 +500,109 @@
 
             var data = GeckoJS.FormHelper.serializeToObject('editForm');
             if (pendingCommit) {
-                this._detailList.forEach(function(p) {
-                    delete p.last_price;
-                    delete p.last_qty;
-
-                    if (p.pending) {
-                        var weight_delta;
-                        var qty_delta;
-
-                        // save original price & qty
-                        p.last_price = p.commit_price;
-                        p.last_qty = p.commit_qty;
-
-                        // compute change in qty and weight
-                        if (isNaN(parseFloat(p.commit_qty))) {
-                            qty_delta = p.qty;
-                            weight_delta = p.qty * p.price;
-                        }
-                        else {
-                            qty_delta = p.qty - p.commit_qty;
-                            weight_delta = p.qty * p.price - p.commit_qty * p.commit_price;
-                        }
-
-                        p.commit_date = new Date().getTime() / 1000;
-                        p.commit_clerk = this._user;
-                        p.commit_clerk_name = this._username;
-                        p.commit_price = p.price;
-                        p.commit_qty = p.qty;
-                        this.updateLastCost(data, p, weight_delta, qty_delta);
-                    }
-                }, this);
-                committed = true;
-            }
-
-            // create inventory commitment records
-            var rc = committed ? this.updateInventory(data) : true;
-
-            if (rc) {
-                if (modified || pendingCommit) {
-                    if (data.id && data.id.length > 0) {
-                        this.updateGR(data, true);
-                        updated = true;
-                    }
-                    else {
-                        this.createGR(data, true);
-                        created = true;
-                    }
-                }
-
-                var args = {title: _('Goods Receiving [%S] successfully updated', [data.no])};
-
-                if (committed) {
-                    if (created) {
-                        args.title = _('Goods Receiving [%S] successfully created and committed', [data.no]);
-                    }
-                    else if (updated) {
-                        args.title = _('New Goods Receiving [%S] successfully updated and committed', [data.no]);
-                    }
-                    else {
-                        args.title = _('Goods Receiving [%S] successfully committed', [data.no]);
-                    }
-                }
-
-                // rebuild supplier filter menu if new GR has been created
-                if (created) this.buildSupplierFilterMenu();
-
-                this._gr = data;
-
-                // prompt to close PO and/or GR
-                args.closePO = data.po_open > 0;
-                args.closeGR = data.open > 0;
-
-                if (args.closePO || args.closeGR) {
-                    // prompt to close PO and/or GR
-                    $.popupPanel('promptClosePOGRPanel', args);
+                if (!this.ProductCost.begin()) {
+                    this._dbError(this.ProductCost.lastError,
+                                  this.ProductCost.lastErrorString,
+                                  _('Failed to obtain lock on database (error code %S) [message #IMS-05-12].', [this.ProductCost.lastError]));
                 }
                 else {
-                    // switch to editMode
-                    this.editMode(this._gr);
+                    try {
 
-                    GREUtils.Dialog.alert(this.topmostWindow, _('Goods Receiving Committed'), args.title);
+                        this._detailList.forEach(function(p) {
+                            delete p.last_price;
+                            delete p.last_qty;
+
+                            if (p.pending) {
+                                var weight_delta;
+                                var qty_delta;
+
+                                // save original price & qty
+                                p.last_price = p.commit_price;
+                                p.last_qty = p.commit_qty;
+
+                                // compute change in qty and weight
+                                if (isNaN(parseFloat(p.commit_qty))) {
+                                    qty_delta = p.qty;
+                                    weight_delta = p.qty * p.price;
+                                }
+                                else {
+                                    qty_delta = p.qty - p.commit_qty;
+                                    weight_delta = p.qty * p.price - p.commit_qty * p.commit_price;
+                                }
+
+                                p.commit_date = new Date().getTime() / 1000;
+                                p.commit_clerk = this._user;
+                                p.commit_clerk_name = this._username;
+                                p.commit_price = p.price;
+                                p.commit_qty = p.qty;
+                                if (!this.updateLastCost(data, p, weight_delta, qty_delta)) {
+                                    throw '';
+                                }
+                            }
+                        }, this);
+                        committed = true;
+
+                        // create inventory commitment records
+                        var rc = committed ? this.updateInventory(data) : true;
+                        if (!rc) throw '';
+
+                        if (modified || pendingCommit) {
+                            if (data.id && data.id.length > 0) {
+                                if (!this.updateGR(data, true)) throw '';
+                                updated = true;
+                            }
+                            else {
+                                if (!this.createGR(data, true)) throw '';
+                                created = true;
+                            }
+                        }
+
+                        if (!this.ProductCost.commit()) {
+                            this._dbError(this.ProductCost.lastError,
+                                          this.ProductCost.lastErrorString,
+                                          _('Failed to commit goods received to inventory (error code %S) [message #IMS-05-13].', [this.ProductCost.lastError]));
+                            throw '';
+                        }
+
+                        GeckoJS.Observer.notify(null, 'StockRecords', 'commitChanges');
+
+                        var args = {title: _('Goods Receiving [%S] successfully updated', [data.no])};
+
+                        if (committed) {
+                            if (created) {
+                                args.title = _('Goods Receiving [%S] successfully created and committed', [data.no]);
+                            }
+                            else if (updated) {
+                                args.title = _('New Goods Receiving [%S] successfully updated and committed', [data.no]);
+                            }
+                            else {
+                                args.title = _('Goods Receiving [%S] successfully committed', [data.no]);
+                            }
+                        }
+
+                        // rebuild supplier filter menu if new GR has been created
+                        if (created) this.buildSupplierFilterMenu();
+
+                        this._gr = data;
+
+                        // prompt to close PO and/or GR
+                        args.closePO = data.po_open > 0;
+                        args.closeGR = data.open > 0;
+
+                        if (args.closePO || args.closeGR) {
+                            // prompt to close PO and/or GR
+                            $.popupPanel('promptClosePOGRPanel', args);
+                        }
+                        else {
+                            // switch to editMode
+                            this.editMode(this._gr);
+
+                            GREUtils.Dialog.alert(this.topmostWindow, _('Goods Receiving Committed'), args.title);
+                        }
+                    }
+                    catch(e) {
+                        this.ProductCost.rollback();
+                    }
                 }
             }
         },
@@ -530,8 +618,9 @@
                     supplier: gr.supplier,
                     clerk: this._user
                 })) {
-                this._dbError(this.InventoryCommitment.lastError, this.InventoryCommitment.lastErrorString,
-                              _('An error was encountered while saving stock adjustment records (error code %S) [message #8611].', [this.InventoryCommitment.lastError]));
+                this._dbError(this.InventoryCommitment.lastError,
+                              this.InventoryCommitment.lastErrorString,
+                              _('An error was encountered while saving stock adjustment records (error code %S) [message #IMS-05-14].', [this.InventoryCommitment.lastError]));
                 return false;
             }
 
@@ -539,7 +628,9 @@
             var producstById = GeckoJS.Session.get('productsById');
             var barcodeIndexes = GeckoJS.Session.get('barcodesIndexes');
 
-            this._detailList.forEach(function(item) {
+            for (var i = 0; i < this._detailList.length; i++) {
+                var item = this._detailList[i];
+                
                 if (item.pending) {
                     // retrieve existing stock record
                     var stockRecord = this.StockRecord.findById(item.no);
@@ -565,8 +656,9 @@
                     }
                     this.StockRecord.id = stockRecord.id;
                     if (!this.StockRecord.save(stockRecord)) {
-                        this._dbError(this.StockRecord.lastError, this.StockRecord.lastErrorString,
-                                      _('An error was encountered while saving stock records (error code %S) [message #8612].', [this.StockRecord.lastError]));
+                        this._dbError(this.StockRecord.lastError,
+                                      this.StockRecord.lastErrorString,
+                                      _('An error was encountered while saving stock records (error code %S) [message #IMS-05-15].', [this.StockRecord.lastError]));
                         return false;
                     }
 
@@ -583,8 +675,9 @@
                                                     price: item.commit_price,
                                                     memo: '',
                                                     delta: inventoryDelta})) {
-                        this._dbError(this.InventoryRecord.lastError, this.InventoryRecord.lastErrorString,
-                                      _('An error was encountered while saving stock adjustment details (error code %S) [message #8613].', [this.InventoryRecord.lastError]));
+                        this._dbError(this.InventoryRecord.lastError,
+                                      this.InventoryRecord.lastErrorString,
+                                      _('An error was encountered while saving stock adjustment details (error code %S) [message #IMS-05-16].', [this.InventoryRecord.lastError]));
                         return false;
                     }
 
@@ -600,13 +693,14 @@
                                                         memo: _('Price Change'),
                                                         delta: -item.last_qty
                                                         })) {
-                            this._dbError(this.InventoryRecord.lastError, this.InventoryRecord.lastErrorString,
-                                          _('An error was encountered while saving stock adjustment details (error code %S) [message #8613].', [this.InventoryRecord.lastError]));
+                            this._dbError(this.InventoryRecord.lastError,
+                                          this.InventoryRecord.lastErrorString,
+                                          _('An error was encountered while saving stock adjustment details (error code %S) [message #IMS-05-17].', [this.InventoryRecord.lastError]));
                             return false;
                         }
                     }
                 }
-            }, this);
+            };
             
             return true;
         },
@@ -616,12 +710,22 @@
             // close PO and/or GR?
             if (target == 1 || target == 3) {
                 // po
-                this.PO.closeByNumber(this._gr.po_no);
+                if (!this.PO.closeByNumber(this._gr.po_no)) {
+                    this._dbError(this.PO.lastError,
+                                  this.PO.lastErrorString,
+                                  _('An error was encountered while closing purchase order (error code %S) [message #IMS-05-18].', [this.PO.lastError]));
+                    return;
+                }
                 this._gr.po_open = 0;
             }
             if (target == 2 || target == 3) {
                 //gr
-                this.GR.closeByNumber(this._gr.no);
+                if (!this.GR.closeByNumber(this._gr.no)) {
+                    this._dbError(this.GR.lastError,
+                                  this.GR.lastErrorString,
+                                  _('An error was encountered while closing goods receiving (error code %S) [message #IMS-05-19].', [this.GR.lastError]));
+                    return;
+                }
                 this._gr.open = 0;
                 this._gr.status = _('(spims)GR Status Closed');
             }
@@ -639,6 +743,13 @@
 
             if (qty_delta != 0 || weight_delta != 0) {
                 var priceRecord = this.ProductCost.getProductCosts(item.no);
+                if (priceRecord == false) {
+                    this._dbError(this.ProductCost.lastError,
+                                  this.ProductCost.lastErrorString,
+                                  _('An error was encountered while retrieving costs for product [%S (%S)] from database (error code %S) [message #IMS-05-20].',
+                                    [item.name, item.no, this.ProductCost.lastError]));
+                    return false;
+                }
 
                 if (!priceRecord) {
                     priceRecord = {
@@ -679,9 +790,26 @@
                 }
 
                 this.ProductCost.id = priceRecord.id;
-                if (doRemove) this.ProductCost.del();
-                else this.ProductCost.save(priceRecord);
+                if (doRemove) {
+                    if (this.ProductCost.del()) {
+                        this._dbError(this.ProductCost.lastError,
+                                      this.ProductCost.lastErrorString,
+                                      _('Failed to clear costs for product [%S (%S)] from database (error code %S) [message #IMS-05-21].',
+                                        [item.name, item.no, this.ProductCost.lastError]));
+                        return false;
+                    }
+                }
+                else {
+                    if (!this.ProductCost.save(priceRecord)) {
+                        this._dbError(this.ProductCost.lastError,
+                                      this.ProductCost.lastErrorString,
+                                      _('Failed to update costs for product [%S (%S)] (error code %S) [message #IMS-05-22].',
+                                        [item.name, item.no, this.ProductCost.lastError]));
+                        return false;
+                    }
+                }
             }
+            return true;
         },
 
         formatItem: function(item) {
@@ -712,12 +840,21 @@
 
             // load GR details
             this._detailList = [];
+            var detailList;
             if (gr.id != null && gr.id.length > 0) {
-                this._detailList = this.GRDetail.findByIndex('all', {
+                detailList = this.GRDetail.findByIndex('all', {
                     index: 'gr_id',
                     value: gr.id,
                     order: 'seq ASC'
                 });
+
+                if (detailList == false) {
+                    this._dbError(this.GRDetail.lastError,
+                                  this.GRDetail.lastErrorString,
+                                  _('An error was encountered while retrieving goods receiving detail from database (error code %S) [message #IMS-05-23].'));
+                    return;
+                }
+                this._detailList = detailList;
             }
 
             // save a copy of GR details
@@ -760,6 +897,42 @@
             this.validateSaveDiscard();
         },
 
+        createItem: function(pid, qty, price, total, scope) {
+            var productsById = GeckoJS.Session.get('productsById');
+            var prod = productsById[pid];
+            if (prod) {
+
+                var count = scope._detailList.length;
+
+                // append to detailList
+                var item = {
+                    pending: true,
+                    id: GeckoJS.String.uuid(),
+                    gr_id: scope._gr.id,
+                    seq: 1 + count,
+                    no: prod.no,
+                    name: prod.name,
+                    price: price,
+                    qty: qty,
+                    order_qty: qty,
+                    unit: prod.stock_unit,
+                    total: total,
+                    clerk: scope._user,
+                    clerk_name: scope._username
+                }
+
+                scope.formatItem(item);
+
+                scope._detailList.push(item);
+                scope.getDetailListObj().treeBoxObject.rowCountChanged(1, 1);
+
+                scope.getDetailListObj().selection.select(count);
+
+                scope.updateGRTotal();
+                scope.validateSaveDiscard();
+            }
+        },
+
         addItem: function () {
 
             var item = null;
@@ -771,7 +944,9 @@
                 buffer: '',
                 item: item,
                 select: true,
-                showLastPrices: true
+                showLastPrices: true,
+                moreCB: this.createItem,
+                scope: this
             };
 
             GREUtils.Dialog.openWindow(this.topmostWindow, aURL, aName, aFeatures, aArguments);
@@ -779,39 +954,7 @@
                 if (aArguments.item) {
                     let pid = aArguments.item.id;
                     if (pid) {
-                        let productsById = GeckoJS.Session.get('productsById');
-                        let prod = productsById[pid];
-                        if (prod) {
-
-                            var count = this._detailList.length;
-
-                            // append to detailList
-                            var item = {
-                                pending: true,
-                                id: GeckoJS.String.uuid(),
-                                gr_id: this._gr.id,
-                                seq: 1 + count,
-                                no: prod.no,
-                                name: prod.name,
-                                price: aArguments.price,
-                                qty: aArguments.qty,
-                                order_qty: aArguments.qty,
-                                unit: prod.stock_unit,
-                                total: aArguments.cost,
-                                clerk: this._user,
-                                clerk_name: this._username
-                            }
-
-                            this.formatItem(item);
-
-                            this._detailList.push(item);
-                            this.getDetailListObj().treeBoxObject.rowCountChanged(1, 1);
-
-                            this.getDetailListObj().selection.select(count);
-
-                            this.updateGRTotal();
-                            this.validateSaveDiscard();
-                        }
+                        this.createItem(pid, aArguments.qty, aArguments.price, aArguments.cost, this);
                     }
                 }
             }

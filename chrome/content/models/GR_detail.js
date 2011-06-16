@@ -44,33 +44,35 @@
                         "commit_clerk_name" VARCHAR , \
                         "created" INTEGER NOT NULL , \
                         "modified" INTEGER NOT NULL );';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "GR_details_gr_id" ON "GR_details" ("gr_id" ASC);';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "GR_details_no" ON "GR_details" ("no" ASC);';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "GR_details_qty" ON "GR_details" ("qty" ASC);';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "GR_details_commit_date" ON "GR_details" ("commit_date" ASC);';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "GR_details_commit_clerk" ON "GR_details" ("commit_clerk" ASC);';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
             sql = 'CREATE INDEX IF NOT EXISTS "GR_details_clerk" ON "GR_details" ("clerk" ASC);';
-            ds.execute(sql);
+            if (!ds.execute(sql)) return false;
+
+            return true;
         },
         
         deleteByIndex: function(index, value) {
             var sql = 'DELETE from GR_details WHERE ' + index + ' = "' + value + '"';
 
-            this.datasource.execute(sql);
+            return this.datasource.execute(sql);
         },
 
         replaceRecords: function(parentId, newRecords) {
             var sql = 'DELETE from GR_details WHERE gr_id = "' + parentId + '"';
 
-            this.datasource.execute(sql);
+            if (!this.datasource.execute(sql)) return false;
 
-            this.saveAll(newRecords);
+            return this.saveAll(newRecords);
         }
     };
 
