@@ -170,6 +170,7 @@
 
                 var newSupplier = this.newSupplierRecord(supplierCode, inputObj.input1);
 
+                this.Supplier.id = newSupplier.id = '';
                 if (!this.Supplier.save(newSupplier)) {
                     this._dbError(this.Supplier.lastError,
                                   this.Supplier.lastErrorString,
