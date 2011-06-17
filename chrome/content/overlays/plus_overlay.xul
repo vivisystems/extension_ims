@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE overlay [
-  <!ENTITY % Purchasing SYSTEM "chrome://spims/locale/purchasing.dtd">
+  <!ENTITY % Purchasing SYSTEM "chrome://ims/locale/purchasing.dtd">
   %Purchasing;
 ]>
 
-<?xml-stylesheet href="chrome://spims/skin/dialogs/plusearch.css" type="text/css"?>
+<?xml-stylesheet href="chrome://ims/skin/dialogs/plusearch.css" type="text/css"?>
 
-<overlay id="spimsPLUSearchOverlay"
+<overlay id="imsPLUSearchOverlay"
          xmlns:html="http://www.w3.org/1999/xhtml"
          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
   <script src="chrome://viviecr/content/utils/syncbase_http_service.js" type="application/x-javascript;version=1.7"/>
   <script src="chrome://viviecr/content/models/stock_record.js" type="application/x-javascript;version=1.7"/>
-  <script src="chrome://spims/content/controllers/plus_overlay_controller.js" type="application/x-javascript;version=1.7"/>
+  <script src="chrome://ims/content/controllers/plus_overlay_controller.js" type="application/x-javascript;version=1.7"/>
 
     <tabpanel hidden="true">
         <row id="product-extra">

@@ -2,7 +2,7 @@
 <!DOCTYPE overlay [
   <!ENTITY % DialogOverlay SYSTEM "chrome://viviecr/locale/dialog.dtd">
   %DialogOverlay;
-  <!ENTITY % AddGR SYSTEM "chrome://spims/locale/add_gr.dtd">
+  <!ENTITY % AddGR SYSTEM "chrome://ims/locale/add_gr.dtd">
   %AddGR;
 ]>
 
@@ -16,7 +16,7 @@
          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-    <script type="application/x-javascript" src="chrome://spims/content/dialogs/prompt_addGR.js"/>
+    <script type="application/x-javascript" src="chrome://ims/content/dialogs/prompt_addGR.js"/>
 
     <popupset id="dialogs">
 

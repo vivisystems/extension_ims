@@ -2,9 +2,9 @@
 <!DOCTYPE window [
   <!ENTITY % Dialog SYSTEM "chrome://viviecr/locale/dialog.dtd">
   %Dialog;
-  <!ENTITY % Purchasing SYSTEM "chrome://spims/locale/purchasing.dtd">
+  <!ENTITY % Purchasing SYSTEM "chrome://ims/locale/purchasing.dtd">
   %Purchasing;
-  <!ENTITY % AddPO SYSTEM "chrome://spims/locale/add_po.dtd">
+  <!ENTITY % AddPO SYSTEM "chrome://ims/locale/add_po.dtd">
   %AddPO;
   ]>
 <?xml-stylesheet href="chrome://vivipos/skin/" type="text/css"?>
@@ -15,10 +15,10 @@
 <?xml-stylesheet href="chrome://viviecr/skin/be/content.css" type="text/css"?>
 <?xml-stylesheet href="chrome://viviecr/skin/dialogs/containers.css" type="text/css"?>
 <?xml-stylesheet href="chrome://viviecr/skin/dialogs/content.css" type="text/css"?>
-<?xml-stylesheet href="chrome://spims/skin/be/purchasing.css" type="text/css"?>
+<?xml-stylesheet href="chrome://ims/skin/be/purchasing.css" type="text/css"?>
 
 <?xul-overlay href="chrome://global/content/dialogOverlay.xul" ?>
-<?xul-overlay href="chrome://spims/content/dialogs/prompt_addPO.xul" ?>
+<?xul-overlay href="chrome://ims/content/dialogs/prompt_addPO.xul" ?>
 
 <window title="&purchasing.title;"
         hidechrome="true"
@@ -29,7 +29,7 @@
   <script type="application/x-javascript" src="chrome://vivipos/content/init_geckojs.js"/>
 
   <!-- include startup script -->
-  <script src="chrome://spims/content/purchasing.js" type="application/x-javascript;version=1.7"/>
+  <script src="chrome://ims/content/purchasing.js" type="application/x-javascript;version=1.7"/>
 
     <keyset id="keyset_extensions">
         <key id="key_clear" keycode="VK_ESCAPE" oncommand="document.getElementById('search_ok').click()"/>

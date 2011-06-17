@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE overlay PUBLIC "-//MOZILLA//DTD XUL V1.0//EN" "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-<overlay id="spimsMainOverlay"
+<overlay id="imsMainOverlay"
          xmlns:html="http://www.w3.org/1999/xhtml"
          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
 
   <!-- include models -->
-  <script src="chrome://spims/content/models/PO.js" type="application/x-javascript;version=1.7"/>
-  <script src="chrome://spims/content/models/PO_detail.js" type="application/x-javascript;version=1.7"/>
-  <script src="chrome://spims/content/models/GR.js" type="application/x-javascript;version=1.7"/>
-  <script src="chrome://spims/content/models/GR_detail.js" type="application/x-javascript;version=1.7"/>
-  <script src="chrome://spims/content/models/supplier.js" type="application/x-javascript;version=1.7"/>
-  <script src="chrome://spims/content/models/product_cost.js" type="application/x-javascript;version=1.7"/>
-  <script src="chrome://spims/content/models/order_item_cost.js" type="application/x-javascript;version=1.7"/>
+  <script src="chrome://ims/content/models/PO.js" type="application/x-javascript;version=1.7"/>
+  <script src="chrome://ims/content/models/PO_detail.js" type="application/x-javascript;version=1.7"/>
+  <script src="chrome://ims/content/models/GR.js" type="application/x-javascript;version=1.7"/>
+  <script src="chrome://ims/content/models/GR_detail.js" type="application/x-javascript;version=1.7"/>
+  <script src="chrome://ims/content/models/supplier.js" type="application/x-javascript;version=1.7"/>
+  <script src="chrome://ims/content/models/product_cost.js" type="application/x-javascript;version=1.7"/>
+  <script src="chrome://ims/content/models/order_item_cost.js" type="application/x-javascript;version=1.7"/>
 
   <!-- include code for initialization -->
-  <script src="chrome://spims/content/controllers/init_controller.js" type="application/x-javascript;version=1.7"/>
-  <script src="chrome://spims/content/controllers/sales_controller.js" type="application/x-javascript;version=1.7"/>
+  <script src="chrome://ims/content/controllers/init_controller.js" type="application/x-javascript;version=1.7"/>
+  <script src="chrome://ims/content/controllers/sales_controller.js" type="application/x-javascript;version=1.7"/>
 
 </overlay>

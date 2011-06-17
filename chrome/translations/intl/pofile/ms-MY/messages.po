@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-13 18:41+0800\n"
+"POT-Creation-Date: 2011-06-17 11:13+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,10 +22,10 @@ msgstr ""
 # PRODUCT
 ###########
 
-msgid "vivipos.fec.settings.controlpanels.product.spims-po.label"
+msgid "vivipos.fec.settings.controlpanels.product.ims-po.label"
 msgstr "Purchasing"
 
-msgid "vivipos.fec.settings.controlpanels.product.spims-gr.label"
+msgid "vivipos.fec.settings.controlpanels.product.ims-gr.label"
 msgstr "Receiving"
 
 ########################################################################
@@ -46,10 +46,10 @@ msgstr "Receiving"
 #
 ########################################################################
 
-msgid "acl_spims_manage_purchasing"
+msgid "acl_ims_manage_purchasing"
 msgstr "Manage Purchasing"
 
-msgid "acl_spims_manage_receiving"
+msgid "acl_ims_manage_receiving"
 msgstr "Manage Goods Receiving"
 
 ########################################################################
@@ -58,7 +58,7 @@ msgstr "Manage Goods Receiving"
 #
 ########################################################################
 
-msgid "(spims)unit"
+msgid "(ims)unit"
 msgstr "unit"
 
 ########################################################################
@@ -67,10 +67,22 @@ msgstr "unit"
 #
 ########################################################################
 
-msgid "(spims)PO Status Open"
+msgid "(ims)PO Status Open"
 msgstr "Open"
 
-msgid "(spims)PO Status Closed"
+msgid "(ims)PO Status Closed"
+msgstr "Closed"
+
+########################################################################
+#
+# GR status
+#
+########################################################################
+
+msgid "(ims)GR Status Open"
+msgstr "Open"
+
+msgid "(ims)GR Status Closed"
 msgstr "Closed"
 
 ########################################################################

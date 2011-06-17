@@ -75,7 +75,7 @@
             }
 
             if (prod) {
-                var aURL = 'chrome://spims/content/dialogs/prompt_qty_price.xul';
+                var aURL = 'chrome://ims/content/dialogs/prompt_qty_price.xul';
                 var aName = _('Purchase Details');
                 var aFeatures = 'chrome,dialog,modal,centerscreen,dependent=yes,resize=no,width=' + this.screenwidth*0.7 + ',height=' + this.screenheight*0.8;
                 var aArguments = {

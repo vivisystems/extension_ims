@@ -1,4 +1,4 @@
-PKG_NAME=SpartanInventoryManagementTaiwan
+PKG_NAME=SimpleInventoryManagement
 
 rm -f ${PKG_NAME}_*.xpi ${PKG_NAME}_*.sha1
 

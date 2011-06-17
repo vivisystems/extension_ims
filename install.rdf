@@ -2,11 +2,11 @@
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
     <Description about="urn:mozilla:install-manifest">
-        <em:id>SpartanInventoryManagementTaiwan@spartan.com.my</em:id>
-        <em:name>SpartanInventoryManagementTaiwan</em:name>
-        <em:version>0.98</em:version>
-        <em:description>This Add-on implements the PO, GR, and Stock Control modules of the Spartan Inventory Management System</em:description>
-        <em:creator>VIVIPOS SDK</em:creator>
+        <em:id>SimpleInventoryManagement@vivipos.com.tw</em:id>
+        <em:name>Simple Inventory Management</em:name>
+        <em:version>0.99</em:version>
+        <em:description>This Add-on is a simple Inventory Management System that provides supplier, purchase order and goods receiving management</em:description>
+        <em:creator>VIVIPOS</em:creator>
         <em:homepageURL>http://www.vivipos.com.tw/</em:homepageURL>
         <em:type>2</em:type> <!-- type=extension --> 
         <em:extensionHash>sha1:8b210ec99e1812184a42fc300431e18861747629</em:extensionHash>

@@ -9,7 +9,7 @@
         initial: function() {
 
             // load in String Bundles
-            GeckoJS.StringBundle.createBundle("chrome://spims/locale/messages.properties");
+            GeckoJS.StringBundle.createBundle("chrome://ims/locale/messages.properties");
 
             // create the following tables in the same datasource as inventory_records
             //

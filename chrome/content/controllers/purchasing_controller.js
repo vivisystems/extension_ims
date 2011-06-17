@@ -86,6 +86,7 @@
             var fields = ['code', 'name', 'name || " (" || code || ")" AS supplier'];
             var orderBy = 'name ASC, code';
             var suppliers = this.Supplier.find('all', {
+                conditions: 'status = 1',
                 fields: fields,
                 order: orderBy
             });
@@ -227,7 +228,7 @@
                 var lastError, lastErrorString;
 
                 poList.list.forEach(function(po, index) {
-                    po.status = po.open ? _('(spims)PO Status Open') : _('(spims)PO Status Closed');
+                    po.status = po.open ? _('(ims)PO Status Open') : _('(ims)PO Status Closed');
                     po.created_date = new Date(po.created * 1000).toLocaleDateString();
                     po.supplier = po.supplier_name + ' (' + po.supplier_code + ')';
                     po.total_display = this.Utility.formatPrice(po.total);
@@ -380,7 +381,7 @@
                         total: 0,
                         total_display: self.Utility.formatPrice(0),
                         open: 1,
-                        status: _('(spims)PO Status Open'),
+                        status: _('(ims)PO Status Open'),
                         clerk: self._user,
                         clerk_name: self._username,
                         terminal: self._terminal
@@ -502,7 +503,7 @@
         formatItem: function(item) {
             item.total_display = this.Utility.formatPrice(item.total);
             item.price_display = this.Utility.formatPrice(item.price);
-            if (item.unit == 'unit') item.unit_display = _('(spims)unit');
+            if (item.unit == 'unit') item.unit_display = _('(ims)unit');
             else item.unit_display = item.unit;
         },
 

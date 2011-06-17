@@ -4,7 +4,7 @@
   %DialogOverlay;
   <!ENTITY % Numberpad SYSTEM "chrome://viviecr/locale/numberpad.dtd">
   %Numberpad;
-  <!ENTITY % AddPO SYSTEM "chrome://spims/locale/add_po.dtd">
+  <!ENTITY % AddPO SYSTEM "chrome://ims/locale/add_po.dtd">
   %AddPO;
 ]>
 
@@ -16,7 +16,7 @@
 
 <?xul-overlay href="chrome://global/content/dialogOverlay.xul" ?>
 
-<window id="spimsPromptQtyPrice"
+<window id="imsPromptQtyPrice"
         xmlns:html="http://www.w3.org/1999/xhtml"
         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
@@ -25,7 +25,7 @@
   <!-- include VIVIPOS App Engine -->
   <script type="application/x-javascript" src="chrome://vivipos/content/init_geckojs.js"/>
   
-  <script src="chrome://spims/content/dialogs/prompt_qty_price.js" type="application/x-javascript;version=1.7"/>
+  <script src="chrome://ims/content/dialogs/prompt_qty_price.js" type="application/x-javascript;version=1.7"/>
 
     <vbox class="container-dialog" flex="1">
         <vbox class="container-main" flex="1">

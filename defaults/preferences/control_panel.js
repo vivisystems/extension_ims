@@ -1,9 +1,14 @@
-pref("vivipos.fec.settings.controlpanels.product.spims-po.label", "chrome://spims/locale/messages.properties");
-pref("vivipos.fec.settings.controlpanels.product.spims-po.path", "chrome://spims/content/purchasing.xul");
-pref("vivipos.fec.settings.controlpanels.product.spims-po.icon", "chrome://spims/skin/icons/icon_purchasing.png");
-pref("vivipos.fec.settings.controlpanels.product.spims-po.roles", "acl_spims_manage_purchasing");
+pref("vivipos.fec.settings.controlpanels.activity.ims-suppliers.label", "chrome://ims/locale/messages.properties");
+pref("vivipos.fec.settings.controlpanels.activity.ims-suppliers.path", "chrome://ims/content/suppliers.xul");
+pref("vivipos.fec.settings.controlpanels.activity.ims-suppliers.icon", "chrome://viviecr/skin/icons/icon_customerdata.png");
+pref("vivipos.fec.settings.controlpanels.activity.ims-suppliers.roles", "acl_ims_manage_suppliers");
 
-pref("vivipos.fec.settings.controlpanels.product.spims-gr.label", "chrome://spims/locale/messages.properties");
-pref("vivipos.fec.settings.controlpanels.product.spims-gr.path", "chrome://spims/content/receiving.xul");
-pref("vivipos.fec.settings.controlpanels.product.spims-gr.icon", "chrome://spims/skin/icons/icon_receiving.png");
-pref("vivipos.fec.settings.controlpanels.product.spims-gr.roles", "acl_spims_manage_receiving");
+pref("vivipos.fec.settings.controlpanels.product.ims-po.label", "chrome://ims/locale/messages.properties");
+pref("vivipos.fec.settings.controlpanels.product.ims-po.path", "chrome://ims/content/purchasing.xul");
+pref("vivipos.fec.settings.controlpanels.product.ims-po.icon", "chrome://ims/skin/icons/icon_purchasing.png");
+pref("vivipos.fec.settings.controlpanels.product.ims-po.roles", "acl_ims_manage_purchasing");
+
+pref("vivipos.fec.settings.controlpanels.product.ims-gr.label", "chrome://ims/locale/messages.properties");
+pref("vivipos.fec.settings.controlpanels.product.ims-gr.path", "chrome://ims/content/receiving.xul");
+pref("vivipos.fec.settings.controlpanels.product.ims-gr.icon", "chrome://ims/skin/icons/icon_receiving.png");
+pref("vivipos.fec.settings.controlpanels.product.ims-gr.roles", "acl_ims_manage_receiving");

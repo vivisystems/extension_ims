@@ -42,11 +42,11 @@
                 });
             }
 
-            GeckoJS.Session.set('spims_product_costs', cache);
+            GeckoJS.Session.set('ims_product_costs', cache);
         },
 
         getProductCosts: function(id) {
-            var cache = GeckoJS.Session.get('spims_product_costs');
+            var cache = GeckoJS.Session.get('ims_product_costs');
             var record;
             if (cache) {
                 record = cache[id];
@@ -68,7 +68,7 @@
 
             // update cache
             if (rc) {
-                var cache = GeckoJS.Session.get('spims_product_costs');
+                var cache = GeckoJS.Session.get('ims_product_costs');
                 delete cache[myId];
             }
             return rc;
@@ -79,7 +79,7 @@
 
             // update cache
             if (rc) {
-                var cache = GeckoJS.Session.get('spims_product_costs');
+                var cache = GeckoJS.Session.get('ims_product_costs');
                 cache[data.id || this.id] = data;
             }
             return rc;
@@ -90,7 +90,7 @@
 
             // update cache
             if (rc) {
-                GeckoJS.Session.get('spims_product_costs', {});
+                GeckoJS.Session.get('ims_product_costs', {});
             }
             return rc;
         }

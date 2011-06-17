@@ -2,7 +2,7 @@
 <!DOCTYPE overlay [
   <!ENTITY % DialogOverlay SYSTEM "chrome://viviecr/locale/dialog.dtd">
   %DialogOverlay;
-  <!ENTITY % ClosePOGR SYSTEM "chrome://spims/locale/close_po_gr.dtd">
+  <!ENTITY % ClosePOGR SYSTEM "chrome://ims/locale/close_po_gr.dtd">
   %ClosePOGR;
 ]>
 
@@ -11,14 +11,14 @@
 <?xml-stylesheet href="chrome://viviecr/skin/dialogs/containers.css" type="text/css"?>
 <?xml-stylesheet href="chrome://viviecr/skin/dialogs/content.css" type="text/css"?>
 
-<?xml-stylesheet href="chrome://spims/skin/be/receiving.css" type="text/css"?>
+<?xml-stylesheet href="chrome://ims/skin/be/receiving.css" type="text/css"?>
 
 <overlay id="promptClosePOGRDialogOverlay"
          xmlns:html="http://www.w3.org/1999/xhtml"
          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-    <script type="application/x-javascript" src="chrome://spims/content/dialogs/prompt_close_PO_GR.js"/>
+    <script type="application/x-javascript" src="chrome://ims/content/dialogs/prompt_close_PO_GR.js"/>
 
     <popupset id="dialogs">
 

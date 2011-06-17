@@ -1,11 +1,10 @@
 # extracted from ../locale/en/purchasing.dtd
-#. extracted from ../locale/en/purchasing.dtd
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-13 18:41+0800\n"
+"POT-Creation-Date: 2011-06-17 11:13+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +23,7 @@ msgctxt "purchasing.tab.search"
 msgid "Search"
 msgstr ""
 
-#: purchasing.tab.po
+#: purchasing.tab.detail
 msgid "Purchase Order"
 msgstr ""
 
@@ -83,6 +82,12 @@ msgid "Unit"
 msgstr ""
 
 #: purchasing.field.cost
+msgctxt "purchasing.field.cost"
+msgid "Cost"
+msgstr ""
+
+#: purchasing.field.buy.price
+msgctxt "purchasing.field.buy.price"
 msgid "Cost"
 msgstr ""
 
@@ -156,6 +161,10 @@ msgstr ""
 
 #: purchasing.button.add
 msgid "Add"
+msgstr ""
+
+#: purchasing.button.clone
+msgid "Clone"
 msgstr ""
 
 #: purchasing.button.delete

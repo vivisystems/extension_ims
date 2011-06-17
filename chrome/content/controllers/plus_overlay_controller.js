@@ -2,7 +2,7 @@
 
     var __controller__ = {
 
-        name: 'SPIMS-PLUSController',
+        name: 'IMS-PLUSController',
 
         uses: ['StockRecord'],
 
@@ -35,6 +35,6 @@
 
     // register onload
     window.addEventListener('load', function() {
-        $do('initial', null, 'SPIMS-PLUSController')
+        $do('initial', null, 'IMS-PLUSController')
     }, false);
 })();

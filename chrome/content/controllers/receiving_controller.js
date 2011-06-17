@@ -211,7 +211,7 @@
             }
             else {
                 grList.list.forEach(function(gr, index) {
-                    gr.status = gr.open ? _('(spims)GR Status Open') : _('(spims)GR Status Closed');
+                    gr.status = gr.open ? _('(ims)GR Status Open') : _('(ims)GR Status Closed');
                     gr.created_date = new Date(gr.created * 1000).toLocaleDateString();
                     gr.supplier = gr.supplier_name + ' (' + gr.supplier_code + ')';
                     gr.total_display = this.Utility.formatPrice(gr.total);
@@ -339,7 +339,7 @@
                         open: 1,
                         count: detailList.length,
                         committed: 0,
-                        status: _('(spims)PO Status Open'),
+                        status: _('(ims)PO Status Open'),
                         clerk: self._user,
                         clerk_name: self._username,
                         terminal: self._terminal
@@ -727,7 +727,7 @@
                     return;
                 }
                 this._gr.open = 0;
-                this._gr.status = _('(spims)GR Status Closed');
+                this._gr.status = _('(ims)GR Status Closed');
             }
 
             // switch to editMode
@@ -815,7 +815,7 @@
         formatItem: function(item) {
             item.total_display = this.Utility.formatPrice(item.total);
             item.price_display = this.Utility.formatPrice(item.price);
-            if (item.unit == 'unit') item.unit_display = _('(spims)unit');
+            if (item.unit == 'unit') item.unit_display = _('(ims)unit');
             else item.unit_display = item.unit;
 
             return item;

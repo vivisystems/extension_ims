@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: support@vivipos.com.tw\n"
-"POT-Creation-Date: 2011-06-13 10:11+0800\n"
+"POT-Creation-Date: 2011-06-17 11:11+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,10 +28,10 @@ msgstr ""
 # ##########
 # PRODUCT
 # ##########
-msgid "vivipos.fec.settings.controlpanels.product.spims-po.label"
+msgid "vivipos.fec.settings.controlpanels.product.ims-po.label"
 msgstr "Purchasing"
 
-msgid "vivipos.fec.settings.controlpanels.product.spims-gr.label"
+msgid "vivipos.fec.settings.controlpanels.product.ims-gr.label"
 msgstr "Receiving"
 
 # #######################################################################
@@ -49,10 +49,10 @@ msgstr "Receiving"
 # List of ACLs
 #
 # #######################################################################
-msgid "acl_spims_manage_purchasing"
+msgid "acl_ims_manage_purchasing"
 msgstr "Manage Purchasing"
 
-msgid "acl_spims_manage_receiving"
+msgid "acl_ims_manage_receiving"
 msgstr "Manage Goods Receiving"
 
 # #######################################################################
@@ -60,13 +60,89 @@ msgstr "Manage Goods Receiving"
 # Stock Unit display
 #
 # #######################################################################
-msgid "(spims)unit"
+msgid "(ims)unit"
 msgstr "unit"
 
-msgid "(spims)PO Status Open"
+# #######################################################################
+#
+# PO status
+#
+# #######################################################################
+msgid "(ims)PO Status Open"
+msgstr "Open"
+
+msgid "(ims)PO Status Closed"
+msgstr "Closed"
+
+# #######################################################################
+#
+# GR status
+#
+# #######################################################################
+msgid "(ims)GR Status Open"
+msgstr "Open"
+
+msgid "(ims)GR Status Closed"
+msgstr "Closed"
+
+msgid ""
+"An error was encountered while creating the purchase order table (error code "
+"%S) [message #IMS-01-01]."
 msgstr ""
 
-msgid "(spims)PO Status Closed"
+msgid ""
+"An error was encountered while creating the purchase order detail table "
+"(error code %S) [message #IMS-01-02]."
+msgstr ""
+
+msgid ""
+"An error was encountered while creating the goods receiving table (error "
+"code %S) [message #IMS-01-03]."
+msgstr ""
+
+msgid ""
+"An error was encountered while creating the goods receiving detail table "
+"(error code %S) [message #IMS-01-04]."
+msgstr ""
+
+msgid ""
+"An error was encountered while creating the product cost table (error code %"
+"S) [message #IMS-01-05]."
+msgstr ""
+
+msgid ""
+"An error was encountered while creating the order item cost table (error "
+"code %S) [message #IMS-01-06]."
+msgstr ""
+
+msgid ""
+"An error was encountered while creating the supplier table (error code %S) "
+"[message #IMS-01-07]."
+msgstr ""
+
+msgid "Data Operation Error"
+msgstr ""
+
+msgid ""
+"Please restart the machine, and if the problem persists, please contact "
+"technical support immediately."
+msgstr ""
+
+msgid "Select & Close"
+msgstr ""
+
+msgid "Purchase Details"
+msgstr ""
+
+msgid ""
+"An error was encountered while retrieving goods receiving records (error "
+"code %S) [message #IMS-03-01]."
+msgstr ""
+
+msgid "unknown user"
+msgstr ""
+
+msgid "unknown username"
 msgstr ""
 
 msgid "Access to Purchase Orders Not Available"
@@ -77,10 +153,40 @@ msgid ""
 "Service Master at [%S]"
 msgstr ""
 
+msgid ""
+"Failed to retrieve supplier records from database (error code %S) [message "
+"#IMS-04-01]."
+msgstr ""
+
+msgid ""
+"Failed to retrieve purchase order record count from database (error code %S) "
+"[message #IMS-04-02]."
+msgstr ""
+
+msgid ""
+"Failed to retrieve supplier records from database (error code %S) [message "
+"#IMS-04-03]."
+msgstr ""
+
+msgid ""
+"Failed to retrieve purchase order records from database (error code %S) "
+"[message #IMS-04-04]."
+msgstr ""
+
+msgid ""
+"Errors were encounterd while retrieving goods receiving records from "
+"database (error code %S) [message #IMS-04-14]."
+msgstr ""
+
 msgid "confirm delete PO [%S]"
 msgstr ""
 
 msgid "Are you sure you want to delete PO [%S]?"
+msgstr ""
+
+msgid ""
+"Failed to delete purchase order record from database (error code %S) "
+"[message #IMS-04-05]."
 msgstr ""
 
 msgid "Duplicate PO Number"
@@ -89,7 +195,22 @@ msgstr ""
 msgid "PO Number [%S] already exists, please enter a different PO number."
 msgstr ""
 
-msgid "unknown user"
+msgid ""
+"An error was encountered while validating purchase order number (error code %"
+"S) [message #IMS-04-06]."
+msgstr ""
+
+msgid "Failed to update purchase order (error code %S) [message #IMS-04-07]."
+msgstr ""
+
+msgid ""
+"Failed to store purchase order detail into database (error code %S) [message "
+"#IMS-04-08]."
+msgstr ""
+
+msgid ""
+"Failed to store purchase order detail into database (error code %S) [message "
+"#IMS-04-09]."
 msgstr ""
 
 msgid "Purchase Order Updated"
@@ -98,14 +219,272 @@ msgstr ""
 msgid "Purchase Order [%S] successfully updated"
 msgstr ""
 
+msgid "Failed to create purchase order (error code %S) [message #IMS-04-10]."
+msgstr ""
+
+msgid ""
+"Failed to insert purchase order detail (error code %S) [message #IMS-04-11]."
+msgstr ""
+
+msgid ""
+"Failed to insert purchase order detail (error code %S) [message #IMS-04-12]."
+msgstr ""
+
 msgid "New Purchase Order Created"
 msgstr ""
 
 msgid "Purchase Order [%S] successfully created"
 msgstr ""
 
+msgid ""
+"An error was encountered while retrieving purchase order detail from "
+"database (error code %S) [message #IMS-04-13]."
+msgstr ""
+
+msgid "Product Search"
+msgstr ""
+
 msgid "Discard PO Changes"
 msgstr ""
 
 msgid "Are you sure you want to discard changes made to this PO?"
+msgstr ""
+
+msgid "Discard New PO"
+msgstr ""
+
+msgid "Are you sure you want to discard this PO?"
+msgstr ""
+
+msgid "Access to Goods Receiving Not Available"
+msgstr ""
+
+msgid ""
+"Goods Receiving may only be managed from the designated Stock Control "
+"Service Master at [%S]"
+msgstr ""
+
+msgid ""
+"Failed to retrieve purchase orders from database (error code %S) [message "
+"#IMS-05-01]."
+msgstr ""
+
+msgid ""
+"Failed to retrieve supplier records from database (error code %S) [message "
+"#IMS-05-02]."
+msgstr ""
+
+msgid ""
+"Failed to retrieve goods receiving records from database (error code %S) "
+"[message #IMS-05-03]."
+msgstr ""
+
+msgid "confirm delete GR [%S]"
+msgstr ""
+
+msgid "Are you sure you want to delete GR [%S]?"
+msgstr ""
+
+msgid ""
+"Failed to delete goods receiving record from database (error code %S) "
+"[message #IMS-05-04]."
+msgstr ""
+
+msgid "Duplicate GR Number"
+msgstr ""
+
+msgid "GR Number [%S] already exists, please enter a different GR number."
+msgstr ""
+
+msgid ""
+"An error was encountered while validating goods receiving number (error code "
+"%S) [message #IMS-05-05]."
+msgstr ""
+
+msgid ""
+"Failed to update goods receiving record (error code %S) [message #IMS-05-06]."
+msgstr ""
+
+msgid ""
+"Failed to store goods receiving detail into database (error code %S) "
+"[message #IMS-05-07]."
+msgstr ""
+
+msgid ""
+"Failed to store goods receiving detail into database (error code %S) "
+"[message #IMS-05-08]."
+msgstr ""
+
+msgid ""
+"Failed to create goods receiving record (error code %S) [message #IMS-05-09]."
+msgstr ""
+
+msgid ""
+"Failed to insert goods receiving detail into database (error code %S) "
+"[message #IMS-05-10]."
+msgstr ""
+
+msgid ""
+"Failed to insert goods receiving detail into database (error code %S) "
+"[message #IMS-05-11]."
+msgstr ""
+
+msgid "Goods Receiving Updated"
+msgstr ""
+
+msgid "Goods Receiving [%S] successfully updated"
+msgstr ""
+
+msgid "New Goods Receiving Created"
+msgstr ""
+
+msgid "Goods Receiving [%S] successfully created"
+msgstr ""
+
+msgid "Failed to obtain lock on database (error code %S) [message #IMS-05-12]."
+msgstr ""
+
+msgid ""
+"Failed to commit goods received to inventory (error code %S) [message #IMS-"
+"05-13]."
+msgstr ""
+
+msgid "Goods Receiving [%S] successfully created and committed"
+msgstr ""
+
+msgid "New Goods Receiving [%S] successfully updated and committed"
+msgstr ""
+
+msgid "Goods Receiving [%S] successfully committed"
+msgstr ""
+
+msgid "Goods Receiving Committed"
+msgstr ""
+
+msgid ""
+"An error was encountered while saving stock adjustment records (error code %"
+"S) [message #IMS-05-14]."
+msgstr ""
+
+msgid ""
+"An error was encountered while saving stock records (error code %S) [message "
+"#IMS-05-15]."
+msgstr ""
+
+msgid ""
+"An error was encountered while saving stock adjustment details (error code %"
+"S) [message #IMS-05-16]."
+msgstr ""
+
+msgid "Price Change"
+msgstr ""
+
+msgid ""
+"An error was encountered while saving stock adjustment details (error code %"
+"S) [message #IMS-05-17]."
+msgstr ""
+
+msgid ""
+"An error was encountered while closing purchase order (error code %S) "
+"[message #IMS-05-18]."
+msgstr ""
+
+msgid ""
+"An error was encountered while closing goods receiving (error code %S) "
+"[message #IMS-05-19]."
+msgstr ""
+
+msgid ""
+"An error was encountered while retrieving costs for product [%S (%S)] from "
+"database (error code %S) [message #IMS-05-20]."
+msgstr ""
+
+msgid ""
+"Failed to clear costs for product [%S (%S)] from database (error code %S) "
+"[message #IMS-05-21]."
+msgstr ""
+
+msgid ""
+"Failed to update costs for product [%S (%S)] (error code %S) [message #IMS-"
+"05-22]."
+msgstr ""
+
+msgid ""
+"An error was encountered while retrieving goods receiving detail from "
+"database (error code %S) [message #IMS-05-23]."
+msgstr ""
+
+msgid "Remove Committed GR"
+msgstr ""
+
+msgid ""
+"The selected entry has been committed to inventory. Are you sure you want to "
+"remove it by changing its quantity to 0?"
+msgstr ""
+
+msgid "Discard GR Changes"
+msgstr ""
+
+msgid "Are you sure you want to discard changes made to this GR?"
+msgstr ""
+
+msgid "Discard New GR"
+msgstr ""
+
+msgid "Are you sure you want to discard this GR?"
+msgstr ""
+
+msgid "Save & Commit"
+msgstr ""
+
+msgid "Create & Commit"
+msgstr ""
+
+msgid "Commit"
+msgstr ""
+
+msgid "Failed to store order item costs (error code %S) [message #IMS-02-01]."
+msgstr ""
+
+msgid "Failed to store order item costs (error code %S) [message #IMS-02-02]."
+msgstr ""
+
+msgid ""
+"An error was encountered while archiving order item costs (error code %S) "
+"[message #IMS-02-03]."
+msgstr ""
+
+msgid ""
+"An error was encountered while removing order item costs (error code %S "
+"[message #IMS-02-04]."
+msgstr ""
+
+msgid ""
+"An error was encountered while removing all purchase orders (error code %S) "
+"[message #IMS-02-05]."
+msgstr ""
+
+msgid ""
+"An error was encountered while removing all purchase order details (error "
+"code %S) [message #IMS-02-06]."
+msgstr ""
+
+msgid ""
+"An error was encountered while removing all goods receiving records (error "
+"code %S) [message #IMS-02-07]."
+msgstr ""
+
+msgid ""
+"An error was encountered while removing all goods receiving details(error "
+"code %S) [message #IMS-02-08]."
+msgstr ""
+
+msgid ""
+"An error was encountered while removing all product cost records (error code "
+"%S) [message #IMS-02-09]."
+msgstr ""
+
+msgid ""
+"An error was encountered while removing all item cost records (error code %"
+"S) [message #IMS-02-10]."
 msgstr ""

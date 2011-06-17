@@ -4,12 +4,12 @@
     <Description about="urn:mozilla:install-manifest">
         <em:id>customers-en-US@firich.com.tw</em:id>
         <em:name>Simple Customer Management Language Pack (en-US)</em:name>
-        <em:version>0.9</em:version>
+        <em:version>0.99</em:version>
         <em:description>This language pack provides American English translation for Simple Customer Management extension.</em:description>
         <em:creator>Chris Lai @ Firich Enterprises Co., Ltd.</em:creator>
         <em:homepageURL>http://www.vivipos.com.tw</em:homepageURL>
         <em:type>8</em:type> <!-- type=extension -->
-	<em:extensionHash>sha1:cad650355735bedb5bea553761f860cec03d7c88</em:extensionHash>
+	<em:extensionHash>sha1:49df38390312a18abfd72a357bb27acfb6532d9f</em:extensionHash>
         <em:updateKey>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC6prvsPdRm+3c4etUSLoJVT5GyYUogo5c5L3dyWgu3yu6weYS9q5aQBlbSFVyfCyIfexacXanGFqVRuBvpVq5Px6LpjisHvXukknGnY6nr5S1zelV9CXgv+17mTMVPpxCUEe2oVB3AFX+l+XWx4fUdW3sTX+uSHo/Pno+8PD79FQIDAQAB</em:updateKey>
 
         <em:targetApplication>
