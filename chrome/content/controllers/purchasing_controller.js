@@ -102,11 +102,11 @@
 
         searchMode: function() {
             if (this._mode == 1 && !this.confirmDiscardChanges()) {
-                document.getElementById('main_tabs').selectedIndex = 1;
+                document.getElementById('main_tabbox').selectedIndex = 1;
                 return;
             }
 
-            this._mode = document.getElementById('main_tabs').selectedIndex = 0;
+            this._mode = document.getElementById('main_tabbox').selectedIndex = 0;
 
             // clear detail list selection
             GeckoJS.FormHelper.reset('editForm')
@@ -885,10 +885,12 @@
 
         validateSaveDiscard: function() {
             if (this.isPOModified()) {
+                document.getElementById('tab_search').setAttribute('disabled', true);
                 document.getElementById('save_changes').removeAttribute('disabled');
                 document.getElementById('discard_changes').removeAttribute('disabled');
             }
             else {
+                document.getElementById('tab_search').removeAttribute('disabled');
                 document.getElementById('save_changes').setAttribute('disabled', true);
                 document.getElementById('discard_changes').setAttribute('disabled', true);
             }

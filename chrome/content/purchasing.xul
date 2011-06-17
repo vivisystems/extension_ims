@@ -39,8 +39,8 @@
         <vbox flex="1" class="container-main layout-a">
             <tabbox id="main_tabbox" flex="1" class="content-tabbox">
                 <tabs id="main_tabs">
-                    <tab id="tab_search" label="&purchasing.tab.search;" oncommand="$do('searchMode', null, 'Purchasing')"/>
-                    <tab id="tab_detail" label="&purchasing.tab.detail;" oncommand="$do('editMode', null, 'Purchasing')"/>
+                    <tab id="tab_search" label="&purchasing.tab.search;" oncommand="$do('searchMode', null, 'Purchasing');"/>
+                    <tab id="tab_detail" label="&purchasing.tab.detail;" oncommand="$do('editMode', null, 'Purchasing');"/>
                 </tabs>
                 <tabpanels flex="1">
 

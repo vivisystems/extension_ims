@@ -363,10 +363,10 @@
             var selectedItems = this.getSupplierListObj().selectedItems;
             var selectedCount = selectedItems ? selectedItems.length : 0;
             var supplier = {};
+            var suspendBtn = document.getElementById('search_suspend_supplier');
 
             if (this.isSearchMode()) {
                 var addBtn = document.getElementById('search_add_supplier');
-                var suspendBtn = document.getElementById('search_suspend_supplier');
                 //var deleteBtn = document.getElementById('search_delete_supplier');
 
                 if (selectedCount > 0) {
@@ -400,8 +400,6 @@
             }
             else if (this.isEditMode()) {
                 var nameText = GeckoJS.String.trim(document.getElementById('supplier_name').value);
-                var suspendBtn = document.getElementById('edit_suspend_supplier');
-                //var deleteBtn = document.getElementById('edit_delete_supplier');
                 var modifyBtn = document.getElementById('edit_modify_supplier');
 
                 supplierTab.setAttribute('disabled', false);

@@ -1209,10 +1209,12 @@
 
             if (this.isGRModified()) {
                 grModified = true;
+                document.getElementById('tab_search').setAttribute('disabled', true);
                 document.getElementById('save_changes').removeAttribute('disabled');
                 document.getElementById('discard_changes').removeAttribute('disabled');
             }
             else {
+                document.getElementById('tab_search').removeAttribute('disabled');
                 document.getElementById('save_changes').setAttribute('disabled', true);
                 document.getElementById('discard_changes').setAttribute('disabled', true);
             }
