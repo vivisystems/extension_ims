@@ -39,9 +39,8 @@
             // check if Stock Control server
             if (this.isStockControlServer()) {
 
-                var clerk;
                 if (this.Acl) {
-                    clerk = this.Acl.getUserPrincipal();
+                    var clerk = this.Acl.getUserPrincipal();
                     if (clerk) {
                         this._user = clerk.username;
                         this._username = clerk.description || clerk.username;
@@ -349,7 +348,7 @@
                 self.addPO(false);
                 return;
             }
-            else if (po == false) {
+            else if (po === false) {
                 this._dbError(this.PO.lastError,
                               this.PO.lastErrorString,
                               _('An error was encountered while validating purchase order number (error code %S) [message #IMS-04-06].', [this.PO.lastError]));
@@ -455,8 +454,7 @@
 
                 this.editMode(data);
 
-                GREUtils.Dialog.alert(this.topmostWindow, _('Purchase Order Updated'),
-                                                          _('Purchase Order [%S] successfully updated', [data.no]))
+                OsdUtils.info(_('Purchase Order [%S] successfully updated', [data.no]))
             }
             else {
                 // create
@@ -492,8 +490,7 @@
                 // switch to editMode
                 this.editMode(data);
 
-                GREUtils.Dialog.alert(this.topmostWindow, _('New Purchase Order Created'),
-                                                          _('Purchase Order [%S] successfully created', [data.no]))
+                OsdUtils.info(_('Purchase Order [%S] successfully created', [data.no]));
             }
 
             // rebuild supplier filter menu
@@ -520,7 +517,7 @@
                     detailList.forEach(function(p) {
                         this.formatItem(p);
                     }, this);
-                else if (detailList == false)
+                else if (detailList === false)
                     this._dbError(this.PODetail.lastError,
                                   this.PODetail.lastErrorString,
                                   _('An error was encountered while retrieving purchase order detail from database (error code %S) [message #IMS-04-13].'));

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE window [
+  <!ENTITY % Dialog SYSTEM "chrome://viviecr/locale/dialog.dtd">
+  %Dialog;
+  <!ENTITY % Suppliers SYSTEM "chrome://ims/locale/suppliers.dtd">
+  %Suppliers;
+  ]>
+<?xml-stylesheet href="chrome://vivipos/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/common/viviecr.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/be/layouts.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/be/containers.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/be/content.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/containers.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/content.css" type="text/css"?>
+
+<?xul-overlay href="chrome://global/content/dialogOverlay.xul" ?>
+<?xul-overlay href="chrome://viviecr/content/dialogs/common_waiting_panel.xul"?>
+
+<window title="&suppliers.title;"
+        hidechrome="true"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript" src="chrome://vivipos/content/init_geckojs.js"/>
+    <script type="application/x-javascript" src="chrome://ims/content/suppliers.js"/>
+
+
+    <keyset id="keyset_extensions">
+        <key id="key_clear" keycode="VK_ESCAPE" oncommand="document.getElementById('search_ok').click()"/>
+    </keyset>
+
+    <vbox class="container-be layout-be" flex="1">
+        <vbox flex="1" class="container-main layout-a">
+            <tabbox flex="1" class="content-tabbox">
+                <tabs id="main-tabbox">
+                    <tab id="tab_search" label="&suppliers.tab.search;" oncommand="$do('searchMode', null, 'Suppliers')"/>
+                    <tab id="tab_supplier" label="&suppliers.tab.supplier;" oncommand="$do('editMode', null, 'Suppliers')"/>
+                </tabs>
+                <tabpanels flex="1">
+
+                    <tabpanel id="panel_search" flex="1" orient="vertical" oncommand="event.stopPropagation()">
+                        <vbox flex="1" class="container-top">
+
+                            <grid class="data-form">
+                                <columns>
+                                    <column flex="2"/>
+                                    <column flex="2"/>
+                                    <column flex="2"/>
+                                    <column flex="2"/>
+                                </columns>
+                                <rows>
+
+                                    <!-- row one -->
+                                    <row>
+                                        <vbox>
+                                            <label control="supplier_id" value="&suppliers.filter.id;"/>
+                                            <textbox id="filter_supplier_code" form="searchForm" name="code" default="" onfocus="select()"/>
+                                        </vbox>
+                                        <vbox>
+                                            <label control="supplier_name" value="&suppliers.filter.name;"/>
+                                            <textbox id="filter_name" form="searchForm" name="name" default=""  onfocus="select()"/>
+                                        </vbox>
+                                        <vbox  width="25%">
+                                            <label  value="&suppliers.filter.start;"/>
+                                            <vivitextbox numpadClass="numpad" class="search_limit" fixedbtnClass="button-fixed" popupKeypad="true" keypad="numpad" id="search_limit_start" form="searchForm" type="number" decimalplaces = "0"
+                                             default="1" min="1"  name="search_limit_start"/>
+                                        </vbox>
+                                        <button id="search_supplier"  label="&suppliers.button.search;" class="button-execute" oncommand="$do('setSearchConditions', null, 'Suppliers');"/>
+                                    </row>
+                                    <row>
+                                        <checkbox id="filter_active" flex="1" label="&suppliers.filter.active;" name="active" form="searchForm" default="1" checked="true"/>
+                                    
+                                        <vbox>
+
+                                        </vbox>
+                                        <vbox  width="25%">
+                                            <label  value="&suppliers.filter.limit;"/>
+                                            <vivitextbox  numpadClass="numpad" class="search_limit" fixedbtnClass="button-fixed" popupKeypad="true" keypad="numpad"  id="search_limit_size" form= "searchForm" type="number" decimalplaces = "0"
+                                             default="100" min="1"  name="search_limit_size"/>
+                                        </vbox>
+                                        <vbox width="20%">
+
+                                        </vbox>
+                                    </row>
+                                </rows>
+                            </grid>
+                            
+                            <vbox flex="1" class="content-listbox">
+                                <vivitree id="supplierscrollablepanel" flex="1" dir="normal" hidecolumnpicker="true"
+                                          class="standard custom-be-content-supplier-list"
+                                          headers="&suppliers.field.active;,&suppliers.field.id;,&suppliers.field.name;"
+                                          fields="status,code,name"
+                                          types="checkbox,,"
+                                          onselect="$do('selectSupplier',this.selectedIndex, 'Suppliers');"/>
+                            </vbox>
+                            <hbox>
+                                <label value="&suppliers.result.count;"/><label id="search_result_count"/>
+                                <spacer class="space"/>
+                                <label value="&suppliers.result.displayed;"/><label id="search_result_displayed"/>
+                                <spacer class="space"/>
+                                <label value="&suppliers.result.total;"/><label id="search_result_total"/>
+                            </hbox>
+
+
+                        </vbox>
+                        <hbox>
+                            <hbox flex="1" class="toolbar" toolbarmode="horizontal">                                
+                                <button id="search_add_supplier"  label="&suppliers.button.add;" class="button-add" oncommand="$do('addSupplier', null, 'Suppliers');"/>
+                                <spacer flex="1"/>
+
+                                <spacer flex="1"/>
+                                <button id="search_suspend_supplier"  label="&suppliers.button.suspend;" class="button-suspend" oncommand="$do('suspendSupplier', null, 'Suppliers');"/>
+                                <!--<button id="search_delete_supplier"  label="&suppliers.button.delete;" class="button-delete" oncommand="$do('deleteCustomer', null, 'Customers');"  />-->
+                            </hbox>
+                            <hbox id="search_dialogButtons" pack="end" class="exitbar">
+                                <button id="search_vkb" class="button-vkb" oncommand="VirtualKeyboard.toggle();"/>
+                                <button id="search_ok" label="&dialog.closeButton.label;" default="true" class="button-exit" oncommand="doOKButton();"/>
+                            </hbox>
+                        </hbox>
+                    </tabpanel>
+
+                    <!-- Supplier Panel -->
+
+                    <tabpanel id="panel_supplier" orient="vertical" onblur="alert('hidden');" oncommand="event.stopPropagation()">
+                        <textbox id="id" readonly="true" hidden="true"
+                                 form="supplierForm" name="id"/>
+                        <textbox id="supplier_code" readonly="true" hidden="true"
+                                 form="supplierForm" name="code"/>
+                        <checkbox id="supplier_active" readonly="true" hidden="true"
+                                  form="supplierForm" name="status"/>
+                        <textbox id="supplier_created" readonly="true" hidden="true"
+                                 form="supplierForm" name="created"/>
+                        <vbox flex="1">
+
+                            <grid class="data-form">
+                                <columns>
+                                    <column flex="1"/>
+                                    <column flex="1"/>
+                                    <column flex="1"/>
+                                    <column flex="1"/>
+                                </columns>
+                                <rows>
+
+                                    <!-- row one -->
+                                    <row>
+                                       <vbox>
+                                            <label control="name" value="&suppliers.field.name;"/>
+                                            <textbox id="supplier_name"
+                                                     onfocus="select()"
+                                                     oninput="$do('validateForm', null, 'Suppliers')"
+                                                     form="supplierForm" name="name" default=""/>
+                                        </vbox>
+                                       <vbox>
+                                            <label control="name" value="&suppliers.field.ContactPerson;"/>
+                                            <textbox id="supplier_contactperson"
+                                                     onfocus="select()"
+                                                     oninput="$do('validateForm', null, 'Suppliers')"
+                                                     form="supplierForm" name="contact_person" default=""/>
+                                        </vbox>
+                                        
+                                        <vbox>
+
+                                        </vbox>
+                                        <vbox>
+                                            <label control="created_on" value="&suppliers.field.created_on;"/>
+                                            <textbox id="created_on" readonly="true"
+                                                     form="supplierForm" name="created_on" default=""/>
+                                        </vbox>
+                                    </row>
+
+                                    <!-- row two -->
+                                    <row>
+                                       <vbox>
+                                            <label control="email" value="&suppliers.field.email;"/>
+                                            <textbox id="email" onfocus="select()"
+                                                     form="supplierForm" name="email" default=""/>
+                                        </vbox>
+                                        <vbox>
+                                            <label control="addr1_tel2" value="&suppliers.field.telephone;"/>
+                                            <textbox id="supplier_phone" flex="1"
+                                                     onfocus="select()"
+                                                     form="supplierForm" name="phone" default=""/>
+                                        </vbox>
+                                        <vbox>
+                                            <label control="addr1_fax" value="&suppliers.field.fax;"/>
+                                            <textbox id="supplier_fax" flex="1"
+                                                     onfocus="select()"
+                                                     form="supplierForm" name="fax" default=""/>
+                                        </vbox>
+                                        <vbox>
+                                            <label control="clerk_name" value="&suppliers.field.created_by;"/>
+                                            <textbox id="clerk_name" readonly="true"
+                                                     form="supplierForm" name="clerk_name" default=""/>
+                                        </vbox>
+                                    </row>
+
+                                    <!-- row three -->
+                                    <row>
+                                        <vbox>
+                                            <label control="addr1_addr1" value="&suppliers.field.address1;"/>
+                                            <textbox id="supplier_address1" flex="1"
+                                                     onfocus="select()"
+                                                     form="supplierForm" name="address1" default=""/>
+                                        </vbox>
+                                        <vbox>
+                                            <label control="addr1_addr2" value="&suppliers.field.address2;"/>
+                                            <textbox id="supplier_address2" flex="1"
+                                                     onfocus="select()"
+                                                     form="supplierForm" name="address2" default=""/>
+                                        </vbox>
+                                        <vbox>
+                                            <label control="addr1_zip" value="&suppliers.field.address.zip;"/>
+                                            <textbox id="supplier_zip" flex="1"
+                                                     onfocus="select()"
+                                                     form="supplierForm" name="zip" default=""/>
+                                        </vbox>
+                                        <vbox>
+                                            <label control="terminal" value="&suppliers.field.created_at;"/>
+                                            <textbox id="terminal" readonly="true"
+                                                     form="supplierForm" name="terminal" default=""/>
+                                        </vbox>
+                                    </row>
+
+                                    <!-- row four -->
+                                    <row>
+                                        <vbox>
+                                            <label control="addr1_city" value="&suppliers.field.address.city;"/>
+                                            <textbox id="supplier_city" flex="1"
+                                                     onfocus="select()"
+                                                     form="supplierForm" name="city" default=""/>
+                                        </vbox>
+                                        <vbox>
+                                            <label control="addr1_state" value="&suppliers.field.address.state;"/>
+                                            <textbox id="supplier_state" flex="1"
+                                                     onfocus="select()"
+                                                     form="supplierForm" name="state" default=""/>
+                                        </vbox>
+                                        <vbox>
+                                            <label control="addr1_county" value="&suppliers.field.address.country;"/>
+                                            <textbox id="supplier_country" flex="1"
+                                                     onfocus="select()"
+                                                     form="supplierForm" name="country" default=""/>
+                                        </vbox>
+
+                                        <vbox>
+
+                                        </vbox>
+                                    </row>
+                                </rows>
+                            </grid>
+                            <vbox flex="1">
+                                <label control="notes" value="&suppliers.field.notes;"/>
+                                <textbox id="notes" multiline="true" flex="1"
+                                         onfocus="select()"
+                                         form="supplierForm" name="notes" default=""/>
+                            </vbox>
+
+
+                            <hbox>
+                                <hbox flex="1" class="toolbar" toolbarmode="horizontal" oncommand="event.stopPropagation()">
+                                    <button id="edit_modify_supplier" label="&suppliers.button.modify;" hidden="true" class="button-modify" oncommand="$do('modifySupplier', null, 'Suppliers');"/>
+                                    <spacer flex="1"/>
+                                    
+                                    <spacer flex="1"/>
+                                    <button id="edit_suspend_supplier" label="&suppliers.button.suspend;" hidden="true" class="button-suspend" oncommand="$do('suspendSupplier', null, 'Suppliers');"/>
+                                    <!--<button id="edit_delete_supplier" label="&suppliers.button.delete;" hidden="true" class="button-delete" oncommand="$do('deleteCustomer', null, 'Customers');"  /> -->
+                                </hbox>
+                                <hbox id="edit_dialogButtons" pack="end" class="exitbar">
+                                    <button id="edit_vkb" class="button-vkb" oncommand="VirtualKeyboard.toggle();"/>
+                                    <button id="edit_ok" label="&dialog.closeButton.label;" default="true" class="button-exit" oncommand="$do('exit', null, 'Suppliers');"/>
+                                </hbox>
+                            </hbox>
+                        </vbox>
+                    </tabpanel>
+
+                </tabpanels>
+            </tabbox>
+        </vbox>
+    </vbox>
+
+    <!-- overlay the waiting panel. -->
+    <popupset id="dialogs"/>
+
+</window>

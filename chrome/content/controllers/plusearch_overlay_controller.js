@@ -102,6 +102,8 @@
             var args = window.arguments[0];
             if (args && args.item && args.moreCB && args.scope) {
                 args.moreCB(args.item.id, args.qty, args.price, args.cost, args.scope);
+
+                OsdUtils.info(_('Product [%S (%S)] added', [args.item.name, args.item.no]));
             }
         },
         

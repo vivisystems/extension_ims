@@ -39,9 +39,8 @@
             // check if Stock Control server
             if (this.isStockControlServer()) {
 
-                var clerk;
                 if (this.Acl) {
-                    clerk = this.Acl.getUserPrincipal();
+                    var clerk = this.Acl.getUserPrincipal();
                     if (clerk) {
                         this._user = clerk.username;
                         this._username = clerk.description || clerk.username;
@@ -298,7 +297,7 @@
                 self.addGR(false);
                 return;
             }
-            else if (gr == false) {
+            else if (gr === false) {
                 this._dbError(this.GR.lastError,
                               this.GR.lastErrorString,
                               _('An error was encountered while validating goods receiving number (error code %S) [message #IMS-05-05].', [this.GR.lastError]));
@@ -473,15 +472,13 @@
                 // edit
                 this.updateGR(data, false);
 
-                GREUtils.Dialog.alert(this.topmostWindow, _('Goods Receiving Updated'),
-                                                          _('Goods Receiving [%S] successfully updated', [data.no]))
+                OsdUtils.info(_('Goods Receiving [%S] successfully updated', [data.no]));
             }
             else {
                 // create
                 this.createGR(data, false);
 
-                GREUtils.Dialog.alert(this.topmostWindow, _('New Goods Receiving Created'),
-                                                          _('Goods Receiving [%S] successfully created', [data.no]))
+                OsdUtils.info(_('Goods Receiving [%S] successfully created', [data.no]));
             }
             // rebuild supplier filter menu
             this.buildSupplierFilterMenu();
@@ -743,7 +740,7 @@
 
             if (qty_delta != 0 || weight_delta != 0) {
                 var priceRecord = this.ProductCost.getProductCosts(item.no);
-                if (priceRecord == false) {
+                if (priceRecord === false) {
                     this._dbError(this.ProductCost.lastError,
                                   this.ProductCost.lastErrorString,
                                   _('An error was encountered while retrieving costs for product [%S (%S)] from database (error code %S) [message #IMS-05-20].',
@@ -848,7 +845,7 @@
                     order: 'seq ASC'
                 });
 
-                if (detailList == false) {
+                if (detailList === false) {
                     this._dbError(this.GRDetail.lastError,
                                   this.GRDetail.lastErrorString,
                                   _('An error was encountered while retrieving goods receiving detail from database (error code %S) [message #IMS-05-23].'));

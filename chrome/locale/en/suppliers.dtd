@@ -1,0 +1,34 @@
+<!ENTITY suppliers.title "Supplier Setup">
+<!ENTITY suppliers.tab.search "Search">
+<!ENTITY suppliers.tab.supplier "Supplier">
+<!ENTITY suppliers.result.count "Supplier Count:">
+<!ENTITY suppliers.result.displayed "Supplier Displayed:">
+<!ENTITY suppliers.result.total "Total Suppliers:">
+<!ENTITY suppliers.filter.id "Supplier Code">
+<!ENTITY suppliers.filter.name "Supplier Name">
+<!ENTITY suppliers.filter.active "Active">
+<!ENTITY suppliers.filter.start "Start">
+<!ENTITY suppliers.filter.limit "Limit">
+<!ENTITY suppliers.button.modify "Modify">
+<!ENTITY suppliers.button.search "Search">
+<!ENTITY suppliers.button.add "Add">
+<!ENTITY suppliers.button.suspend "Suspend">
+<!ENTITY suppliers.button.delete "Delete">
+<!ENTITY suppliers.field.active "Active">
+<!ENTITY suppliers.field.id "Supplier Code">
+<!ENTITY suppliers.field.name "Supplier Name">
+<!ENTITY suppliers.field.email "E-mail">
+<!ENTITY suppliers.field.ContactPerson "Contact Person">
+<!ENTITY suppliers.field.telephone "Contact Number">
+<!ENTITY suppliers.field.fax "Fax">
+<!ENTITY suppliers.field.address1 "Address 1">
+<!ENTITY suppliers.field.address2 "Address 2">
+<!ENTITY suppliers.field.address.zip "Zip Code">
+<!ENTITY suppliers.field.address.city "City">
+<!ENTITY suppliers.field.address.state "State">
+<!ENTITY suppliers.field.address.country "Country">
+<!ENTITY suppliers.field.notes "Notes">
+<!ENTITY suppliers.field.created_on "Created On">
+<!ENTITY suppliers.field.created_by "Created By">
+<!ENTITY suppliers.field.created_at "Created At">
+

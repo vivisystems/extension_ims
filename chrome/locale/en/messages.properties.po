@@ -13,7 +13,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: support@vivipos.com.tw\n"
-"POT-Creation-Date: 2011-06-17 11:11+0800\n"
+"POT-Creation-Date: 2011-06-17 11:26+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,6 +35,9 @@ msgstr "Purchasing"
 msgid "vivipos.fec.settings.controlpanels.product.ims-gr.label"
 msgstr "Receiving"
 
+msgid "vivipos.fec.settings.controlpanels.product.ims-suppliers.label"
+msgstr "Suppliers"
+
 # #######################################################################
 #
 # List of Reports
@@ -55,6 +58,9 @@ msgstr "Manage Purchasing"
 
 msgid "acl_ims_manage_receiving"
 msgstr "Manage Goods Receiving"
+
+msgid "acl_manage_suppliers"
+msgstr "Manage Supplier"
 
 # #######################################################################
 #
