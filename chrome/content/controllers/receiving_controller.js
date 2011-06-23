@@ -1266,6 +1266,20 @@
             }
         },
 
+        openPreviewDialog: function() {
+
+            var gr = GREUtils.extend({}, this._gr);
+            var grDetail = GREUtils.extend({}, this._detailList);
+            
+            var args = {gr: gr, detail: grDetail};
+            
+            var url = "chrome://ims/content/reports/preview_goods_receiving.xul";
+            var name = "";
+            var features = "chrome,titlebar,toolbar,centerscreen,modal,width=" + this.screenwidth + ",height=" + this.screenheight;
+            window.openDialog(url, name, features, args);
+            
+        },
+
         _dbError: function(errno, errstr, errmsg) {
             this.log('ERROR', errmsg + '\nDatabase Error [' +  errno + ']: [' + errstr + ']');
             GREUtils.Dialog.alert(this.topmostWindow,

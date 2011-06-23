@@ -19,6 +19,10 @@ msgstr "Purchasing"
 msgid "vivipos.fec.settings.controlpanels.product.ims-gr.label"
 msgstr "Receiving"
 
+msgid "vivipos.fec.settings.controlpanels.product.ims-suppliers.label"
+msgstr "Suppliers"
+
+
 ########################################################################
 #
 # List of Reports
@@ -45,6 +49,8 @@ msgstr "Manage Purchasing"
 msgid "acl_ims_manage_receiving"
 msgstr "Manage Goods Receiving"
 
+msgid "acl_manage_suppliers"
+msgstr "Manage Supplier"
 
 ########################################################################
 #

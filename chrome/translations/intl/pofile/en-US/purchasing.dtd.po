@@ -1,10 +1,11 @@
 # extracted from ../locale/en/purchasing.dtd
+#. extracted from ../locale/en/purchasing.dtd
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-17 11:13+0800\n"
+"POT-Creation-Date: 2011-06-22 18:31+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -215,4 +216,16 @@ msgstr ""
 #: purchasing.form.description
 msgctxt "purchasing.form.description"
 msgid "Description"
+msgstr ""
+
+#: purchasing.button.print
+msgid "Print"
+msgstr ""
+
+#: purchasing.title.preview
+msgid "Purchase Order Preview"
+msgstr ""
+
+#: purchasing.button.exportpdf
+msgid "Export PDF"
 msgstr ""

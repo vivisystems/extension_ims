@@ -1,0 +1,260 @@
+# extracted from ../locale/en/receiving.dtd
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-22 18:31+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"X-Accelerator-Marker: &\n"
+
+#: receiving.title
+msgctxt "receiving.title"
+msgid "Goods Receiving"
+msgstr ""
+
+#: receiving.tab.search
+msgctxt "receiving.tab.search"
+msgid "Search"
+msgstr ""
+
+#: receiving.tab.detail
+msgctxt "receiving.tab.detail"
+msgid "Goods Receiving"
+msgstr ""
+
+#: receiving.field.created
+msgctxt "receiving.field.created"
+msgid "Date"
+msgstr ""
+
+#: receiving.field.detail
+msgctxt "receiving.field.detail"
+msgid "GR Number"
+msgstr ""
+
+#: receiving.field.desc
+msgctxt "receiving.field.desc"
+msgid "Description"
+msgstr ""
+
+#: receiving.field.no
+msgctxt "receiving.field.no"
+msgid "GR Number"
+msgstr ""
+
+#: receiving.field.po
+msgctxt "receiving.field.po"
+msgid "PO Number"
+msgstr ""
+
+#: receiving.field.supplier
+msgctxt "receiving.field.supplier"
+msgid "Supplier"
+msgstr ""
+
+#: receiving.field.total
+msgctxt "receiving.field.total"
+msgid "Total"
+msgstr ""
+
+#: receiving.field.qty
+msgid "Ordered"
+msgstr ""
+
+#: receiving.field.recv.qty
+msgid "Recvd"
+msgstr ""
+
+#: receiving.field.status
+msgctxt "receiving.field.status"
+msgid "Status"
+msgstr ""
+
+#: receiving.field.row
+msgid "Row"
+msgstr ""
+
+#: receiving.field.plu
+msgid "No."
+msgstr ""
+
+#: receiving.field.pluname
+msgid "Product"
+msgstr ""
+
+#: receiving.field.stockunit
+msgid "Unit"
+msgstr ""
+
+#: receiving.field.unitprice
+msgid "Price"
+msgstr ""
+
+#: receiving.field.cost
+msgctxt "receiving.field.cost"
+msgid "Cost"
+msgstr ""
+
+#: receiving.field.buy.price
+msgctxt "receiving.field.buy.price"
+msgid "Cost"
+msgstr ""
+
+#: receiving.result.count
+msgid "Matching Count: "
+msgstr ""
+
+#: receiving.result.displayed
+msgid "Display Count: "
+msgstr ""
+
+#: receiving.result.total
+msgid "Total Count: "
+msgstr ""
+
+#: receiving.filter.startdate
+msgid "Start Date"
+msgstr ""
+
+#: receiving.filter.enddate
+msgid "End Date"
+msgstr ""
+
+#: receiving.filter.gr.number
+msgctxt "receiving.filter.gr.number"
+msgid "GR Number"
+msgstr ""
+
+#: receiving.filter.po.number
+msgctxt "receiving.filter.po.number"
+msgid "PO Number"
+msgstr ""
+
+#: receiving.filter.start
+msgid "Start Record"
+msgstr ""
+
+#: receiving.filter.limit
+msgid "Record Limit"
+msgstr ""
+
+#: receiving.filter.supplier
+msgctxt "receiving.filter.supplier"
+msgid "Supplier"
+msgstr ""
+
+#: receiving.filter.status
+msgctxt "receiving.filter.status"
+msgid "Status"
+msgstr ""
+
+#: receiving.filter.status.open
+msgid "Open"
+msgstr ""
+
+#: receiving.filter.status.closed
+msgid "Closed"
+msgstr ""
+
+#: receiving.filter.goods.status
+msgid "Goods Received"
+msgstr ""
+
+#: receiving.filter.goods.received
+msgid "Received"
+msgstr ""
+
+#: receiving.filter.goods.notreceived
+msgid "Not Received"
+msgstr ""
+
+#: receiving.button.search
+msgctxt "receiving.button.search"
+msgid "Search"
+msgstr ""
+
+#: receiving.button.add
+msgid "Add"
+msgstr ""
+
+#: receiving.button.delete
+msgid "Delete"
+msgstr ""
+
+#: receiving.button.save
+msgid "Save"
+msgstr ""
+
+#: receiving.button.discard
+msgid "Discard Changes"
+msgstr ""
+
+#: receiving.button.create
+msgid "Create"
+msgstr ""
+
+#: receiving.button.cancel
+msgid "Cancel GR"
+msgstr ""
+
+#: receiving.button.close
+msgid "Close PO/GR"
+msgstr ""
+
+#: receiving.button.more
+msgid "Select"
+msgstr ""
+
+#: receiving.form.number
+msgctxt "receiving.form.number"
+msgid "GR Number"
+msgstr ""
+
+#: receiving.form.date
+msgctxt "receiving.form.date"
+msgid "Date"
+msgstr ""
+
+#: receiving.form.status
+msgctxt "receiving.form.status"
+msgid "Status"
+msgstr ""
+
+#: receiving.form.supplier
+msgctxt "receiving.form.supplier"
+msgid "Supplier"
+msgstr ""
+
+#: receiving.form.total
+msgctxt "receiving.form.total"
+msgid "Total"
+msgstr ""
+
+#: receiving.form.po
+msgctxt "receiving.form.po"
+msgid "PO Number"
+msgstr ""
+
+#: receiving.form.description
+msgctxt "receiving.form.description"
+msgid "Description"
+msgstr ""
+
+#: receiving.button.print
+msgid "Print"
+msgstr ""
+
+#: receiving.title.preview
+msgid "Goods Receiving Preview"
+msgstr ""
+
+#: receiving.button.exportpdf
+msgid "Export PDF"
+msgstr ""

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: support@vivipos.com.tw\n"
-"POT-Creation-Date: 2011-06-17 11:11+0800\n"
+"POT-Creation-Date: 2011-06-22 18:31+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,6 +34,9 @@ msgstr "Purchasing"
 msgid "vivipos.fec.settings.controlpanels.product.ims-gr.label"
 msgstr "Receiving"
 
+msgid "vivipos.fec.settings.controlpanels.product.ims-suppliers.label"
+msgstr "Suppliers"
+
 # #######################################################################
 #
 # List of Reports
@@ -54,6 +57,9 @@ msgstr "Manage Purchasing"
 
 msgid "acl_ims_manage_receiving"
 msgstr "Manage Goods Receiving"
+
+msgid "acl_manage_suppliers"
+msgstr "Manage Supplier"
 
 # #######################################################################
 #
@@ -132,6 +138,9 @@ msgid "Select & Close"
 msgstr ""
 
 msgid "Purchase Details"
+msgstr ""
+
+msgid "Product [%S (%S)] added"
 msgstr ""
 
 msgid ""
@@ -213,9 +222,6 @@ msgid ""
 "#IMS-04-09]."
 msgstr ""
 
-msgid "Purchase Order Updated"
-msgstr ""
-
 msgid "Purchase Order [%S] successfully updated"
 msgstr ""
 
@@ -228,9 +234,6 @@ msgstr ""
 
 msgid ""
 "Failed to insert purchase order detail (error code %S) [message #IMS-04-12]."
-msgstr ""
-
-msgid "New Purchase Order Created"
 msgstr ""
 
 msgid "Purchase Order [%S] successfully created"
@@ -329,13 +332,7 @@ msgid ""
 "[message #IMS-05-11]."
 msgstr ""
 
-msgid "Goods Receiving Updated"
-msgstr ""
-
 msgid "Goods Receiving [%S] successfully updated"
-msgstr ""
-
-msgid "New Goods Receiving Created"
 msgstr ""
 
 msgid "Goods Receiving [%S] successfully created"
@@ -487,4 +484,88 @@ msgstr ""
 msgid ""
 "An error was encountered while removing all item cost records (error code %"
 "S) [message #IMS-02-10]."
+msgstr ""
+
+msgid ""
+"Failed to retrieve supplier records from database (error code %S) [message "
+"#IMS-06-01]."
+msgstr ""
+
+msgid ""
+"Failed to retrieve purchase order record count from database (error code %S) "
+"[message #IMS-06-02]."
+msgstr ""
+
+msgid "Add Supplier"
+msgstr ""
+
+msgid "New Supplier"
+msgstr ""
+
+msgid "Code"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Supplier Code [%S] has already been assigned"
+msgstr ""
+
+msgid "Failed to create supplier record (error code %S) [message #IMS-06-03]."
+msgstr ""
+
+msgid ""
+"An error was encountered while validating supplier code (error code %S) "
+"[message #IMS-06-04]."
+msgstr ""
+
+msgid ""
+"An error was encountered while modifying supplier code (error code %S) "
+"[message #IMS-06-05]."
+msgstr ""
+
+msgid "Supplier [%S (%S)] modified successfully"
+msgstr ""
+
+msgid ""
+"An error was encountered while updating supplier status (error code %S) "
+"[message #IMS-06-06]."
+msgstr ""
+
+msgid "Supplier [%S (%S)] activated successfully"
+msgstr ""
+
+msgid "Supplier [%S (%S)] suspended successfully"
+msgstr ""
+
+msgid "Suspend"
+msgstr ""
+
+msgid "Activate"
+msgstr ""
+
+msgid ""
+"An error was encountered while retrieving supplier count (error code %S) "
+"[message #IMS-06-06]."
+msgstr ""
+
+msgid "Discard Changes"
+msgstr ""
+
+msgid ""
+"You have made changes to the current supplier. Are you sure you want to "
+"discard the changes?"
+msgstr ""
+
+msgid "Exit"
+msgstr ""
+
+msgid ""
+"You have made changes to the current supplier. Save changes before exiting?"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Discard"
 msgstr ""

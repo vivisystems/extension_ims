@@ -13,7 +13,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: support@vivipos.com.tw\n"
-"POT-Creation-Date: 2011-06-17 11:11+0800\n"
+"POT-Creation-Date: 2011-06-22 18:31+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,6 +35,9 @@ msgstr "Purchasing"
 msgid "vivipos.fec.settings.controlpanels.product.ims-gr.label"
 msgstr "Receiving"
 
+msgid "vivipos.fec.settings.controlpanels.product.ims-suppliers.label"
+msgstr "Suppliers"
+
 # #######################################################################
 #
 # List of Reports
@@ -55,6 +58,9 @@ msgstr "Manage Purchasing"
 
 msgid "acl_ims_manage_receiving"
 msgstr "Manage Goods Receiving"
+
+msgid "acl_manage_suppliers"
+msgstr "Manage Supplier"
 
 # #######################################################################
 #
@@ -129,18 +135,20 @@ msgid ""
 msgstr ""
 
 #: ../..//content/controllers/init_controller.js:81
-#: ../..//content/controllers/plusearch_overlay_controller.js:159
-#: ../..//content/controllers/purchasing_controller.js:934
-#: ../..//content/controllers/receiving_controller.js:1273
+#: ../..//content/controllers/plusearch_overlay_controller.js:161
+#: ../..//content/controllers/purchasing_controller.js:952
+#: ../..//content/controllers/receiving_controller.js:1286
 #: ../..//content/controllers/sales_controller.js:145
+#: ../..//content/controllers/supplier_controller.js:500
 msgid "Data Operation Error"
 msgstr ""
 
 #: ../..//content/controllers/init_controller.js:82
-#: ../..//content/controllers/plusearch_overlay_controller.js:160
-#: ../..//content/controllers/purchasing_controller.js:935
-#: ../..//content/controllers/receiving_controller.js:1274
+#: ../..//content/controllers/plusearch_overlay_controller.js:162
+#: ../..//content/controllers/purchasing_controller.js:953
+#: ../..//content/controllers/receiving_controller.js:1287
 #: ../..//content/controllers/sales_controller.js:146
+#: ../..//content/controllers/supplier_controller.js:501
 msgid ""
 "Please restart the machine, and if the problem persists, please contact "
 "technical support immediately."
@@ -154,7 +162,11 @@ msgstr ""
 msgid "Purchase Details"
 msgstr ""
 
-#: ../..//content/controllers/plusearch_overlay_controller.js:150
+#: ../..//content/controllers/plusearch_overlay_controller.js:106
+msgid "Product [%S (%S)] added"
+msgstr ""
+
+#: ../..//content/controllers/plusearch_overlay_controller.js:152
 msgid ""
 "An error was encountered while retrieving goods receiving records (error "
 "code %S) [message #IMS-03-01]."
@@ -162,387 +174,373 @@ msgstr ""
 
 #: ../..//content/controllers/purchasing_controller.js:23
 #: ../..//content/controllers/receiving_controller.js:23
+#: ../..//content/controllers/supplier_controller.js:17
 msgid "unknown user"
 msgstr ""
 
 #: ../..//content/controllers/purchasing_controller.js:24
 #: ../..//content/controllers/receiving_controller.js:24
+#: ../..//content/controllers/supplier_controller.js:18
 msgid "unknown username"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:76
+#: ../..//content/controllers/purchasing_controller.js:75
 msgid "Access to Purchase Orders Not Available"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:77
+#: ../..//content/controllers/purchasing_controller.js:76
 msgid ""
 "Purchase Orders may only be managed from the designated Stock Control "
 "Service Master at [%S]"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:97
+#: ../..//content/controllers/purchasing_controller.js:96
 msgid ""
 "Failed to retrieve supplier records from database (error code %S) [message "
 "#IMS-04-01]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:127
+#: ../..//content/controllers/purchasing_controller.js:130
 msgid ""
 "Failed to retrieve purchase order record count from database (error code %S) "
 "[message #IMS-04-02]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:157
+#: ../..//content/controllers/purchasing_controller.js:160
 msgid ""
 "Failed to retrieve supplier records from database (error code %S) [message "
 "#IMS-04-03]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:220
+#: ../..//content/controllers/purchasing_controller.js:223
 msgid ""
 "Failed to retrieve purchase order records from database (error code %S) "
 "[message #IMS-04-04]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:258
+#: ../..//content/controllers/purchasing_controller.js:261
 msgid ""
 "Errors were encounterd while retrieving goods receiving records from "
 "database (error code %S) [message #IMS-04-14]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:297
+#: ../..//content/controllers/purchasing_controller.js:300
 msgid "confirm delete PO [%S]"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:298
+#: ../..//content/controllers/purchasing_controller.js:301
 msgid "Are you sure you want to delete PO [%S]?"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:318
+#: ../..//content/controllers/purchasing_controller.js:321
 msgid ""
 "Failed to delete purchase order record from database (error code %S) "
 "[message #IMS-04-05]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:347
+#: ../..//content/controllers/purchasing_controller.js:350
 msgid "Duplicate PO Number"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:348
+#: ../..//content/controllers/purchasing_controller.js:351
 msgid "PO Number [%S] already exists, please enter a different PO number."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:355
+#: ../..//content/controllers/purchasing_controller.js:358
 msgid ""
 "An error was encountered while validating purchase order number (error code %"
 "S) [message #IMS-04-06]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:434
+#: ../..//content/controllers/purchasing_controller.js:441
 msgid "Failed to update purchase order (error code %S) [message #IMS-04-07]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:442
+#: ../..//content/controllers/purchasing_controller.js:449
 msgid ""
 "Failed to store purchase order detail into database (error code %S) [message "
 "#IMS-04-08]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:450
+#: ../..//content/controllers/purchasing_controller.js:457
 msgid ""
 "Failed to store purchase order detail into database (error code %S) [message "
 "#IMS-04-09]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:458
-msgid "Purchase Order Updated"
-msgstr ""
-
-#: ../..//content/controllers/purchasing_controller.js:459
+#: ../..//content/controllers/purchasing_controller.js:465
 msgid "Purchase Order [%S] successfully updated"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:467
+#: ../..//content/controllers/purchasing_controller.js:473
 msgid "Failed to create purchase order (error code %S) [message #IMS-04-10]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:478
+#: ../..//content/controllers/purchasing_controller.js:484
 msgid ""
 "Failed to insert purchase order detail (error code %S) [message #IMS-04-11]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:486
+#: ../..//content/controllers/purchasing_controller.js:492
 msgid ""
 "Failed to insert purchase order detail (error code %S) [message #IMS-04-12]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:495
-msgid "New Purchase Order Created"
-msgstr ""
-
-#: ../..//content/controllers/purchasing_controller.js:496
+#: ../..//content/controllers/purchasing_controller.js:501
 msgid "Purchase Order [%S] successfully created"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:526
+#: ../..//content/controllers/purchasing_controller.js:531
 msgid ""
 "An error was encountered while retrieving purchase order detail from "
 "database (error code %S) [message #IMS-04-13]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:643
-#: ../..//content/controllers/receiving_controller.js:941
+#: ../..//content/controllers/purchasing_controller.js:647
+#: ../..//content/controllers/receiving_controller.js:938
 msgid "Product Search"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:839
+#: ../..//content/controllers/purchasing_controller.js:843
 msgid "Discard PO Changes"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:840
+#: ../..//content/controllers/purchasing_controller.js:844
 msgid "Are you sure you want to discard changes made to this PO?"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:843
+#: ../..//content/controllers/purchasing_controller.js:847
 msgid "Discard New PO"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:844
+#: ../..//content/controllers/purchasing_controller.js:848
 msgid "Are you sure you want to discard this PO?"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:79
+#: ../..//content/controllers/receiving_controller.js:78
 msgid "Access to Goods Receiving Not Available"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:80
+#: ../..//content/controllers/receiving_controller.js:79
 msgid ""
 "Goods Receiving may only be managed from the designated Stock Control "
 "Service Master at [%S]"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:99
+#: ../..//content/controllers/receiving_controller.js:98
 msgid ""
 "Failed to retrieve purchase orders from database (error code %S) [message "
 "#IMS-05-01]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:156
+#: ../..//content/controllers/receiving_controller.js:155
 msgid ""
 "Failed to retrieve supplier records from database (error code %S) [message "
 "#IMS-05-02]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:208
+#: ../..//content/controllers/receiving_controller.js:207
 msgid ""
 "Failed to retrieve goods receiving records from database (error code %S) "
 "[message #IMS-05-03]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:259
+#: ../..//content/controllers/receiving_controller.js:258
 msgid "confirm delete GR [%S]"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:260
+#: ../..//content/controllers/receiving_controller.js:259
 msgid "Are you sure you want to delete GR [%S]?"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:280
+#: ../..//content/controllers/receiving_controller.js:279
 msgid ""
 "Failed to delete goods receiving record from database (error code %S) "
 "[message #IMS-05-04]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:296
+#: ../..//content/controllers/receiving_controller.js:295
 msgid "Duplicate GR Number"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:297
+#: ../..//content/controllers/receiving_controller.js:296
 msgid "GR Number [%S] already exists, please enter a different GR number."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:304
+#: ../..//content/controllers/receiving_controller.js:303
 msgid ""
 "An error was encountered while validating goods receiving number (error code "
 "%S) [message #IMS-05-05]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:400
+#: ../..//content/controllers/receiving_controller.js:399
 msgid ""
 "Failed to update goods receiving record (error code %S) [message #IMS-05-06]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:409
+#: ../..//content/controllers/receiving_controller.js:408
 msgid ""
 "Failed to store goods receiving detail into database (error code %S) "
 "[message #IMS-05-07]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:417
+#: ../..//content/controllers/receiving_controller.js:416
 msgid ""
 "Failed to store goods receiving detail into database (error code %S) "
 "[message #IMS-05-08]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:437
+#: ../..//content/controllers/receiving_controller.js:436
 msgid ""
 "Failed to create goods receiving record (error code %S) [message #IMS-05-09]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:453
+#: ../..//content/controllers/receiving_controller.js:452
 msgid ""
 "Failed to insert goods receiving detail into database (error code %S) "
 "[message #IMS-05-10]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:461
+#: ../..//content/controllers/receiving_controller.js:460
 msgid ""
 "Failed to insert goods receiving detail into database (error code %S) "
 "[message #IMS-05-11]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:476
-msgid "Goods Receiving Updated"
-msgstr ""
-
-#: ../..//content/controllers/receiving_controller.js:477
-#: ../..//content/controllers/receiving_controller.js:569
+#: ../..//content/controllers/receiving_controller.js:475
+#: ../..//content/controllers/receiving_controller.js:566
 msgid "Goods Receiving [%S] successfully updated"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:483
-msgid "New Goods Receiving Created"
-msgstr ""
-
-#: ../..//content/controllers/receiving_controller.js:484
+#: ../..//content/controllers/receiving_controller.js:481
 msgid "Goods Receiving [%S] successfully created"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:506
+#: ../..//content/controllers/receiving_controller.js:503
 msgid "Failed to obtain lock on database (error code %S) [message #IMS-05-12]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:563
+#: ../..//content/controllers/receiving_controller.js:560
 msgid ""
 "Failed to commit goods received to inventory (error code %S) [message #IMS-"
 "05-13]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:573
+#: ../..//content/controllers/receiving_controller.js:570
 msgid "Goods Receiving [%S] successfully created and committed"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:576
+#: ../..//content/controllers/receiving_controller.js:573
 msgid "New Goods Receiving [%S] successfully updated and committed"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:579
+#: ../..//content/controllers/receiving_controller.js:576
 msgid "Goods Receiving [%S] successfully committed"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:600
+#: ../..//content/controllers/receiving_controller.js:597
 msgid "Goods Receiving Committed"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:623
+#: ../..//content/controllers/receiving_controller.js:620
 msgid ""
 "An error was encountered while saving stock adjustment records (error code %"
 "S) [message #IMS-05-14]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:661
+#: ../..//content/controllers/receiving_controller.js:658
 msgid ""
 "An error was encountered while saving stock records (error code %S) [message "
 "#IMS-05-15]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:680
+#: ../..//content/controllers/receiving_controller.js:677
 msgid ""
 "An error was encountered while saving stock adjustment details (error code %"
 "S) [message #IMS-05-16]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:693
+#: ../..//content/controllers/receiving_controller.js:690
 msgid "Price Change"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:698
+#: ../..//content/controllers/receiving_controller.js:695
 msgid ""
 "An error was encountered while saving stock adjustment details (error code %"
 "S) [message #IMS-05-17]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:716
+#: ../..//content/controllers/receiving_controller.js:713
 msgid ""
 "An error was encountered while closing purchase order (error code %S) "
 "[message #IMS-05-18]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:726
+#: ../..//content/controllers/receiving_controller.js:723
 msgid ""
 "An error was encountered while closing goods receiving (error code %S) "
 "[message #IMS-05-19]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:749
+#: ../..//content/controllers/receiving_controller.js:746
 msgid ""
 "An error was encountered while retrieving costs for product [%S (%S)] from "
 "database (error code %S) [message #IMS-05-20]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:797
+#: ../..//content/controllers/receiving_controller.js:794
 msgid ""
 "Failed to clear costs for product [%S (%S)] from database (error code %S) "
 "[message #IMS-05-21]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:806
+#: ../..//content/controllers/receiving_controller.js:803
 msgid ""
 "Failed to update costs for product [%S (%S)] (error code %S) [message #IMS-"
 "05-22]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:854
+#: ../..//content/controllers/receiving_controller.js:851
 msgid ""
 "An error was encountered while retrieving goods receiving detail from "
 "database (error code %S) [message #IMS-05-23]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1006
+#: ../..//content/controllers/receiving_controller.js:1003
 msgid "Remove Committed GR"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1007
+#: ../..//content/controllers/receiving_controller.js:1004
 msgid ""
 "The selected entry has been committed to inventory. Are you sure you want to "
 "remove it by changing its quantity to 0?"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1160
+#: ../..//content/controllers/receiving_controller.js:1157
 msgid "Discard GR Changes"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1161
+#: ../..//content/controllers/receiving_controller.js:1158
 msgid "Are you sure you want to discard changes made to this GR?"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1164
+#: ../..//content/controllers/receiving_controller.js:1161
 msgid "Discard New GR"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1165
+#: ../..//content/controllers/receiving_controller.js:1162
 msgid "Are you sure you want to discard this GR?"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1228
+#: ../..//content/controllers/receiving_controller.js:1227
 msgid "Save & Commit"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1230
+#: ../..//content/controllers/receiving_controller.js:1229
 msgid "Create & Commit"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1233
+#: ../..//content/controllers/receiving_controller.js:1232
 msgid "Commit"
 msgstr ""
 
@@ -600,4 +598,115 @@ msgstr ""
 msgid ""
 "An error was encountered while removing all item cost records (error code %"
 "S) [message #IMS-02-10]."
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:129
+msgid ""
+"Failed to retrieve supplier records from database (error code %S) [message "
+"#IMS-06-01]."
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:137
+msgid ""
+"Failed to retrieve purchase order record count from database (error code %S) "
+"[message #IMS-06-02]."
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:159
+msgid "Add Supplier"
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:159
+#: ../..//content/controllers/supplier_controller.js:166
+msgid "New Supplier"
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:159
+msgid "Code"
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:159
+msgid "Name"
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:167
+msgid "Supplier Code [%S] has already been assigned"
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:177
+msgid "Failed to create supplier record (error code %S) [message #IMS-06-03]."
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:212
+msgid ""
+"An error was encountered while validating supplier code (error code %S) "
+"[message #IMS-06-04]."
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:246
+msgid ""
+"An error was encountered while modifying supplier code (error code %S) "
+"[message #IMS-06-05]."
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:269
+msgid "Supplier [%S (%S)] modified successfully"
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:284
+msgid ""
+"An error was encountered while updating supplier status (error code %S) "
+"[message #IMS-06-06]."
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:303
+msgid "Supplier [%S (%S)] activated successfully"
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:305
+msgid "Supplier [%S (%S)] suspended successfully"
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:384
+#: ../..//content/controllers/supplier_controller.js:388
+#: ../..//content/controllers/supplier_controller.js:416
+msgid "Suspend"
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:391
+#: ../..//content/controllers/supplier_controller.js:419
+msgid "Activate"
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:452
+msgid ""
+"An error was encountered while retrieving supplier count (error code %S) "
+"[message #IMS-06-06]."
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:462
+msgid "Discard Changes"
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:463
+msgid ""
+"You have made changes to the current supplier. Are you sure you want to "
+"discard the changes?"
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:484
+msgid "Exit"
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:485
+msgid ""
+"You have made changes to the current supplier. Save changes before exiting?"
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:486
+msgid "Save"
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:486
+msgid "Discard"
 msgstr ""

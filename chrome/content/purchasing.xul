@@ -38,9 +38,9 @@
     <vbox class="container-be layout-be" flex="1">
         <vbox flex="1" class="container-main layout-a">
             <tabbox id="main_tabbox" flex="1" class="content-tabbox">
-                <tabs id="main_tabs">
-                    <tab id="tab_search" label="&purchasing.tab.search;" oncommand="$do('searchMode', null, 'Purchasing');"/>
-                    <tab id="tab_detail" label="&purchasing.tab.detail;" oncommand="$do('editMode', null, 'Purchasing');"/>
+                <tabs id="main_tabs" oncommand="$do('setMode', _mode, 'Purchasing');">
+                    <tab id="tab_search" label="&purchasing.tab.search;" oncommand="_mode = 0;"/>
+                    <tab id="tab_detail" label="&purchasing.tab.detail;" oncommand="_mode = 1;"/>
                 </tabs>
                 <tabpanels flex="1">
 
@@ -286,6 +286,8 @@
                             <hbox flex="1" class="toolbar" toolbarmode="horizontal" oncommand="event.stopPropagation()">
                                 <button id="create_po" label="&purchasing.button.create;" class="button-modify" oncommand="$do('saveChanges', null, 'Purchasing');"/>
                                 <button id="save_changes" label="&purchasing.button.save;" class="button-modify" oncommand="$do('saveChanges', null, 'Purchasing');"/>
+                                <spacer flex="1"/>
+                                <button id="print_po" label="&purchasing.button.print;" class="button-cancel" oncommand="$do('openPreviewDialog', null, 'Purchasing');"  />
                                 <spacer flex="1"/>
                                 <button id="discard_changes" label="&purchasing.button.discard;" class="button-cancel" oncommand="$do('discardChanges', null, 'Purchasing');"  />
                                 <button id="cancel_create" label="&purchasing.button.cancel;" class="button-cancel" oncommand="$do('cancelCreate', null, 'Purchasing');"  />

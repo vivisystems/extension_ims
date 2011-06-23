@@ -9,7 +9,7 @@
         initial: function() {
             var cart = GeckoJS.Controller.getInstanceByName('Cart');
             if (cart) {
-                //cart.addEventListener('afterSubmit', this.storeItemCosts, this);
+                cart.addEventListener('afterSubmit', this.storeItemCosts, this);
             }
 
             // truncate & expire
@@ -92,42 +92,42 @@
 
         truncateData: function(evt) {
             try {
-                var r = this.PO.truncate();
+                var r = this.PO.execute('delete from POs');
                 if (!r) {
                     throw {errno: this.PO.lastError,
                            errstr: this.PO.lastErrorString,
                            errmsg: _('An error was encountered while removing all purchase orders (error code %S) [message #IMS-02-05].', [this.PO.lastError])};
                 }
 
-                r = this.PODetail.truncate();
+                r = this.PODetail.execute('delete from PO_details');
                 if (!r) {
                     throw {errno: this.PODetail.lastError,
                            errstr: this.PODetail.lastErrorString,
                            errmsg: _('An error was encountered while removing all purchase order details (error code %S) [message #IMS-02-06].', [this.PODetail.lastError])};
                 }
 
-                r = this.GR.truncate();
+                var r = this.GR.execute('delete from GRs');
                 if (!r) {
                     throw {errno: this.GR.lastError,
                            errstr: this.GR.lastErrorString,
                            errmsg: _('An error was encountered while removing all goods receiving records (error code %S) [message #IMS-02-07].', [this.GR.lastError])};
                 }
 
-                r = this.GRDetail.truncate();
+                r = this.GRDetail.execute('delete from GR_details');
                 if (!r) {
                     throw {errno: this.GRDetail.lastError,
                            errstr: this.GRDetail.lastErrorString,
                            errmsg: _('An error was encountered while removing all goods receiving details(error code %S) [message #IMS-02-08].', [this.GRDetail.lastError])};
                 }
 
-                r = this.ProductCost.truncate();
+                r = this.ProductCost.execute('delete from product_costs');
                 if (!r) {
                     throw {errno: this.ProductCost.lastError,
                            errstr: this.ProductCost.lastErrorString,
                            errmsg: _('An error was encountered while removing all product cost records (error code %S) [message #IMS-02-09].', [this.ProductCost.lastError])};
                 }
 
-                r = this.OrderItemCost.truncate();
+                r = this.OrderItemCost.execute('delete from order_item_costs');
                 if (!r) {
                     throw {errno: this.OrderItemCost.lastError,
                            errstr: this.OrderItemCost.lastErrorString,

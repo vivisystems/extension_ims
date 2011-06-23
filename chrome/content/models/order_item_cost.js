@@ -9,7 +9,6 @@
 
         useDbConfig: 'order',
 
-        belongsTo: ['OrderItem'],
         belongsTo: [{
             name: 'OrderItem',
             table: 'order_items',

@@ -1,0 +1,155 @@
+# extracted from ../locale/en/suppliers.dtd
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-22 18:31+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"X-Accelerator-Marker: &\n"
+
+#: suppliers.title
+msgid "Supplier Setup"
+msgstr ""
+
+#: suppliers.tab.search
+msgctxt "suppliers.tab.search"
+msgid "Search"
+msgstr ""
+
+#: suppliers.tab.supplier
+msgid "Supplier"
+msgstr ""
+
+#: suppliers.result.count
+msgid "Supplier Count:"
+msgstr ""
+
+#: suppliers.result.displayed
+msgid "Supplier Displayed:"
+msgstr ""
+
+#: suppliers.result.total
+msgid "Total Suppliers:"
+msgstr ""
+
+#: suppliers.filter.id
+msgctxt "suppliers.filter.id"
+msgid "Supplier Code"
+msgstr ""
+
+#: suppliers.filter.name
+msgctxt "suppliers.filter.name"
+msgid "Supplier Name"
+msgstr ""
+
+#: suppliers.filter.active
+msgctxt "suppliers.filter.active"
+msgid "Active"
+msgstr ""
+
+#: suppliers.filter.start
+msgid "Start"
+msgstr ""
+
+#: suppliers.filter.limit
+msgid "Limit"
+msgstr ""
+
+#: suppliers.button.modify
+msgid "Modify"
+msgstr ""
+
+#: suppliers.button.search
+msgctxt "suppliers.button.search"
+msgid "Search"
+msgstr ""
+
+#: suppliers.button.add
+msgid "Add"
+msgstr ""
+
+#: suppliers.button.suspend
+msgid "Suspend"
+msgstr ""
+
+#: suppliers.button.delete
+msgid "Delete"
+msgstr ""
+
+#: suppliers.field.active
+msgctxt "suppliers.field.active"
+msgid "Active"
+msgstr ""
+
+#: suppliers.field.id
+msgctxt "suppliers.field.id"
+msgid "Supplier Code"
+msgstr ""
+
+#: suppliers.field.name
+msgctxt "suppliers.field.name"
+msgid "Supplier Name"
+msgstr ""
+
+#: suppliers.field.email
+msgid "E-mail"
+msgstr ""
+
+#: suppliers.field.ContactPerson
+msgid "Contact Person"
+msgstr ""
+
+#: suppliers.field.telephone
+msgid "Contact Number"
+msgstr ""
+
+#: suppliers.field.fax
+msgid "Fax"
+msgstr ""
+
+#: suppliers.field.address1
+msgid "Address 1"
+msgstr ""
+
+#: suppliers.field.address2
+msgid "Address 2"
+msgstr ""
+
+#: suppliers.field.address.zip
+msgid "Zip Code"
+msgstr ""
+
+#: suppliers.field.address.city
+msgid "City"
+msgstr ""
+
+#: suppliers.field.address.state
+msgid "State"
+msgstr ""
+
+#: suppliers.field.address.country
+msgid "Country"
+msgstr ""
+
+#: suppliers.field.notes
+msgid "Notes"
+msgstr ""
+
+#: suppliers.field.created_on
+msgid "Created On"
+msgstr ""
+
+#: suppliers.field.created_by
+msgid "Created By"
+msgstr ""
+
+#: suppliers.field.created_at
+msgid "Created At"
+msgstr ""

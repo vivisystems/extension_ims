@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE overlay [
+  <!ENTITY % Overlay SYSTEM "chrome://viviecr/locale/dialog.dtd">
+  %Overlay;
+  <!ENTITY % Purchasing SYSTEM "chrome://ims/locale/purchasing.dtd">
+  %Purchasing;
+  <!ENTITY % AddPO SYSTEM "chrome://ims/locale/add_po.dtd">
+  %AddPO;
+  ]>
+<?xml-stylesheet href="chrome://vivipos/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/common/viviecr.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/common/reports.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/containers.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/content.css" type="text/css"?>
+
+<?xul-overlay href="chrome://global/content/dialogOverlay.xul"?>
+<?xul-overlay href="chrome://viviecr/content/reports/rpt_waiting_panel.xul"?>
+<?xul-overlay href="chrome://email_report/content/overlay.xul" ?>
+
+<window id="main"
+        hidechrome="true"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml">
+
+    <script type="application/x-javascript" src="chrome://vivipos/content/init_geckojs.js"/>
+    <script type="application/x-javascript" src="chrome://viviecr/content/reports/template.js"/>
+    <script type="application/x-javascript" src="chrome://viviecr/content/reports/template_ext.js"/>
+    <script type="application/x-javascript" src="chrome://ims/content/reports/preview_purchase_order.js"/>
+
+    <keyset id="keyset_extensions">
+        <key id="key_clear" keycode="VK_ESCAPE" oncommand="document.getElementById('ok').click()"/>
+    </keyset>
+
+    <vbox flex="1" class="container-report">
+        <vbox flex="1" class="container-main">
+            <vbox>
+                <label value="&purchasing.title.preview;" class="label-page-title"/>
+            </vbox>
+            <hbox class="TopPnl">
+                <hbox class="ReportTool" flex="1" style="overflow: auto;">
+                    <arrowscrollbox orient="horizontal" flex="1" class="arrowScrollBox">
+                        <tabs id="tabs">
+                            <vivibutton id="export_pdf" label="&purchasing.button.exportpdf;" disabled="false" class="PdfBtn" oncommand="$do('exportPdf', null, 'PreviewPurchaseOrder');"/>
+                            <vivibutton id="print" label="&purchasing.button.print;" disabled="false" class="PrintReportBtn" oncommand="$do('print', null, 'PreviewPurchaseOrder');"/>
+                        </tabs>
+                    </arrowscrollbox>
+                </hbox>
+                <hbox id="dialogButtons" pack="end" class="exitbar">
+                    <button id="vkb" class="button-vkb" oncommand="VirtualKeyboard.toggle()"/>
+                    <button id="ok" default="true" class="button-exit" oncommand="doOKButton();"/>
+                </hbox>
+            </hbox>
+            
+
+            <hbox flex="1">
+                <groupbox flex="1">
+                    <box class="reportbox" id="previewBox" flex="1">
+						<html:iframe type="content" id="preview_frame" src="chrome://viviecr/content/reports/rpt_template2.html" flex="1"/>
+					</box>
+                </groupbox>
+            </hbox>
+        </vbox>
+    </vbox>
+  
+    <!-- overlay the waiting panel. -->
+    <popupset id="dialogs"/>
+	
+</window>

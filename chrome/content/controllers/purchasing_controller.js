@@ -96,17 +96,21 @@
                               _('Failed to retrieve supplier records from database (error code %S) [message #IMS-04-01].', [this.Supplier.lastError]));
                 suppliers = [];
             }
-            
             this._suppliers = suppliers;
+        },
+
+        setMode: function(mode) {
+            if (mode == 0) this.searchMode();
+            else this.editMode();
         },
 
         searchMode: function() {
             if (this._mode == 1 && !this.confirmDiscardChanges()) {
-                document.getElementById('main_tabbox').selectedIndex = 1;
+                document.getElementById('main_tabs').selectedIndex = 1;
                 return;
             }
 
-            this._mode = document.getElementById('main_tabbox').selectedIndex = 0;
+            this._mode = document.getElementById('main_tabs').selectedIndex = 0;
 
             // clear detail list selection
             GeckoJS.FormHelper.reset('editForm')
@@ -386,8 +390,6 @@
                         terminal: self._terminal
             };
 
-            GeckoJS.FormHelper.unserializeFromObject('editForm', self._po);
-
             document.getElementById('create_po').hidden = false;
             document.getElementById('cancel_create').hidden = false;
             document.getElementById('save_changes').hidden = true;
@@ -406,8 +408,14 @@
                     p.clerk = self._user;
                     p.clerk_name = self._username;
                 })
+
+                // update total
+                self._po.total = clone_po.total;
+                self._po.total_display = self.Utility.formatPrice(clone_po.total);
             }
             self.getDetailListObj().datasource = self._detailList;
+
+            GeckoJS.FormHelper.unserializeFromObject('editForm', self._po);
         },
 
         saveChanges: function() {
@@ -568,13 +576,12 @@
             }
             
             var menuObj = document.getElementById('editForm_supplier');
+            // update supplier menu
+            var firstMenuItem = menuObj.getItemAtIndex(0);
+            if (firstMenuItem.value == '-1') {
+                menuObj.removeItemAt(0);
+            }
             if (supplierIndex == -1) {
-                // update supplier menu
-                var firstMenuItem = menuObj.getItemAtIndex(0);
-                if (firstMenuItem.value == '-1') {
-                    menuObj.removeItemAt(0);
-                }
-
                 menuObj.insertItemAt(0, po.supplier_name + ' (' + po.supplier_code + ')', -1);
             }
             menuObj.setAttribute('default', supplierIndex);
@@ -885,12 +892,10 @@
 
         validateSaveDiscard: function() {
             if (this.isPOModified()) {
-                document.getElementById('tab_search').setAttribute('disabled', true);
                 document.getElementById('save_changes').removeAttribute('disabled');
                 document.getElementById('discard_changes').removeAttribute('disabled');
             }
             else {
-                document.getElementById('tab_search').removeAttribute('disabled');
                 document.getElementById('save_changes').setAttribute('disabled', true);
                 document.getElementById('discard_changes').setAttribute('disabled', true);
             }
@@ -925,6 +930,20 @@
             else {
 
             }
+        },
+
+        openPreviewDialog: function() {
+
+            var po = GREUtils.extend({}, this._po);
+            var poDetail = GREUtils.extend({}, this._detailList);
+            
+            var args = {po: po, detail: poDetail};
+            
+            var url = "chrome://ims/content/reports/preview_purchase_order.xul";
+            var name = "";
+            var features = "chrome,titlebar,toolbar,centerscreen,modal,width=" + this.screenwidth + ",height=" + this.screenheight;
+            window.openDialog(url, name, features, args);
+            
         },
 
         _dbError: function(errno, errstr, errmsg) {

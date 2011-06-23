@@ -44,3 +44,6 @@
 <!ENTITY purchasing.form.supplier "Supplier">
 <!ENTITY purchasing.form.total "Total">
 <!ENTITY purchasing.form.description "Description">
+<!ENTITY purchasing.button.print "Print">
+<!ENTITY purchasing.title.preview "Purchase Order Preview">
+<!ENTITY purchasing.button.exportpdf "Export PDF">

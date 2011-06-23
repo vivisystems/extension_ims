@@ -1,0 +1,55 @@
+# extracted from ../locale/en/add_gr.dtd
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-22 18:31+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"X-Accelerator-Marker: &\n"
+
+#: addGR.title
+msgid "New Goods Receiving"
+msgstr ""
+
+#: addGR.description
+msgid "Please fill in the following information"
+msgstr ""
+
+#: addGR.field.grnumber.label
+msgid "GR Number"
+msgstr ""
+
+#: addGR.field.desc.label
+msgid "Description"
+msgstr ""
+
+#: addGR.field.po.label
+msgid "PO Number"
+msgstr ""
+
+#: addGR.field.supplier.label
+msgid "Supplier"
+msgstr ""
+
+#: addGR.item.title
+msgid "Please enter quantity and price:"
+msgstr ""
+
+#: addGR.item.qty.label
+msgid "Quantity"
+msgstr ""
+
+#: addGR.item.price.label
+msgid "Price"
+msgstr ""
+
+#: addGR.item.cost.label
+msgid "Total Cost"
+msgstr ""

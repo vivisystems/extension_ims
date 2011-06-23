@@ -50,4 +50,6 @@
 <!ENTITY receiving.form.total "Total">
 <!ENTITY receiving.form.po "PO Number">
 <!ENTITY receiving.form.description "Description">
-
+<!ENTITY receiving.button.print "Print">
+<!ENTITY receiving.title.preview "Goods Receiving Preview">
+<!ENTITY receiving.button.exportpdf "Export PDF">
