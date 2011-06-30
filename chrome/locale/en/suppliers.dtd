@@ -14,6 +14,7 @@
 <!ENTITY suppliers.button.add "Add">
 <!ENTITY suppliers.button.suspend "Suspend">
 <!ENTITY suppliers.button.delete "Delete">
+<!ENTITY suppliers.button.discard "Discard Changes">
 <!ENTITY suppliers.field.active "Active">
 <!ENTITY suppliers.field.id "Supplier Code">
 <!ENTITY suppliers.field.name "Supplier Name">

@@ -358,27 +358,33 @@
             this.validateForm();
         },
 
+        discardChanges: function() {
+            var selectedIndex = this.getSupplierListObj().selectedIndex;
+            if (selectedIndex > -1) {
+                GeckoJS.FormHelper.unserializeFromObject('supplierForm', this._listDatas[selectedIndex]);
+
+                this.validateForm();
+            }
+        },
+        
         validateForm: function() {
             var supplierTab = document.getElementById('tab_supplier');
+            var searchTab = document.getElementById('tab_search');
             var selectedItems = this.getSupplierListObj().selectedItems;
             var selectedCount = selectedItems ? selectedItems.length : 0;
             var supplier = {};
             var suspendBtn = document.getElementById('search_suspend_supplier');
 
             if (this.isSearchMode()) {
-                var addBtn = document.getElementById('search_add_supplier');
-                //var deleteBtn = document.getElementById('search_delete_supplier');
 
                 if (selectedCount > 0) {
                     supplier = this._listDatas[selectedItems[0]];
-                    supplierTab.setAttribute('disabled', false);
+                    supplierTab.removeAttribute('disabled');
                 }
                 else {
                     supplierTab.setAttribute('disabled', true);
                 }
                 
-                addBtn.setAttribute('hidden', !(this.Acl.isUserInRole('acl_manage_suppliers')));
-
                 // suspend label
                 if (selectedCount == 0) {
                     suspendBtn.label = _('Suspend');
@@ -392,23 +398,19 @@
                     }
                 }
 
-                suspendBtn.setAttribute('hidden', !(this.Acl.isUserInRole('acl_manage_suppliers')));
                 suspendBtn.setAttribute('disabled', (selectedCount == 0));
-
-                //deleteBtn.setAttribute('hidden', !(this.Acl.isUserInRole('acl_manage_suppliers')));
-                //deleteBtn.setAttribute('disabled', (selectedCount == 0));
             }
             else if (this.isEditMode()) {
                 var nameText = GeckoJS.String.trim(document.getElementById('supplier_name').value);
                 var modifyBtn = document.getElementById('edit_modify_supplier');
+                var discardBtn = document.getElementById('edit_discard_changes');
 
-                supplierTab.setAttribute('disabled', false);
+                supplierTab.removeAttribute('disabled');
 
                 if (selectedCount > 0) {
                     supplier = this._listDatas[selectedItems[0]];
                 }
 
-                modifyBtn.setAttribute('hidden', !(this.Acl.isUserInRole('acl_manage_suppliers')));
                 modifyBtn.setAttribute('disabled', nameText == '');
 
                 // suspend label
@@ -419,7 +421,15 @@
                     suspendBtn.label = _('Activate');
                 }
 
-                suspendBtn.setAttribute('hidden', !(this.Acl.isUserInRole('acl_manage_suppliers')));
+                // search tab
+                if (GeckoJS.FormHelper.isFormModified('supplierForm')) {
+                    searchTab.setAttribute('disabled', true);
+                    discardBtn.removeAttribute('disabled');
+                }
+                else {
+                    searchTab.removeAttribute('disabled');
+                    discardBtn.setAttribute('disabled', true);
+                }
             }
         },
 

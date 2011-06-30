@@ -13,6 +13,7 @@
 <?xml-stylesheet href="chrome://viviecr/skin/be/content.css" type="text/css"?>
 <?xml-stylesheet href="chrome://viviecr/skin/dialogs/containers.css" type="text/css"?>
 <?xml-stylesheet href="chrome://viviecr/skin/dialogs/content.css" type="text/css"?>
+<?xml-stylesheet href="chrome://ims/skin/be/supplier.css" type="text/css"?>
 
 <?xul-overlay href="chrome://global/content/dialogOverlay.xul" ?>
 <?xul-overlay href="chrome://viviecr/content/dialogs/common_waiting_panel.xul"?>
@@ -41,50 +42,6 @@
 
                     <tabpanel id="panel_search" flex="1" orient="vertical" oncommand="event.stopPropagation()">
                         <vbox flex="1" class="container-top">
-
-                            <grid class="data-form">
-                                <columns>
-                                    <column flex="2"/>
-                                    <column flex="2"/>
-                                    <column flex="2"/>
-                                    <column flex="2"/>
-                                </columns>
-                                <rows>
-
-                                    <!-- row one -->
-                                    <row>
-                                        <vbox>
-                                            <label control="supplier_id" value="&suppliers.filter.id;"/>
-                                            <textbox id="filter_supplier_code" form="searchForm" name="code" default="" onfocus="select()"/>
-                                        </vbox>
-                                        <vbox>
-                                            <label control="supplier_name" value="&suppliers.filter.name;"/>
-                                            <textbox id="filter_name" form="searchForm" name="name" default=""  onfocus="select()"/>
-                                        </vbox>
-                                        <vbox  width="25%">
-                                            <label  value="&suppliers.filter.start;"/>
-                                            <vivitextbox numpadClass="numpad" class="search_limit" fixedbtnClass="button-fixed" popupKeypad="true" keypad="numpad" id="search_limit_start" form="searchForm" type="number" decimalplaces = "0"
-                                             default="1" min="1"  name="search_limit_start"/>
-                                        </vbox>
-                                        <button id="search_supplier"  label="&suppliers.button.search;" class="button-execute" oncommand="$do('setSearchConditions', null, 'Suppliers');"/>
-                                    </row>
-                                    <row>
-                                        <checkbox id="filter_active" flex="1" label="&suppliers.filter.active;" name="active" form="searchForm" default="1" checked="true"/>
-                                    
-                                        <vbox>
-
-                                        </vbox>
-                                        <vbox  width="25%">
-                                            <label  value="&suppliers.filter.limit;"/>
-                                            <vivitextbox  numpadClass="numpad" class="search_limit" fixedbtnClass="button-fixed" popupKeypad="true" keypad="numpad"  id="search_limit_size" form= "searchForm" type="number" decimalplaces = "0"
-                                             default="100" min="1"  name="search_limit_size"/>
-                                        </vbox>
-                                        <vbox width="20%">
-
-                                        </vbox>
-                                    </row>
-                                </rows>
-                            </grid>
                             
                             <vbox flex="1" class="content-listbox">
                                 <vivitree id="supplierscrollablepanel" flex="1" dir="normal" hidecolumnpicker="true"
@@ -94,6 +51,7 @@
                                           types="checkbox,,"
                                           onselect="$do('selectSupplier',this.selectedIndex, 'Suppliers');"/>
                             </vbox>
+
                             <hbox>
                                 <label value="&suppliers.result.count;"/><label id="search_result_count"/>
                                 <spacer class="space"/>
@@ -102,13 +60,51 @@
                                 <label value="&suppliers.result.total;"/><label id="search_result_total"/>
                             </hbox>
 
+                            <grid class="data-form">
+                                <columns>
+                                    <column flex="1"/>
+                                    <column flex="1"/>
+                                    <column flex="1"/>
+                                    <column flex="1"/>
+                                    <column flex="1"/>
+                                </columns>
+                                <rows>
+
+                                    <!-- row one -->
+                                    <row>
+                                        <checkbox id="filter_active" flex="1" label="&suppliers.filter.active;" name="active" form="searchForm" default="1" checked="true"/>
+
+                                        <vbox>
+                                            <label control="supplier_id" value="&suppliers.filter.id;"/>
+                                            <textbox id="filter_supplier_code" form="searchForm" name="code" default="" onfocus="select()"/>
+                                        </vbox>
+
+                                        <vbox>
+                                            <label control="supplier_name" value="&suppliers.filter.name;"/>
+                                            <textbox id="filter_name" form="searchForm" name="name" default=""  onfocus="select()"/>
+                                        </vbox>
+
+                                        <vbox>
+                                            <label  value="&suppliers.filter.start;"/>
+                                            <vivitextbox numpadClass="numpad" class="search_limit" fixedbtnClass="button-fixed" popupKeypad="true" keypad="numpad" id="search_limit_start" form="searchForm" type="number" decimalplaces = "0"
+                                             default="1" min="1"  name="search_limit_start"/>
+                                        </vbox>
+
+                                        <vbox>
+                                            <label  value="&suppliers.filter.limit;"/>
+                                            <vivitextbox  numpadClass="numpad" class="search_limit" fixedbtnClass="button-fixed" popupKeypad="true" keypad="numpad"  id="search_limit_size" form= "searchForm" type="number" decimalplaces = "0"
+                                             default="100" min="1"  name="search_limit_size"/>
+                                        </vbox>
+                                    </row>
+                                </rows>
+                            </grid>
 
                         </vbox>
                         <hbox>
                             <hbox flex="1" class="toolbar" toolbarmode="horizontal">                                
-                                <button id="search_add_supplier"  label="&suppliers.button.add;" class="button-add" oncommand="$do('addSupplier', null, 'Suppliers');"/>
+                                <button id="search_supplier"  label="&suppliers.button.search;" class="button-execute" oncommand="$do('setSearchConditions', null, 'Suppliers');"/>
                                 <spacer flex="1"/>
-
+                                <button id="search_add_supplier"  label="&suppliers.button.add;" class="button-add" oncommand="$do('addSupplier', null, 'Suppliers');"/>
                                 <spacer flex="1"/>
                                 <button id="search_suspend_supplier"  label="&suppliers.button.suspend;" class="button-suspend" oncommand="$do('suspendSupplier', null, 'Suppliers');"/>
                                 <!--<button id="search_delete_supplier"  label="&suppliers.button.delete;" class="button-delete" oncommand="$do('deleteCustomer', null, 'Customers');"  />-->
@@ -122,7 +118,7 @@
 
                     <!-- Supplier Panel -->
 
-                    <tabpanel id="panel_supplier" orient="vertical" onblur="alert('hidden');" oncommand="event.stopPropagation()">
+                    <tabpanel id="panel_supplier" orient="vertical" oncommand="event.stopPropagation()">
                         <textbox id="id" readonly="true" hidden="true"
                                  form="supplierForm" name="id"/>
                         <textbox id="supplier_code" readonly="true" hidden="true"
@@ -165,6 +161,8 @@
                                         <vbox>
                                             <label control="created_on" value="&suppliers.field.created_on;"/>
                                             <textbox id="created_on" readonly="true"
+                                                     onfocus="select()"
+                                                     oninput="$do('validateForm', null, 'Suppliers')"
                                                      form="supplierForm" name="created_on" default=""/>
                                         </vbox>
                                     </row>
@@ -173,24 +171,30 @@
                                     <row>
                                        <vbox>
                                             <label control="email" value="&suppliers.field.email;"/>
-                                            <textbox id="email" onfocus="select()"
+                                            <textbox id="email"
+                                                     onfocus="select()"
+                                                     oninput="$do('validateForm', null, 'Suppliers')"
                                                      form="supplierForm" name="email" default=""/>
                                         </vbox>
                                         <vbox>
                                             <label control="addr1_tel2" value="&suppliers.field.telephone;"/>
                                             <textbox id="supplier_phone" flex="1"
                                                      onfocus="select()"
+                                                     oninput="$do('validateForm', null, 'Suppliers')"
                                                      form="supplierForm" name="phone" default=""/>
                                         </vbox>
                                         <vbox>
                                             <label control="addr1_fax" value="&suppliers.field.fax;"/>
                                             <textbox id="supplier_fax" flex="1"
                                                      onfocus="select()"
+                                                     oninput="$do('validateForm', null, 'Suppliers')"
                                                      form="supplierForm" name="fax" default=""/>
                                         </vbox>
                                         <vbox>
                                             <label control="clerk_name" value="&suppliers.field.created_by;"/>
                                             <textbox id="clerk_name" readonly="true"
+                                                     onfocus="select()"
+                                                     oninput="$do('validateForm', null, 'Suppliers')"
                                                      form="supplierForm" name="clerk_name" default=""/>
                                         </vbox>
                                     </row>
@@ -201,23 +205,28 @@
                                             <label control="addr1_addr1" value="&suppliers.field.address1;"/>
                                             <textbox id="supplier_address1" flex="1"
                                                      onfocus="select()"
+                                                     oninput="$do('validateForm', null, 'Suppliers')"
                                                      form="supplierForm" name="address1" default=""/>
                                         </vbox>
                                         <vbox>
                                             <label control="addr1_addr2" value="&suppliers.field.address2;"/>
                                             <textbox id="supplier_address2" flex="1"
                                                      onfocus="select()"
+                                                     oninput="$do('validateForm', null, 'Suppliers')"
                                                      form="supplierForm" name="address2" default=""/>
                                         </vbox>
                                         <vbox>
                                             <label control="addr1_zip" value="&suppliers.field.address.zip;"/>
                                             <textbox id="supplier_zip" flex="1"
                                                      onfocus="select()"
+                                                     oninput="$do('validateForm', null, 'Suppliers')"
                                                      form="supplierForm" name="zip" default=""/>
                                         </vbox>
                                         <vbox>
                                             <label control="terminal" value="&suppliers.field.created_at;"/>
                                             <textbox id="terminal" readonly="true"
+                                                     onfocus="select()"
+                                                     oninput="$do('validateForm', null, 'Suppliers')"
                                                      form="supplierForm" name="terminal" default=""/>
                                         </vbox>
                                     </row>
@@ -228,24 +237,25 @@
                                             <label control="addr1_city" value="&suppliers.field.address.city;"/>
                                             <textbox id="supplier_city" flex="1"
                                                      onfocus="select()"
+                                                     oninput="$do('validateForm', null, 'Suppliers')"
                                                      form="supplierForm" name="city" default=""/>
                                         </vbox>
                                         <vbox>
                                             <label control="addr1_state" value="&suppliers.field.address.state;"/>
                                             <textbox id="supplier_state" flex="1"
                                                      onfocus="select()"
+                                                     oninput="$do('validateForm', null, 'Suppliers')"
                                                      form="supplierForm" name="state" default=""/>
                                         </vbox>
                                         <vbox>
                                             <label control="addr1_county" value="&suppliers.field.address.country;"/>
                                             <textbox id="supplier_country" flex="1"
                                                      onfocus="select()"
+                                                     oninput="$do('validateForm', null, 'Suppliers')"
                                                      form="supplierForm" name="country" default=""/>
                                         </vbox>
 
-                                        <vbox>
-
-                                        </vbox>
+                                        <vbox/>
                                     </row>
                                 </rows>
                             </grid>
@@ -253,19 +263,20 @@
                                 <label control="notes" value="&suppliers.field.notes;"/>
                                 <textbox id="notes" multiline="true" flex="1"
                                          onfocus="select()"
+                                         oninput="$do('validateForm', null, 'Suppliers')"
                                          form="supplierForm" name="notes" default=""/>
                             </vbox>
 
 
                             <hbox>
                                 <hbox flex="1" class="toolbar" toolbarmode="horizontal" oncommand="event.stopPropagation()">
-                                    <button id="edit_modify_supplier" label="&suppliers.button.modify;" hidden="true" class="button-modify" oncommand="$do('modifySupplier', null, 'Suppliers');"/>
+                                    <button id="edit_modify_supplier" label="&suppliers.button.modify;" class="button-modify" oncommand="$do('modifySupplier', null, 'Suppliers');"/>
                                     <spacer flex="1"/>
-                                    
+                                    <button id="edit_suspend_supplier" label="&suppliers.button.suspend;" class="button-suspend" oncommand="$do('suspendSupplier', null, 'Suppliers');"/>
                                     <spacer flex="1"/>
-                                    <button id="edit_suspend_supplier" label="&suppliers.button.suspend;" hidden="true" class="button-suspend" oncommand="$do('suspendSupplier', null, 'Suppliers');"/>
-                                    <!--<button id="edit_delete_supplier" label="&suppliers.button.delete;" hidden="true" class="button-delete" oncommand="$do('deleteCustomer', null, 'Customers');"  /> -->
+                                    <button id="edit_discard_changes" label="&suppliers.button.discard;" class="button-cancel" oncommand="$do('confirmChangeSupplier', null, 'Suppliers');"  />
                                 </hbox>
+                                
                                 <hbox id="edit_dialogButtons" pack="end" class="exitbar">
                                     <button id="edit_vkb" class="button-vkb" oncommand="VirtualKeyboard.toggle();"/>
                                     <button id="edit_ok" label="&dialog.closeButton.label;" default="true" class="button-exit" oncommand="$do('exit', null, 'Suppliers');"/>
