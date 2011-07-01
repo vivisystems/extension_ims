@@ -84,6 +84,19 @@
             return !this.StockRecord.isRemoteService();
         },
 
+        getSupplierByCode: function(code) {
+            var supplier = this.Supplier.findByIndex('first', {
+                index: 'code',
+                value: code
+            });
+            if (supplier === false) {
+                this._dbError(this.Supplier.lastError,
+                              this.Supplier.lastErrorString,
+                              _('Failed to retrieve supplier record from database (error code %S) [message #IMS-04-15].', [this.Supplier.lastError]));
+            }
+            return supplier;
+        },
+
         loadOpenPOs: function() {
             var POs = this.PO.find('all', {
                 fields: ['no', 'total', 'supplier_name', 'supplier_code', 'supplier_name || " (" || supplier_code || ")" AS supplier'],
@@ -350,6 +363,7 @@
             document.getElementById('cancel_create').hidden = false;
             document.getElementById('save_changes').hidden = true;
             document.getElementById('discard_changes').hidden = true;
+            document.getElementById('print_gr').hidden = true;
 
             document.getElementById('tab_detail').removeAttribute('disabled');
             self._mode = document.getElementById('main_tabs').selectedIndex = 1;
@@ -888,6 +902,7 @@
             document.getElementById('cancel_create').hidden = true;
             document.getElementById('save_changes').hidden = false;
             document.getElementById('discard_changes').hidden = false;
+            document.getElementById('print_gr').hidden = false;
 
             this._mode = document.getElementById('main_tabs').selectedIndex = 1;
 
@@ -1210,11 +1225,13 @@
             if (this.isGRModified()) {
                 grModified = true;
                 document.getElementById('tab_search').setAttribute('disabled', true);
+                document.getElementById('print_gr').setAttribute('disabled', true);
                 document.getElementById('save_changes').removeAttribute('disabled');
                 document.getElementById('discard_changes').removeAttribute('disabled');
             }
             else {
                 document.getElementById('tab_search').removeAttribute('disabled');
+                document.getElementById('print_gr').removeAttribute('disabled');
                 document.getElementById('save_changes').setAttribute('disabled', true);
                 document.getElementById('discard_changes').setAttribute('disabled', true);
             }
@@ -1270,8 +1287,8 @@
 
             var gr = GREUtils.extend({}, this._gr);
             var grDetail = GREUtils.extend({}, this._detailList);
-            
-            var args = {gr: gr, detail: grDetail};
+            var supplier = this.getSupplierByCode(gr.supplier_code);
+            var args = {gr: gr, detail: grDetail, supplier: supplier};
             
             var url = "chrome://ims/content/reports/preview_goods_receiving.xul";
             var name = "";

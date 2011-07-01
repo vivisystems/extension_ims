@@ -12,3 +12,8 @@ pref("vivipos.fec.settings.controlpanels.product.ims-gr.label", "chrome://ims/lo
 pref("vivipos.fec.settings.controlpanels.product.ims-gr.path", "chrome://ims/content/receiving.xul");
 pref("vivipos.fec.settings.controlpanels.product.ims-gr.icon", "chrome://ims/skin/icons/icon_receiving.png");
 pref("vivipos.fec.settings.controlpanels.product.ims-gr.roles", "acl_ims_manage_receiving");
+
+pref("vivipos.fec.settings.controlpanels.system.ims_email_settings.icon", "");
+pref("vivipos.fec.settings.controlpanels.system.ims_email_settings.label", "Email Report Settings");
+pref("vivipos.fec.settings.controlpanels.system.ims_email_settings.path", "chrome://ims/content/email_settings.xul");
+pref("vivipos.fec.settings.controlpanels.system.ims_email_settings.roles", "acl_ims_email_settings");

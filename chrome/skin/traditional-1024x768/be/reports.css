@@ -1,0 +1,8 @@
+
+.container-report .EmailBtn {
+	background: transparent url(../icons/icon_email.png) center center no-repeat !important;
+}
+
+.container-report .EmailBtn[disabled=true] {
+	background: transparent url(../icons/icon_email.png) center center no-repeat !important;
+}

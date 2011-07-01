@@ -193,6 +193,19 @@
             startDateObj.value = startDate.getTime();
         },
 
+        getSupplierByCode: function(code) {
+            var supplier = this.Supplier.findByIndex('first', {
+                index: 'code',
+                value: code
+            });
+            if (supplier === false) {
+                this._dbError(this.Supplier.lastError,
+                              this.Supplier.lastErrorString,
+                              _('Failed to retrieve supplier record from database (error code %S) [message #IMS-04-15].', [this.Supplier.lastError]));
+            }
+            return supplier;
+        },
+
         queryPOList: function() {
             
             var startTimestamp = parseInt(document.getElementById('filter_startdate').value);
@@ -394,6 +407,7 @@
             document.getElementById('cancel_create').hidden = false;
             document.getElementById('save_changes').hidden = true;
             document.getElementById('discard_changes').hidden = true;
+            document.getElementById('print_po').hidden = true;
 
             document.getElementById('tab_detail').removeAttribute('disabled');
             self._mode = document.getElementById('main_tabs').selectedIndex = 1;
@@ -600,6 +614,7 @@
             document.getElementById('cancel_create').hidden = true;
             document.getElementById('save_changes').hidden = false;
             document.getElementById('discard_changes').hidden = false;
+            document.getElementById('print_po').hidden = false;
 
             this._mode = document.getElementById('main_tabs').selectedIndex = 1;
 
@@ -892,12 +907,16 @@
 
         validateSaveDiscard: function() {
             if (this.isPOModified()) {
+                document.getElementById('tab_search').setAttribute('disabled', true);
                 document.getElementById('save_changes').removeAttribute('disabled');
                 document.getElementById('discard_changes').removeAttribute('disabled');
+                document.getElementById('print_po').setAttribute('disabled', true);
             }
             else {
+                document.getElementById('tab_search').removeAttribute('disabled');
                 document.getElementById('save_changes').setAttribute('disabled', true);
                 document.getElementById('discard_changes').setAttribute('disabled', true);
+                document.getElementById('print_po').removeAttribute('disabled');
             }
         },
 
@@ -928,7 +947,6 @@
                 }
             }
             else {
-
             }
         },
 
@@ -936,8 +954,8 @@
 
             var po = GREUtils.extend({}, this._po);
             var poDetail = GREUtils.extend({}, this._detailList);
-            
-            var args = {po: po, detail: poDetail};
+            var supplier = this.getSupplierByCode(po.supplier_code);
+            var args = {po: po, detail: poDetail, supplier: supplier};
             
             var url = "chrome://ims/content/reports/preview_purchase_order.xul";
             var name = "";

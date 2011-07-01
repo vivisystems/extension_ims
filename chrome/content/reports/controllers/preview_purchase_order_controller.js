@@ -41,9 +41,15 @@
                 self.execute();
             }, 100);
 
-            
+            // set button callback
+            var emailBtnObj = document.getElementById('email_pdf');
+            emailBtnObj.setAttribute('oncommand', "$do('emailReport', null, 'PreviewPurchaseOrder');");
         },        
-        
+
+        emailReport: function() {
+            $do('emailReport', {mode: 'po', supplier: this._poData.supplier, id: this._poData.po.no}, 'EmailPdf');
+        },
+
         execute: function() {
 
             this._stdLimit = parseInt( GeckoJS.Configure.read( "vivipos.fec.settings.reports.stdLimit" ) || this._stdLimit );

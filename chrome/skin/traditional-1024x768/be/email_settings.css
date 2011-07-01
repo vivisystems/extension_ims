@@ -1,0 +1,18 @@
+/*-----------------------------------------------------------------------------
+ *
+ * Back-End Custom Styles for Email Configuration
+ *
+ *-----------------------------------------------------------------------------
+ */
+
+.custom-content-po {
+    max-width: 495px;
+    min-width: 495px;
+    width: 495px;
+}
+
+.custom-content-gr {
+    max-width: 495px;
+    min-width: 495px;
+    width: 495px;
+}

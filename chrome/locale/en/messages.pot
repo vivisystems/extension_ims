@@ -22,6 +22,13 @@ msgstr "Receiving"
 msgid "vivipos.fec.settings.controlpanels.product.ims-suppliers.label"
 msgstr "Suppliers"
 
+#####################
+# Email Configuration
+#####################
+
+msgid "vivipos.fec.settings.controlpanels.system.ims_email_settings.label"
+msgstr "PO/GR E-mail Configuration"
+
 
 ########################################################################
 #
@@ -51,6 +58,10 @@ msgstr "Manage Goods Receiving"
 
 msgid "acl_manage_suppliers"
 msgstr "Manage Supplier"
+
+msgid "acl_ims_email_settings"
+msgstr "Manage PO/GR Email Configuration"
+
 
 ########################################################################
 #

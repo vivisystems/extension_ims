@@ -41,8 +41,14 @@
                 self.execute();
             }, 100);
 
-            
-        },        
+            // set button callback
+            var emailBtnObj = document.getElementById('email_pdf');
+            emailBtnObj.setAttribute('oncommand', "$do('emailReport', null, 'PreviewGoodsReceiving');");
+        },
+
+        emailReport: function() {
+            $do('emailReport', {mode: 'gr', supplier: this._grData.supplier, id: this._grData.gr.no}, 'EmailPdf');
+        },
         
         execute: function() {
 
