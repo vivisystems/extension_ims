@@ -1,4 +1,0 @@
-INSERT INTO "PO_details" VALUES('1','1',1,'001001','Product A',10.5,5.0,'g',52.5,'superuser','administrator',1307200000,1307200000);
-INSERT INTO "PO_details" VALUES('2','1',2,'001002','Product B',20.0,5.0,'unit',100.0,'superuser','administrator',1307240000,1307240000);
-INSERT INTO "PO_details" VALUES('3','3',1,'001001','Product A',11.0,10.0,'g',110.0,'superuser','administrator',1307260000,1307260000);
-INSERT INTO "PO_details" VALUES('4','3',2,'001002','Product B',19.0,10.0,'unit',190.0,'superuser','administrator',1307290000,1307290000);

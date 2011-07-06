@@ -1,3 +1,0 @@
-INSERT INTO "POs" VALUES('1','P1106090001','Sample Purchase Order','S0001','Testing Supplier',100.0,1,'superuser','administrator','Server',1307000000,1307000000);
-INSERT INTO "POs" VALUES('2','P1106090002','Sample Purchase Order 2','S000002','Spartan System Solutions',200.0,0,'superuser','administrator','Server',1307100000,1307100000);
-INSERT INTO "POs" VALUES('3','P1106090003','Sample Purchase Order 3','S000002','Spartan System Solutions',150.35,1,'superuser','administrator','Server',1307200000,1307200000);

@@ -1,3 +1,8 @@
-INSERT INTO "suppliers" VALUES('1','S0001','Supplier 1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'superuser','administrator','TPE0101',0,0);
-INSERT INTO "suppliers" VALUES('2','S0002','Supplier 2',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'superuser','administrator','TPE0101',0,0);
-INSERT INTO "suppliers" VALUES('3','S0003','Supplier 3',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'superuser','administrator','TPE0101',0,0);
+BEGIN TRANSACTION;
+INSERT INTO "suppliers" VALUES('df65fc3b-c360-4786-a1d1-2a1daf683fc0','S1','Supplier 1','','','','','','','','','','','',0,'superuser','administrator','TPE0101',1308737881,1308737995);
+INSERT INTO "suppliers" VALUES('a002b3f5-1f47-48ff-84bf-c3bd0f30785a','S2','Supplier 2',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'superuser','administrator','TPE0101',1308737889,1308737889);
+INSERT INTO "suppliers" VALUES('639aa75e-d6b9-42ba-9b07-18b9237f18a0','S3','Supplier 3',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'superuser','administrator','TPE0101',1308737896,1308737896);
+INSERT INTO "suppliers" VALUES('4b5e25e7-3a54-4014-b2f6-271c09e1a553','S4','Supplier 4',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'superuser','administrator','TPE0101',1308737904,1308737904);
+INSERT INTO "suppliers" VALUES('07dbdf8d-09e2-4571-98c3-98f97c693dc3','S5','AVdef','','','','','','','','','','','',1,'superuser','administrator','TPE0101',1309405586,1309405603);
+INSERT INTO "suppliers" VALUES('53c895eb-cabe-47bf-9dd5-5fc6bc659f7c','I1','Irving Hsu','','','','irving.hsu@firich.com.tw','','','','','','','',1,'superuser','系統管理','TPE0101',1309511013,1309511022);
+COMMIT;
