@@ -71,8 +71,56 @@
             }
 
             // cache product costs
-            this.ProductCost.cacheProductCosts();
+            if (this.ProductCost.isRemoteService()) {
+                var hWin = this.showSyncingDialog();
+
+                // synchronize mode
+                this.ProductCost.cacheProductCosts();
+                
+                if (hWin) {
+                    hWin.close();
+                    delete hWin;
+                }
+
+                if (this.ProductCost.lastStatus != 200) {
+                    this._serverError(this.ProductCost.lastReadyState, this.ProductCost.lastStatus, this.ProductCost.getHostname());
+                }
+            }
+            else
+                this.ProductCost.cacheProductCosts();
             
+        },
+
+        showSyncingDialog: function() {
+            var width = 600;
+            var height = 140;
+
+            var aURL = 'chrome://viviecr/content/alert_stock_syncing.xul';
+            var aName = _('Stock Syncing');
+            var aArguments = {};
+            var aFeatures = 'chrome,dialog,centerscreen,dependent=yes,resize=no,width=' + width + ',height=' + height;
+
+            var win = this.topmostWindow;
+            if (win.document.documentElement.id == 'viviposMainWindow'
+                && win.document.documentElement.boxObject.screenX < 0) {
+                win = null;
+            }
+
+            var alertWin = GREUtils.Dialog.openWindow(win, aURL, aName, aFeatures, aArguments);
+
+            return alertWin;
+        },
+
+        _serverError: function(state, status, hostname) {
+            this.log('ERROR', 'Stock Server error: ' + state + ' [' +  status + '] at ' + hostname);
+            var win = this.topmostWindow;
+            if (win.document.documentElement.id == 'viviposMainWindow'
+                && win.document.documentElement.boxObject.screenX < 0) {
+                win = null;
+            }
+            GREUtils.Dialog.alert(win,
+                _('Stock Server Connection Error'),
+                _('Failed to connect to stock services (error code %S). Please check the network connectivity to the terminal designated as the stock server [message #IMS-01-08].',[status]));
         },
 
         _dbError: function(errno, errstr, errmsg) {
