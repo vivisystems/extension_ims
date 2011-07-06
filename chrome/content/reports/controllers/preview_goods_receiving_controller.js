@@ -11,7 +11,7 @@
         
         packageName: 'ims',
         
-        _fileName: 'preview_goods_receiving',
+        _fileName: 'goods_receiving',
         
         _grData: null,
         

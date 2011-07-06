@@ -2,12 +2,22 @@
 import smtplib
 import base64
 import sys
+import os
 
 filename = sys.argv[9]
 attachedname = filename[filename.rfind("/")+1:]
-fo = open(filename,"rb")
-filecontent = fo.read()
+
+try:
+    fo = open(filename,"rb")
+    filecontent = fo.read()
+except:
+    os.remove(filename);
+    sys.quit()
+
 encodedcontent = base64.b64encode(filecontent)
+
+rsfile = sys.argv[10]
+rso = open(rsfile,"w")
 
 FROM = sys.argv[1]
 tmp = sys.argv[2]
@@ -40,12 +50,39 @@ Content-Disposition: attachment;filename=%s
 """ % (filename,attachedname,encodedcontent,marker)
 message = part1 + part2 + part3
 
-server=smtplib.SMTP(sys.argv[5],sys.argv[6])
-server.ehlo()
-server.starttls()
-server.ehlo()
-server.login(sys.argv[7],sys.argv[8])
-smtpresult = server.sendmail(FROM,TO,message)
-print smtpresult
-server.quit()
-
+try:
+    server=smtplib.SMTP(sys.argv[5],sys.argv[6])
+    server.ehlo()
+    server.starttls()
+    server.ehlo()
+    server.login(sys.argv[7],sys.argv[8])
+    smtpresult = server.sendmail(FROM,TO,message)
+    if len(smtpresult) > 0:
+        print >> rso, smtpresult
+    else:
+        print >> rso, "0"
+    server.quit()
+except smtplib.SMTPServerDisconnected:
+    print >> rso, "SMTP Server Disconnected"
+except smtplib.SMTPAuthenticationError:
+    print >> rso, "SMTP Authentication Error"
+except smtplib.SMTPResponseException:
+    print >> rso, "SMTP Response Exception"
+except smtplib.SMTPSenderRefused:
+    print >> rso, "SMTP Sender Refused"
+except smtplib.SMTPRecipientsRefused:
+    print >> rso, "SMTP Recipients Refused Error"
+except smtplib.SMTPDataError:
+    print >> rso, "SMTP Data Error"
+except smtplib.SMTPConnectError:
+    print >> rso, "SMTP connect Error"
+except smtplib.SMTPHeloError:
+    print >> rso, "SMTP Helo Error"
+except smtplib.socket.error:
+    print >> rso, "General socket error"
+except:
+    print >> rso, "Exception in sending email"
+finally:
+    fo.close();
+    rso.close();
+    os.remove(filename);

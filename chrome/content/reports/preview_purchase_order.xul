@@ -15,7 +15,7 @@
 
 <?xul-overlay href="chrome://global/content/dialogOverlay.xul"?>
 <?xul-overlay href="chrome://viviecr/content/reports/rpt_waiting_panel.xul"?>
-<?xul-overlay href="chrome://ims/content/overlays/report_overlay.xul" ?>
+<?xul-overlay href="chrome://ims/content/overlays/report_overlay.xul?po" ?>
 
 <window id="main"
         hidechrome="true"

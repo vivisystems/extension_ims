@@ -61,23 +61,25 @@
 
                 this.BrowserPrint.printToPdf(tmpFile, {}, this._preview_frame_id, caption, progress,
                     function() {
-                       self.doEmail(tmpFile, data, 180, cb, false);
+                       self.doEmail(tmpFile, data, 180, cb, self);
                     }
                 );
             } catch (e) {
-                this.doEmail('/tmp/__notexists__', data, '/tmp', 0.1,  cb, false);
+                this.doEmail('/tmp/__notexists__', data, '/tmp', 0.1,  cb, this);
             }
         },
 		
-        doEmail: function(tmpFile, data, timeout, callback, auto){
+        doEmail: function(tmpFile, data, timeout, callback, scope){
             var mode = data.mode;
             var supplier = data.supplier;
             var maxTimes = Math.floor(timeout / 0.2);
             var tries = 0;
             var nsTmpfile;
             var self = this;
-			
+            var rsFile = tmpFile + '_' + (new Date()).getTime();
+
             var checkFn = function() {
+                var result = _('A general exception has occurred');
                 try {
                     nsTmpfile = GREUtils.File.getFile(tmpFile);
                     
@@ -108,9 +110,14 @@
                         var script_file = GREUtils.File.chromeToPath(self._script_file);
                         var recipients = recipient.split(';');
 						
-                        self.execute('/usr/bin/python', [script_file, sender, recipients, body, subject, host, port, username, password, tmpFile]);
-					   
-                        nsTmpfile.remove(false);
+                        self.execute('/usr/bin/python', [script_file, sender, recipients, body, subject, host, port, username, password, tmpFile, rsFile], false);
+
+                        while (GeckoJS.File.exists(tmpFile)) scope.sleep(100);
+                        
+                        var resultStatus = GREUtils.File.readAllLine(rsFile);
+                        if (resultStatus.length > 0) {
+                            result = resultStatus[0];
+                        }
 
                         tries = maxTimes;
                     }
@@ -122,14 +129,25 @@
                 } catch(e) {
                     callback.apply(self);
                 }
+                if (result == '0') {
+                    GREUtils.Dialog.alert(self.topmostWindow,
+                                          _('%S Sent', [mode == 'po' ? _('Purchase Order') : _('Goods Receiving')]),
+                                          _('%S successfully emailed', [mode == 'po' ? _('Purchase Order') : _('Goods Receiving')]));
+                }
+                else {
+                    GREUtils.Dialog.alert(self.topmostWindow,
+                                          _('Unable to Email %S', [mode == 'po' ? _('Purchase Order') : _('Goods Receiving')]),
+                                          _('One or more errors occurred while emailing %S\n\n%S', [mode == 'po' ? _('Purchase Order') : _('Goods Receiving'), result]));
+                }
+                GREUtils.File.remove(rsFile);
             };
             setTimeout(checkFn, 200);
         },
 		
-        execute: function(cmd, params) {
+        execute: function(cmd, params, blocking) {
             try {
                 var exec = new GeckoJS.File(cmd);
-                var r = exec.run(params, true);
+                var r = exec.run(params, blocking);
                 exec.close();
                 return true;
             }

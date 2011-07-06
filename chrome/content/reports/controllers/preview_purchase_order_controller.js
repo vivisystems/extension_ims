@@ -11,7 +11,7 @@
         
         packageName: 'ims',
         
-        _fileName: 'preview_purchase_order',
+        _fileName: 'purchase_order',
         
         _poData: null,
         
