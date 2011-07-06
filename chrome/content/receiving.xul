@@ -295,7 +295,7 @@
                                 <button id="print_gr" label="&receiving.button.print;" class="button-cancel" oncommand="$do('openPreviewDialog', null, 'Receiving');"  />
                                 <spacer flex="1"/>
                                 <button id="commit" label="" hidden="true" class="button-modify" oncommand="$do('commitGR', null, 'Receiving');"/>
-                                <button id="close" label="&receiving.button.close;" hidden="true" class="button-modify" oncommand="$do('closePOGR', null, 'Receiving');"/>
+                                <button id="close" label="&receiving.button.close;" hidden="true" class="button-modify" oncommand="$do('doClosePOGR', null, 'Receiving');"/>
                                 <spacer flex="1"/>
                                 <button id="discard_changes" label="&receiving.button.discard;" hidden="true" class="button-cancel" oncommand="$do('discardChanges', null, 'Receiving');"  />
                                 <button id="cancel_create" label="&receiving.button.cancel;" hidden="true" class="button-cancel" oncommand="$do('cancelCreate', null, 'Receiving');"  />

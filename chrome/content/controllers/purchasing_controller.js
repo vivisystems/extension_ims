@@ -110,6 +110,7 @@
                 return;
             }
 
+            document.getElementById('tab_search').removeAttribute('disabled');
             this._mode = document.getElementById('main_tabs').selectedIndex = 0;
 
             // clear detail list selection
@@ -410,6 +411,8 @@
             document.getElementById('print_po').hidden = true;
 
             document.getElementById('tab_detail').removeAttribute('disabled');
+            document.getElementById('tab_search').setAttribute('disabled', true);
+            
             self._mode = document.getElementById('main_tabs').selectedIndex = 1;
 
             // initialize detail List

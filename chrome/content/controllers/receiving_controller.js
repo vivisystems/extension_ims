@@ -121,6 +121,7 @@
                 return;
             }
 
+            document.getElementById('tab_search').removeAttribute('disabled');
             this._mode = document.getElementById('main_tabs').selectedIndex = 0;
 
             // clear detail list selection
@@ -714,6 +715,15 @@
             };
             
             return true;
+        },
+
+        doClosePOGR: function() {
+            var args = {
+                title: _('Close PO/GR'),
+                closePO: this._gr.po_open > 0,
+                closeGR: this._gr.open > 0
+            }
+            $.popupPanel('promptClosePOGRPanel', args);
         },
 
         closePOGR: function(target) {
