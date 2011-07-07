@@ -20,8 +20,6 @@
 
         autoRestoreFromBackup: true,
 
-        httpService: null,
-
         createStore: function() {
             
             var ds = this.datasource;
@@ -55,95 +53,34 @@
             return rc;
         },
 
-        getHttpService: function() {
-
-            try {
-                if (!this.httpService) {
-                    var syncSettings = SyncSetting.read();
-                    this.httpService = new SyncbaseHttpService();
-                    this.httpService.setSyncSettings(syncSettings);
-                    this.httpService.setHostname(syncSettings.stock_hostname);
-                    this.httpService.setController('stocks');
-                    this.httpService.setForce(true);
-                }
-            }catch(e) {
-                this.log('error ' + e);
-            }
-
-            return this.httpService;
-        },
-
-        getHostname: function() {
-            return this.getHttpService().getHostname();
-        },
-
-        isRemoteService: function() {
-            return !this.getHttpService().isLocalhost();
-        },
-
         saveItemCosts: function(items) {
 
-            if(this.isRemoteService()) {
-
-                var remoteUrl = this.getHttpService().getRemoteServiceUrl('decreaseStockRecords');
-                var requestUrl = remoteUrl + '/' + this.lastModified;
-
-                var request_data = GeckoJS.BaseObject.serialize(datas);
-                var response_data = this.getHttpService().requestRemoteService('POST', requestUrl, request_data, async, callback) || null ;
-
-                this.lastReadyState = this.getHttpService().lastReadyState;
-                this.lastStatus = this.getHttpService().lastStatus;
-
-                if (response_data) {
-                    var remoteStocks;
-
-                    try {
-                        //
-                        remoteStocks = GeckoJS.BaseObject.unserialize(GREUtils.Gzip.inflate(atob(response_data)));
-
-                    }catch(e) {
-                        this.lastStatus = 0;
-                        this.log('ERROR', 'decreaseStockRecords cant decode response '+e);
-                    }
-
+            var productCostModel = new ProductCostModel();
+            var itemCosts = [];
+            for (var id in items) {
+                var item = items[id];
+                var itemCost = {
+                    order_item_id: id,
+                    manual_cost: null,
+                    avg_cost: null,
+                    last_cost: null
                 }
 
-
-            }else {
-                var productsById = GeckoJS.Session.get('productsById');
-                var productCostModel = new ProductCostModel();
-                var itemCosts = [];
-                for (var id in items) {
-                    var item = items[id];
-                    var prod = productsById[item.id];
-                    var itemCost = {
-                        id: id,
-                        manual_cost: null,
-                        avg_cost: null,
-                        last_cost: null
-                    }
-
-                    // get manual cost
-                    if (prod && prod.buy_price != null && prod.buy_price != '') {
-                        itemCost.manual_cost = prod.buy_price;
-                    }
-
-                    // get last prices from cache
-                    var costs = productCostModel.getProductCosts(prod.no);
-                    if (costs) {
-                        itemCost.avg_cost = costs.avg_cost;
-                        itemCost.last_cost = costs.last_cost;
-                    }
-
-                    itemCosts.push(itemCost);
+                // get last prices from cache
+                var costs = productCostModel.getProductCosts(item.no);
+                if (costs) {
+                    itemCost.avg_cost = costs.avg_cost;
+                    itemCost.last_cost = costs.last_cost;
+                    itemCost.manual_cost = costs.buy_price;
                 }
-                var rc = this.saveAll(itemCosts);
-
-                this.lastReadyState = 4;
-                this.lastStatus = 200;
-
-                return rc;
+                itemCosts.push(itemCost);
             }
+            var rc = this.saveAll(itemCosts);
+
+            this.lastReadyState = 4;
+            this.lastStatus = 200;
+
+            return rc;
         }
     };
 
