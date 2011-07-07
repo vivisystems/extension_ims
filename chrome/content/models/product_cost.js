@@ -19,6 +19,7 @@
                        ("id" VARCHAR PRIMARY KEY  NOT NULL , \
                         "avg_cost" FLOAT NOT NULL , \
                         "last_cost" FLOAT NOT NULL , \
+                        "manual_cost" FLOAT NOT NULL , \
                         "acc_qty" FLOAT NOT NULL , \
                         "last_gr_no" VARCHAR, \
                         "created" INTEGER NOT NULL , \

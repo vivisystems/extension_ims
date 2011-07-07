@@ -37,14 +37,14 @@
             // get supplier count
             this.getSupplierCount();
 
-            this.updateResultCount();
-
             //set default
             document.getElementById('search_limit_size').value = 100;
-            
+
+            this.setSearchConditions();
+            //this.updateResultCount();
         },
 
-        setSearchConditions:function(){
+        setSearchConditions: function() {
             var conditionInput = GeckoJS.FormHelper.serializeToObject('searchForm');
 
             conditionInput.code = document.getElementById('filter_supplier_code').value;
@@ -56,7 +56,7 @@
             this.search(conditionInput, 'supplierscrollablepanel');
         },
 
-        selectSupplier: function(index){
+        selectSupplier: function(index) {
             // clear form
             GeckoJS.FormHelper.reset('supplierForm');
 
@@ -78,7 +78,7 @@
             this.validateForm();
         },
 
-        search: function ( conditionInput, listID) {
+        search: function(conditionInput, listID) {
             // construct search conditions
             var conditionStr = '';
 
@@ -149,7 +149,7 @@
             document.getElementById('search_result_total').value = this._total;
         },
 
-        addSupplier: function(){
+        addSupplier: function() {
             var aURL = 'chrome://viviecr/content/prompt_additem.xul';
             var screenwidth = parseInt((GeckoJS.Configure.read('vivipos.fec.mainscreen.width') || 800) * .7) || 500;
             var screenheight = parseInt((GeckoJS.Configure.read('vivipos.fec.mainscreen.height') || 600) * .85) || 500;
@@ -227,14 +227,14 @@
             }
         },
 
-        searchNewSupplier: function(supplier_code){
+        searchNewSupplier: function(supplier_code) {
             GeckoJS.FormHelper.reset('searchForm');
             document.getElementById('filter_supplier_code').value = supplier_code;
 
             this.setSearchConditions();
         },
 
-        modifySupplier: function(){
+        modifySupplier: function() {
             var index = this.getSupplierListObj().selectedIndex;
             var modifiedSupplier = GeckoJS.FormHelper.serializeToObject('supplierForm');
             if (index > -1 && modifiedSupplier.code != '' && modifiedSupplier.name != '') {
@@ -454,7 +454,7 @@
             return this._tabboxObj;
         },
 
-        getSupplierCount: function(){
+        getSupplierCount: function() {
             this._total = this.Supplier.findCount();
             if (this.Supplier.lastError != 0) {
                 this._dbError(this.Supplier.lastError,

@@ -13,6 +13,7 @@
 
   <script src="chrome://viviecr/content/utils/syncbase_http_service.js" type="application/x-javascript;version=1.7"/>
   <script src="chrome://viviecr/content/models/stock_record.js" type="application/x-javascript;version=1.7"/>
+  <script src="chrome://ims/content/models/product_cost.js" type="application/x-javascript;version=1.7"/>
   <script src="chrome://ims/content/controllers/plus_overlay_controller.js" type="application/x-javascript;version=1.7"/>
 
     <tabpanel hidden="true">

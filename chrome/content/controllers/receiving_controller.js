@@ -777,6 +777,7 @@
                         id: item.no,
                         avg_cost: item.price,
                         last_cost: item.price,
+                        manual_cost: 0,
                         acc_qty: qty_delta,
                         last_gr_no: gr.no
                     };
