@@ -763,15 +763,7 @@
             var doRemove = false;
 
             if (qty_delta != 0 || weight_delta != 0) {
-                var priceRecord = this.ProductCost.getProductCosts(item.no);
-                if (priceRecord === false) {
-                    this._dbError(this.ProductCost.lastError,
-                                  this.ProductCost.lastErrorString,
-                                  _('An error was encountered while retrieving costs for product [%S (%S)] from database (error code %S) [message #IMS-05-20].',
-                                    [item.name, item.no, this.ProductCost.lastError]));
-                    return false;
-                }
-
+                var priceRecord = this.ProductCost.getProductCosts(item.no, true);
                 if (!priceRecord) {
                     priceRecord = {
                         id: item.no,

@@ -71,7 +71,7 @@
                 if (costs) {
                     itemCost.avg_cost = costs.avg_cost;
                     itemCost.last_cost = costs.last_cost;
-                    itemCost.manual_cost = costs.buy_price;
+                    itemCost.manual_cost = costs.manual_cost;
                 }
                 itemCosts.push(itemCost);
             }

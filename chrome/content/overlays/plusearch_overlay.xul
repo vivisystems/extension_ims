@@ -48,7 +48,7 @@
             </vbox>
         </row>
         <vivitree id="lastpricecrollablepanel" flex="1" class="standard last-price-list"
-                  headers="&receiving.field.created;,&receiving.field.no;,&receiving.field.supplier;,&receiving.field.qty;,&receiving.field.unitprice;"
+                  headers="&receiving.field.created;,&receiving.field.no;,&receiving.field.supplier;,&receiving.field.recv.qty;,&receiving.field.unitprice;"
                   fields="modified,grnumber,supplier,qty,unitprice"
                   />
         <button id="more" label="&receiving.button.more;" oncommand="$do('selectMoreProducts', null, 'IMS-PLUSearchController');"/>

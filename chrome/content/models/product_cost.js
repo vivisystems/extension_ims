@@ -4,6 +4,8 @@
         include( 'chrome://viviecr/content/models/app.js' );
     }
     
+    include('chrome://viviecr/content/utils/syncbase_http_service.js');
+    
     var __model__ = {
 
         name: 'ProductCost',
@@ -11,8 +13,6 @@
         useDbConfig: 'inventory',
 
         httpService: null,
-
-        lastModified: 0,
 
         createStore: function() {
 
@@ -45,7 +45,7 @@
                     this.httpService = new SyncbaseHttpService();
                     this.httpService.setSyncSettings(syncSettings);
                     this.httpService.setHostname(syncSettings.stock_hostname);
-                    this.httpService.setController('stocks');
+                    this.httpService.setController('product_costs');
                     this.httpService.setForce(true);
                 }
             }
@@ -65,11 +65,13 @@
         },
 
         cacheProductCosts: function() {
-            var cache = {};
+            var cache = GeckoJS.Session.get('ims_product_costs') || {};
+            var lastModified = GeckoJS.Session.get('ims_product_costs_modified') || 0;
 
             if (this.isRemoteService()) {
                 var remoteUrl = this.getHttpService().getRemoteServiceUrl('getLastModifiedRecords');
-                var requestUrl = remoteUrl + '/' + this.lastModified;
+                var updatedModified = lastModified;
+                var requestUrl = remoteUrl + '/' + lastModified;
                 var self = this;
 
                 var cb = function(response_data) {
@@ -81,28 +83,34 @@
 
                     if (response_data) {
                         try {
-                            //
                             remoteCosts = GeckoJS.BaseObject.unserialize(GREUtils.Gzip.inflate(atob(response_data)));
-
                         }catch(e) {
                             self.lastStatus = 0;
                             remoteCosts = [];
-                            this.log('ERROR', 'getLastModifiedRecords cant decode response '+e);
+                            this.log('ERROR', 'failed to decode getLastModifiedRecords response '+e);
                         }
 
                         remoteCosts.forEach(function(cost) {
                             cache[cost.id] = cost;
-                            if (cost.modified > self.lastModified) self.lastModified = cost.modified;
+                            if (parseInt(cost.modified) > updatedModified) {
+                                updatedModified = parseInt(cost.modified);
+                            }
                         })
                     }
-
-                    self.log('DEBUG', 'cacheProductCosts: ' + self.dump(self._cachedRecords));
-
                 };
 
-                var remoteCostResults = this.getHttpService().requestRemoteService('GET', requestUrl, null, null, null) || null ;
-                cb.call(self, remoteCostResults);
+                try {
+                    var remoteCostResults = this.getHttpService().requestRemoteService('GET', requestUrl, null, false, null, false);
+                    cb.call(self, remoteCostResults);
 
+                    if (updatedModified > lastModified) {
+                        GeckoJS.Session.set('ims_product_costs_modified', updatedModified);
+                    }
+                }
+                catch(e) {
+                    this.lastStatus = 0;
+                    this.log('ERROR', 'failed on remote request to [' + requestUrl + ']\n' + e);
+                }
             }
             else {
 
@@ -122,45 +130,18 @@
             return (this.lastStatus == 200);
         },
 
-        getProductCosts: function(id) {
-
-            if (this.isRemoteService()) {
+        getProductCosts: function(id, cached) {
+            if (!cached && this.isRemoteService()) {
                 if (!this.cacheProductCosts()) {
-                    return false;
+                    this.log('ERROR', 'Failed to update product costs from stock service, using cached values');
                 }
             }
 
             var cache = GeckoJS.Session.get('ims_product_costs');
             var record;
+
             if (cache) {
                 record = cache[id];
-            }
-
-            if (this.isRemoteService()) {
-
-            }
-            else {
-                if (!record) {
-                    record = this.findByIndex('first', {
-                        index: 'id',
-                        value: id
-                    });
-
-                    if (parseInt(this.lastError) != 0) {
-                        return false;
-                    }
-                }
-
-                if (!record) {
-                    record = {};
-                }
-
-                var productsById = GeckoJS.Session.get('productsById');
-                var prod = productsById[id];
-                // get manual cost
-                if (prod && prod.buy_price != null && prod.buy_price != '') {
-                    record.manual_cost = prod.buy_price;
-                }
             }
 
             return record;

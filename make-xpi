@@ -26,4 +26,4 @@ else
 fi
 
 
-zip -r ${filename} chrome.manifest install.rdf chrome/ defaults/ VERSION make-xpi
+zip -r ${filename} chrome.manifest install.rdf chrome/ defaults/ webapp_plugins/ VERSION make-xpi
