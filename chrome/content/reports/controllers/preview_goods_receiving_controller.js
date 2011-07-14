@@ -47,7 +47,7 @@
         },
 
         emailReport: function() {
-            $do('emailReport', {mode: 'gr', supplier: this._grData.supplier, id: this._grData.gr.no}, 'EmailPdf');
+            $do('emailReport', {mode: 'gr', supplier: this._grData.supplier, id: this._grData.gr.no, title: 'Goods Receiving Form'}, 'EmailPdf');
         },
         
         execute: function() {

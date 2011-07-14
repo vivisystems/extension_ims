@@ -45,7 +45,7 @@
                     this.httpService = new SyncbaseHttpService();
                     this.httpService.setSyncSettings(syncSettings);
                     this.httpService.setHostname(syncSettings.stock_hostname);
-                    this.httpService.setController('product_costs');
+                    this.httpService.setController('ims/product_costs');
                     this.httpService.setForce(true);
                 }
             }

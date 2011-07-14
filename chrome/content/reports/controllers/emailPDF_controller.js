@@ -47,9 +47,7 @@
                 var cur_file = document.location.href;
                 var filename = cur_file.substr(cur_file.lastIndexOf('/')+1);
                 filename = filename.substr(0,filename.length-4);
-                var report_filename = (data.mode == 'po') ? _('Purchase Order') : _('Goods Receiving Form');
-                GeckoJS.Session.set('report_filename',report_filename);
-				
+
                 var fileName = filename + '_' + (new Date()).toString('yyyyMMddHHmm') + '.pdf';
                 var tmpFile = this._tmpFileDir + fileName;
                 var self = this;
@@ -71,6 +69,7 @@
 		
         doEmail: function(tmpFile, data, timeout, callback, scope){
             var mode = data.mode;
+            var report_title = data.title;
             var supplier = data.supplier;
             var maxTimes = Math.floor(timeout / 0.2);
             var tries = 0;
@@ -99,8 +98,8 @@
                         }
                         var body = self.settings[mode + '_email_body'];
                         var subject = (self.settings[mode + '_email_subject'] || '').trim();
-                        var report_send = GeckoJS.Session.get('report_filename');
-                        subject += ' ' + report_send + ' [' +  data.id + '] (' + (new Date()).toString('dd-MM-yyyy HH:mm') + ')';
+                        if (subject != '') subject += ' ';
+                        subject += report_title + (data.id ? (' [' +  data.id + ']') : '') + ' (' + (new Date()).toString('dd-MM-yyyy HH:mm') + ')';
 
                         var host = (self.settings['smtp_host'] || '').trim();
                         var port = (self.settings['smtp_port'] || '').trim();
@@ -131,13 +130,13 @@
                 }
                 if (result == '0') {
                     GREUtils.Dialog.alert(self.topmostWindow,
-                                          _('%S Sent', [mode == 'po' ? _('Purchase Order') : _('Goods Receiving')]),
-                                          _('%S successfully emailed', [mode == 'po' ? _('Purchase Order') : _('Goods Receiving')]));
+                                          _('%S Sent', [report_title]),
+                                          _('%S successfully emailed', [report_title]));
                 }
                 else {
                     GREUtils.Dialog.alert(self.topmostWindow,
-                                          _('Unable to Email %S', [mode == 'po' ? _('Purchase Order') : _('Goods Receiving')]),
-                                          _('One or more errors occurred while emailing %S\n\n%S', [mode == 'po' ? _('Purchase Order') : _('Goods Receiving'), result]));
+                                          _('Unable to Email %S', [report_title]),
+                                          _('One or more errors occurred while emailing %S\n\n%S', [report_title, result]));
                 }
                 GREUtils.File.remove(rsFile);
             };

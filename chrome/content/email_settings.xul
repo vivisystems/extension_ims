@@ -12,8 +12,6 @@
 <?xml-stylesheet href="chrome://viviecr/skin/be/content.css" type="text/css"?>
 <?xml-stylesheet href="chrome://viviecr/skin/dialogs/containers.css" type="text/css"?>
 
-<?xml-stylesheet href="chrome://ims/skin/be/email_settings.css" type="text/css"?>
-
 <?xul-overlay href="chrome://global/content/dialogOverlay.xul" ?>
 <?xul-overlay href="chrome://viviecr/content/dialogs/common_waiting_panel.xul" ?>
 
@@ -32,8 +30,8 @@
         <key id="key_clear" keycode="VK_ESCAPE" oncommand="document.getElementById('close').click()"/>
     </keyset>
 
-    <vbox id="settingMain" flex="1" class="container-be">
-        <vbox flex="1" class="container-main">
+    <hbox id="settingMain" flex="1" class="container-be layout-be">
+        <vbox flex="1" class="container-main layout-a">
             <vbox id="basic-panel-vbox" flex="1">
                 <caption label="&email_report.title;" class="label-page-title" />
                 
@@ -69,95 +67,135 @@
                     </rows>
                 </grid>
                 
-                <hbox>
-                    <vbox class="custom-content-po">
-                        <hbox pack="center">
-                            <label id="po-title-label" value="&email_report.po.title;" class="label-sub-title"/>
-                        </hbox>
-                        <grid class="data-form">
-                            <columns>
-                                <column/>
-                                <column flex="1"/>
-                            </columns>
-                            <rows>
-                                <row id="po-sender-row">
-                                    <label id="po-sender-label" value="&email_report.sender.label;"/>
-                                    <textbox value=""
-                                             form="settingForm" name="po_email_sender" id="po_email_sender"/>
-                                </row>
+                <tabbox id="settings_tabbox" flex="1" class="content-tabbox">
+                    <tabs id="settings_tabs">
+			<tab id="settings_tab_po" label="&email_report.report.title;"/>
+			<tab id="settings_tab_po" label="&email_report.po.title;"/>
+			<tab id="settings_tab_gr" label="&email_report.gr.title;"/>
+                    </tabs>
+                    <tabpanels id="settings_tabpanels" flex="1">
 
-                                <row id="po-recipient-row">
-                                    <label id="po-recipient-label" value="&email_report.recipient.label;"/>
-                                    <textbox value=""
-                                             form="settingForm" name="po_email_recipient" id="po_email_recipient"/>
-                                </row>
+                        <tabpanel id="settings_tabpanel_report" flex="1">
+                            <hbox flex="1">
+                                <grid class="data-form" flex="1">
+                                    <columns>
+                                        <column/>
+                                        <column flex="1"/>
+                                    </columns>
+                                    <rows>
+                                        <row id="report-sender-row">
+                                            <label id="report-sender-label" value="&email_report.sender.label;"/>
+                                            <textbox value=""
+                                                     form="settingForm" name="report_email_sender" id="report_email_sender"/>
+                                        </row>
 
-                                <row id="po-subject-row">
-                                    <label id="po-subject-label" value="&email_report.subject.label;"/>
-                                    <textbox value=""
-                                             form="settingForm" name="po_email_subject" id="po_email_subject"/>
-                                </row>
+                                        <row id="report-recipient-row">
+                                            <label id="report-recipient-label" value="&email_report.recipient.label;"/>
+                                            <textbox value=""
+                                                     form="settingForm" name="report_email_recipient" id="report_email_recipient"/>
+                                        </row>
 
-                                <row id="po-body-row">
-                                    <label id="po-body-label" value="&email_report.body.label;"/>
-                                    <textbox value="" multiline="true"
-                                             form="settingForm" name="po_email_body" id="po_email_body"/>
-                                </row>
+                                        <row id="report-subject-row">
+                                            <label id="report-subject-label" value="&email_report.subject.label;"/>
+                                            <textbox value=""
+                                                     form="settingForm" name="report_email_subject" id="report_email_subject"/>
+                                        </row>
 
-                                <row id="po-copy-row">
-                                    <checkbox id="po-sendMeACopy" name="po_sendMeACopy"
-                                              form = "settingForm" label="&email_report.sendcopy.label;"/>
-                                    <checkbox id="po-autoSendSupplier" name="po_sendSupplier"
-                                              form = "settingForm" label="&email_report.sendsupplier.label;"/>
-                                </row>
-                            </rows>
-                        </grid>
-                    </vbox>
+                                        <row id="report-copy-sender">
+                                            <checkbox id="report-sendMeACopy" name="report_sendMeACopy"
+                                                      form = "settingForm" label="&email_report.sendcopy.label;"/>
+                                        </row>
+                                    </rows>
+                                </grid>
+                            </hbox>
+                            <textbox value="" multiline="true" flex="1"
+                                     form="settingForm" name="report_email_body" id="report_email_body"/>
+                        </tabpanel>
 
-                    <vbox class="custom-content-gr">
-                        <hbox pack="center">
-                            <label id="gr-title-label" value="&email_report.gr.title;" class="label-sub-title"/>
-                        </hbox>
-                        <grid class="data-form">
-                            <columns>
-                                <column/>
-                                <column flex="1"/>
-                            </columns>
-                            <rows>
-                                <row id="gr-sender-row">
-                                    <label id="gr-sender-label" value="&email_report.sender.label;"/>
-                                    <textbox value=""
-                                             form="settingForm" name="gr_email_sender" id="gr_email_sender"/>
-                                </row>
+                        <tabpanel id="settings_tabpanel_po" flex="1">
+                            <hbox flex="1">
+                                <grid class="data-form" flex="1">
+                                    <columns>
+                                        <column/>
+                                        <column flex="1"/>
+                                    </columns>
+                                    <rows>
+                                        <row id="po-sender-row">
+                                            <label id="po-sender-label" value="&email_report.sender.label;"/>
+                                            <textbox value=""
+                                                     form="settingForm" name="po_email_sender" id="po_email_sender"/>
+                                        </row>
 
-                                <row id="gr-recipient-row">
-                                    <label id="gr-recipient-label" value="&email_report.recipient.label;"/>
-                                    <textbox value=""
-                                             form="settingForm" name="gr_email_recipient" id="gr_email_recipient"/>
-                                </row>
+                                        <row id="po-recipient-row">
+                                            <label id="po-recipient-label" value="&email_report.recipient.label;"/>
+                                            <textbox value=""
+                                                     form="settingForm" name="po_email_recipient" id="po_email_recipient"/>
+                                        </row>
 
-                                <row id="gr-subject-row">
-                                    <label id="gr-subject-label" value="&email_report.subject.label;"/>
-                                    <textbox value=""
-                                             form="settingForm" name="gr_email_subject" id="gr_email_subject"/>
-                                </row>
+                                        <row id="po-subject-row">
+                                            <label id="po-subject-label" value="&email_report.subject.label;"/>
+                                            <textbox value=""
+                                                     form="settingForm" name="po_email_subject" id="po_email_subject"/>
+                                        </row>
 
-                                <row id="gr-body-row">
-                                    <label id="gr-body-label" value="&email_report.body.label;"/>
-                                    <textbox value="" multiline="true"
-                                             form="settingForm" name="gr_email_body" id="gr_email_body"/>
-                                </row>
+                                        <row id="po-copy-sender">
+                                            <checkbox id="po-sendMeACopy" name="po_sendMeACopy"
+                                                      form = "settingForm" label="&email_report.sendcopy.label;"/>
+                                        </row>
+                                        <row id="po-copy-supplier">
+                                            <checkbox id="po-autoSendSupplier" name="po_sendSupplier"
+                                                      form = "settingForm" label="&email_report.sendsupplier.label;"/>
+                                        </row>
+                                    </rows>
+                                </grid>
+                            </hbox>
+                            <textbox value="" multiline="true" flex="1"
+                                     form="settingForm" name="po_email_body" id="po_email_body"/>
+                        </tabpanel>
 
-                                <row id="gr-copy-row">
-                                    <checkbox id="gr-sendMeACopy" name="gr_sendMeACopy"
-                                              form = "settingForm" label="&email_report.sendcopy.label;"/>
-                                    <checkbox id="gr-autoSendSupplier" name="gr_sendSupplier"
-                                              form = "settingForm" label="&email_report.sendsupplier.label;"/>
-                                </row>
-                            </rows>
-                        </grid>
-                    </vbox>
-                </hbox>
+                        <tabpanel id="settings_tabpanel_gr" flex="1">
+                            <hbox flex="1">
+                                <grid class="data-form" flex="1">
+                                    <columns>
+                                        <column/>
+                                        <column flex="1"/>
+                                    </columns>
+                                    <rows>
+                                        <row id="gr-sender-row">
+                                            <label id="gr-sender-label" value="&email_report.sender.label;"/>
+                                            <textbox value=""
+                                                     form="settingForm" name="gr_email_sender" id="gr_email_sender"/>
+                                        </row>
+
+                                        <row id="gr-recipient-row">
+                                            <label id="gr-recipient-label" value="&email_report.recipient.label;"/>
+                                            <textbox value=""
+                                                     form="settingForm" name="gr_email_recipient" id="gr_email_recipient"/>
+                                        </row>
+
+                                        <row id="gr-subject-row">
+                                            <label id="gr-subject-label" value="&email_report.subject.label;"/>
+                                            <textbox value=""
+                                                     form="settingForm" name="gr_email_subject" id="gr_email_subject"/>
+                                        </row>
+
+                                        <row id="gr-copy-sender">
+                                            <checkbox id="gr-sendMeACopy" name="gr_sendMeACopy"
+                                                      form = "settingForm" label="&email_report.sendcopy.label;"/>
+                                        </row>
+                                        <row id="gr-copy-supplier">
+                                            <checkbox id="gr-autoSendSupplier" name="gr_sendSupplier"
+                                                      form = "settingForm" label="&email_report.sendsupplier.label;"/>
+                                        </row>
+                                    </rows>
+                                </grid>
+
+                                <textbox value="" multiline="true" flex="1"
+                                         form="settingForm" name="gr_email_body" id="gr_email_body"/>
+                            </hbox>
+                        </tabpanel>
+                    </tabpanels>
+                </tabbox>
             </vbox>
             <spacer flex="1" />
             <hbox id="dialogButtons" class="exitbar">
@@ -168,7 +206,7 @@
             </hbox>
 
         </vbox>
-    </vbox>
+    </hbox>
 
     <popupset id="dialogs">
     </popupset>

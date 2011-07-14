@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE overlay [
+  <!ENTITY % Overlay SYSTEM "chrome://viviecr/locale/dialog.dtd">
+  %Overlay;
+  <!ENTITY % rpt_profit_and_loss SYSTEM "chrome://ims/locale/reports/rpt_profit_and_loss_summary.dtd">
+  %rpt_profit_and_loss;
+  ]>
+<?xml-stylesheet href="chrome://vivipos/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/common/viviecr.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/common/reports.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/containers.css" type="text/css"?>
+<?xml-stylesheet href="chrome://viviecr/skin/dialogs/content.css" type="text/css"?>
+
+<?xul-overlay href="chrome://global/content/dialogOverlay.xul"?>
+<?xul-overlay href="chrome://viviecr/content/reports/rpt_waiting_panel.xul"?>
+<?xul-overlay href="chrome://viviecr/content/reports/rpt_scrollbutton_panel.xul"?>
+<?xul-overlay href="chrome://viviecr/content/reports/rpt_databases_menu.xul"?>
+
+<?xul-overlay href="chrome://ims/content/overlays/report_overlay.xul?profit_and_loss_summary" ?>
+
+<window id="main"
+        hidechrome="true"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml">
+
+    <script type="application/x-javascript" src="chrome://vivipos/content/init_geckojs.js"/>
+    <script type="application/x-javascript" src="chrome://viviecr/content/reports/template.js"/>
+    <script type="application/x-javascript" src="chrome://viviecr/content/reports/template_ext.js"/>
+    <script type="application/x-javascript" src="chrome://viviecr/content/reports/controllers/components/check_media.js"/>
+    <script type="application/x-javascript" src="chrome://ims/content/reports/rpt_profit_and_loss_summary.js"/>
+
+    <keyset id="keyset_extensions">
+        <key id="key_clear" keycode="VK_ESCAPE" oncommand="document.getElementById('ok').click()"/>
+    </keyset>
+
+    <vbox flex="1" class="container-report">
+		<vbox flex="1" class="container-main">
+		    <vbox>
+		        <label value="&rptprofitandlosssummary.title;" class="label-page-title"/>
+                    <!-- databases menu overlay -->
+                    <hbox id="databasesMenuBox" />
+                    <hbox>
+                    <hbox flex="1">
+                        <grid flex="1" class="data-form">
+                            <columns>
+                                <column flex="1"/>
+                                <column flex="1"/>
+                            </columns>
+                            <rows>
+                                <row>
+                                    <vbox>
+                                        <label value="&rptprofitandlosssummary.startdate;"/>
+                                        <vividatetimepicker id="start_date" value="" type="popup"/>
+                                    </vbox>
+                                    <vbox>
+                                        <label value="&rptprofitandlosssummary.enddate;"/>
+                                        <vividatetimepicker id="end_date" value="" type="popup"/>
+                                    </vbox>
+                                </row>
+                                <row>
+                                    <vbox>
+                                        <label value="&rptprofitandlosssummary.periodtype;" id="periodtype_label" form="queryform" name="periodtype_label"/>
+                                        <menulist id="period_type" form="queryform" name="period_type">
+                                            <menupopup id="periodtype_menupopup">
+                                                <menuitem selected="false" label="&rptprofitandlosssummary.transaction_created;" value="transaction_created"/>
+                                                <menuitem selected="true" label="&rptprofitandlosssummary.transaction_submitted;" value="transaction_submitted"/>
+                                                <menuitem selected="false" label="&rptprofitandlosssummary.sale_period;" value="sale_period"/>
+                                            </menupopup>
+                                        </menulist>
+                                    </vbox>
+                                    <vbox>
+                                        <label value="&rptprofitandlosssummary.terminal_no;" id="terminal_no_label" form="queryform" name="terminal_no_label"/>
+                                        <textbox id="terminal_no" value="" form="queryform" name="terminal_no"/>
+                                    </vbox>
+                                </row>
+                                <row>
+                                    <vbox>
+                                        <label value="&rptprofitandlosssummary.costtype;" id="costtype_label" form="queryform" name="costtype_label"/>
+                                        <menulist id="cost_type" form="queryform" name="cost_type">
+                                            <menupopup id="cost_type_menupopup">
+                                                <menuitem selected="true" label="&rptprofitandlosssummary.manual_cost;" value="manual_cost"/>
+                                                <menuitem selected="false" label="&rptprofitandlosssummary.last_cost;" value="last_cost"/>
+                                                <menuitem selected="false" label="&rptprofitandlosssummary.avg_cost;" value="avg_cost"/>
+                                            </menupopup>
+                                        </menulist>
+                                    </vbox>
+                                    <hbox>
+                                        <label value="&rptprofitandlosssummary.excludes;" flex="1"/>
+                                        <vbox id="excludes-column-1" flex="1">
+                                            <checkbox id="exclude_tax" label="&rptprofitandlosssummary.exclude_tax;" checked="false"/>
+                                            <checkbox id="exclude_svc" label="&rptprofitandlosssummary.exclude_svc;" checked="false"/>
+                                            <checkbox id="exclude_condiment" label="&rptprofitandlosssummary.exclude_condiment;" checked="false"/>
+                                        </vbox>
+                                        <vbox id="excludes-column-2" flex="1">
+                                            <checkbox id="exclude_promotion" label="&rptprofitandlosssummary.exclude_promotion;" checked="false"/>
+                                            <checkbox id="exclude_revalue" label="&rptprofitandlosssummary.exclude_revalue;" checked="false"/>
+                                            <checkbox id="exclude_adjustment" label="&rptprofitandlosssummary.exclude_adjustment;" checked="false"/>
+                                        </vbox>
+                                    </hbox>
+                                </row>
+                            </rows>
+                        </grid>
+                    </hbox>
+		            <button id="execute" label="&rptprofitandlosssummary.execute;" disabled="false" class="ExeBtn" oncommand="$do('execute', null, 'RptProfitAndLossSummary');"/>
+		        </hbox>
+		    </vbox>
+            <splitter id="splitter_zoom" collapse="before" resizeafter="farthest">
+                <!-- grippy/ -->
+            </splitter>
+
+            <hbox class="TopPnl">
+                <hbox class="ReportTool" flex="1" style="overflow: auto;">
+                    <arrowscrollbox orient="horizontal" flex="1" class="arrowScrollBox">
+                        <tabs id="tabs">
+                            <vivibutton id="export_pdf" label="&rptprofitandlosssummary.exportpdf;" disabled="false" class="PdfBtn" oncommand="$do('exportPdf', null, 'RptProfitAndLossSummary');"/>
+                            <vivibutton id="print" label="&rptprofitandlosssummary.print;" disabled="false" class="PrintReportBtn" oncommand="$do('print', null, 'RptProfitAndLossSummary');"/>
+                        </tabs>
+                    </arrowscrollbox>
+                </hbox>
+                <hbox id="dialogButtons" pack="end" class="exitbar">
+                    <button id="vkb" class="button-vkb" oncommand="VirtualKeyboard.toggle()"/>
+                    <button id="ok" label="&dialog.closeButton.label;" default="true" class="button-exit" oncommand="doOKButton();"/>
+                </hbox>
+            </hbox>
+
+            <hbox flex="1">
+                <groupbox flex="1">
+                    <box class="reportbox" id="previewBox" flex="1">
+                        <html:iframe type="content" id="preview_frame" src="chrome://viviecr/content/reports/rpt_template4.html" flex="1"/>
+                    </box>
+                </groupbox>
+            </hbox>
+        </vbox>
+    </vbox>
+
+    <!-- overlay the waiting panel. -->
+    <popupset id="dialogs"/>
+
+</window>

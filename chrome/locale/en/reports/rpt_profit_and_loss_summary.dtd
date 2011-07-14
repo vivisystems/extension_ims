@@ -1,0 +1,26 @@
+<!ENTITY rptprofitandlosssummary.title "Profit And Loss Report - Summary">
+<!ENTITY rptprofitandlosssummary.startdate "Start Date:">
+<!ENTITY rptprofitandlosssummary.enddate "End Date:">
+<!ENTITY rptprofitandlosssummary.execute "Execute">
+<!ENTITY rptprofitandlosssummary.exportpdf "Export to PDF">
+<!ENTITY rptprofitandlosssummary.exportcsv "Export to CSV">
+<!ENTITY rptprofitandlosssummary.exportrcp "Print">
+<!ENTITY rptprofitandlosssummary.print "Print">
+<!ENTITY rptprofitandlosssummary.togglezoom "Toggle Zoom">
+<!ENTITY rptprofitandlosssummary.terminal_no "Terminal:">
+<!ENTITY rptprofitandlosssummary.all "List All">
+<!ENTITY rptprofitandlosssummary.periodtype "Period Type:">
+<!ENTITY rptprofitandlosssummary.transaction_created "Order Opened">
+<!ENTITY rptprofitandlosssummary.transaction_submitted "Order Closed">
+<!ENTITY rptprofitandlosssummary.sale_period "Sale Period">
+<!ENTITY rptprofitandlosssummary.costtype "Cost Type:">
+<!ENTITY rptprofitandlosssummary.manual_cost "Manual Cost">
+<!ENTITY rptprofitandlosssummary.last_cost "Last Cost">
+<!ENTITY rptprofitandlosssummary.avg_cost "Average Cost">
+<!ENTITY rptprofitandlosssummary.excludes "Excludes:">
+<!ENTITY rptprofitandlosssummary.exclude_tax "Sales Tax">
+<!ENTITY rptprofitandlosssummary.exclude_svc "Service Charges">
+<!ENTITY rptprofitandlosssummary.exclude_promotion "Promotions">
+<!ENTITY rptprofitandlosssummary.exclude_revalue "Revalues">
+<!ENTITY rptprofitandlosssummary.exclude_condiment "Condiments">
+<!ENTITY rptprofitandlosssummary.exclude_adjustment "Discounts/Surcharges">

@@ -120,19 +120,20 @@
                            errmsg: _('An error was encountered while removing all goods receiving details(error code %S) [message #IMS-02-08].', [this.GRDetail.lastError])};
                 }
 
-                r = this.ProductCost.execute('delete from product_costs');
-                if (!r) {
-                    throw {errno: this.ProductCost.lastError,
-                           errstr: this.ProductCost.lastErrorString,
-                           errmsg: _('An error was encountered while removing all product cost records (error code %S) [message #IMS-02-09].', [this.ProductCost.lastError])};
-                }
-
                 r = this.OrderItemCost.execute('delete from order_item_costs');
                 if (!r) {
                     throw {errno: this.OrderItemCost.lastError,
                            errstr: this.OrderItemCost.lastErrorString,
                            errmsg: _('An error was encountered while removing all item cost records (error code %S) [message #IMS-02-10].', [this.OrderItemCost.lastError])};
                 }
+
+                r = this.ProductCost.execute('update product_costs set avg_cost = 0, last_cost = 0, acc_qty = 0');
+                if (!r) {
+                    throw {errno: this.ProductCost.lastError,
+                           errstr: this.ProductCost.lastErrorString,
+                           errmsg: _('An error was encountered while removing all product cost records (error code %S) [message #IMS-02-09].', [this.ProductCost.lastError])};
+                }
+
             }
             catch(e) {
                 this._dbError(e.errno, e.errstr, e.errmsg);

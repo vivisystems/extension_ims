@@ -56,29 +56,33 @@
         saveItemCosts: function(items) {
 
             var productCostModel = new ProductCostModel();
+            var productModel = new ProductModel();
+
             var itemCosts = [];
             for (var id in items) {
                 var item = items[id];
                 var itemCost = {
-                    order_item_id: id,
+                    id: id,
                     manual_cost: null,
                     avg_cost: null,
                     last_cost: null
                 }
-
                 // get last prices from cache
                 var costs = productCostModel.getProductCosts(item.no);
+                var product = productModel.getProductByNo(item.no);
+
                 if (costs) {
-                    itemCost.avg_cost = costs.avg_cost;
-                    itemCost.last_cost = costs.last_cost;
-                    itemCost.manual_cost = costs.manual_cost;
+                    itemCost.avg_cost = costs.avg_cost * product.stock_conversion;
+                    itemCost.last_cost = costs.last_cost * product.stock_conversion;
+                    itemCost.manual_cost = costs.manual_cost * product.stock_conversion;
                 }
                 itemCosts.push(itemCost);
             }
-            var rc = this.saveAll(itemCosts);
-
-            this.lastReadyState = 4;
-            this.lastStatus = 200;
+            var rc = [];
+            itemCosts.forEach(function(rec) {
+                this.id = rec.id;
+                rc.push(this.save(rec));
+            }, this)
 
             return rc;
         }

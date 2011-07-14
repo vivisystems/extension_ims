@@ -47,7 +47,7 @@
         },        
 
         emailReport: function() {
-            $do('emailReport', {mode: 'po', supplier: this._poData.supplier, id: this._poData.po.no}, 'EmailPdf');
+            $do('emailReport', {mode: 'po', supplier: this._poData.supplier, id: this._poData.po.no, title: _('Purchase Order')}, 'EmailPdf');
         },
 
         execute: function() {

@@ -62,6 +62,8 @@ msgstr "Manage Supplier"
 msgid "acl_ims_email_settings"
 msgstr "Manage PO/GR Email Configuration"
 
+msgid "acl_ims_report_profitandloss"
+msgstr "Report - P&L Reports"
 
 ########################################################################
 #
@@ -97,6 +99,19 @@ msgstr "Open"
 
 msgid "(ims)GR Status Closed"
 msgstr "Closed"
+
+
+########################################################################
+#
+# GR status
+#
+########################################################################
+
+msgid "vivipos.fec.reportpanels.ims_profitandloss.label"
+msgstr "Profit and Loss Report"
+
+msgid "vivipos.fec.reportpanels.ims_profitandlosssummary.label"
+msgstr "Profit and Loss Summary Report"
 
 
 ########################################################################

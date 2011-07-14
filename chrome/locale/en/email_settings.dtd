@@ -1,10 +1,10 @@
-<!ENTITY email_report.title "PO/GR E-mail Configuration">
+<!ENTITY email_report.title "E-mail Configuration">
+<!ENTITY email_report.report.title "Reports">
 <!ENTITY email_report.po.title "Purchase Order">
 <!ENTITY email_report.gr.title "Goods Receiving">
 <!ENTITY email_report.sender.label "Sender">
 <!ENTITY email_report.recipient.label "Recipient">
 <!ENTITY email_report.subject.label "Subject">
-<!ENTITY email_report.body.label "Body">
 <!ENTITY email_report.sendcopy.label "CC to Sender">
 <!ENTITY email_report.sendsupplier.label "Send to Supplier">
 <!ENTITY email_report.smtphost.label "SMTP Host">

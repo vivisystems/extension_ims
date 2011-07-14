@@ -1,0 +1,13 @@
+<!ENTITY rptprofitandloss.title "Profit And Loss Report - Detailed">
+<!ENTITY rptprofitandloss.sortby.cost "Cost">
+<!ENTITY rptprofitandloss.sortby.item "Item Sales">
+<!ENTITY rptprofitandloss.sortby.adjusted "Adjusted Sales">
+<!ENTITY rptprofitandloss.costtype "Cost Type:">
+<!ENTITY rptprofitandloss.manual_cost "Manual Cost">
+<!ENTITY rptprofitandloss.last_cost "Last Cost">
+<!ENTITY rptprofitandloss.avg_cost "Average Cost">
+<!ENTITY rptprofitandloss.excludes "Excludes:">
+<!ENTITY rptprofitandloss.exclude_tax "Sales Tax">
+<!ENTITY rptprofitandloss.exclude_svc "Service Charges">
+<!ENTITY rptprofitandloss.exclude_condiment "Condiments">
+<!ENTITY rptprofitandloss.exclude_adjustment "Discounts/Surcharges">
