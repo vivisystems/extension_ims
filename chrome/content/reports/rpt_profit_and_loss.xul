@@ -164,8 +164,6 @@
                     <arrowscrollbox orient="horizontal" flex="1" class="arrowScrollBox">
                         <tabs id="tabs">
                             <vivibutton id="export_pdf" label="&productsales.exportpdf;" disabled="false" class="PdfBtn" oncommand="$do('exportPdf', null, 'RptProfitAndLoss');"/>
-                            <vivibutton id="export_csv" label="&productsales.exportcsv;" disabled="true" class="CsvBtn" oncommand="$do('exportCsv', null, 'RptProfitAndLoss');"/>
-                            <vivibutton id="export_rcp" label="&productsales.exportrcp;" disabled="false" class="PrintBtn" oncommand="$do('exportRcp', null, 'RptProfitAndLoss');"/>
                             <vivibutton id="print" label="&productsales.print;" disabled="false" class="PrintReportBtn" oncommand="$do('print', null, 'RptProfitAndLoss');"/>
                         </tabs>
                     </arrowscrollbox>

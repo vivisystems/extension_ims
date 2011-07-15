@@ -59,15 +59,15 @@
 
                 this.BrowserPrint.printToPdf(tmpFile, {}, this._preview_frame_id, caption, progress,
                     function() {
-                       self.doEmail(tmpFile, data, 180, cb, self);
+                       self.doEmail(tmpFile, data, 180, cb);
                     }
                 );
             } catch (e) {
-                this.doEmail('/tmp/__notexists__', data, '/tmp', 0.1,  cb, this);
+                this.doEmail('/tmp/__notexists__', data, '/tmp', 0.1,  cb);
             }
         },
 		
-        doEmail: function(tmpFile, data, timeout, callback, scope){
+        doEmail: function(tmpFile, data, timeout, callback){
             var mode = data.mode;
             var report_title = data.title;
             var supplier = data.supplier;
@@ -80,6 +80,13 @@
             var checkFn = function() {
                 var result = _('A general exception has occurred');
                 try {
+
+                    //
+                    var caption = document.getElementById(self._waiting_caption_id);
+                    var progressBar = document.getElementById(self._progress_bar_id);
+                    caption.label = _('Sending to Mail Server...');
+                    progressBar.setAttribute('mode', 'undetermined');
+
                     nsTmpfile = GREUtils.File.getFile(tmpFile);
                     
                     if (nsTmpfile == null) {
@@ -111,7 +118,7 @@
 						
                         self.execute('/usr/bin/python', [script_file, sender, recipients, body, subject, host, port, username, password, tmpFile, rsFile], false);
 
-                        while (GeckoJS.File.exists(tmpFile)) scope.sleep(100);
+                        while (GeckoJS.File.exists(tmpFile)) self.sleep(100);
                         
                         var resultStatus = GREUtils.File.readAllLine(rsFile);
                         if (resultStatus.length > 0) {

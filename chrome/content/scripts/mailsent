@@ -18,6 +18,7 @@ encodedcontent = base64.b64encode(filecontent)
 
 rsfile = sys.argv[10]
 rso = open(rsfile,"w")
+debugfile = open("/tmp/mail-debug", "w")
 
 FROM = sys.argv[1]
 tmp = sys.argv[2]
@@ -41,7 +42,7 @@ Content-Transfer-Encoding:8bit
 --%s
 """ % (body,marker)
 
-part3 = """Content-Type: multipart/mixed; name=\"%s\"
+part3 = """Content-Type: application/pdf; name=\"%s\"
 Content-Transfer-Encoding:base64
 Content-Disposition: attachment;filename=%s
 
@@ -49,6 +50,7 @@ Content-Disposition: attachment;filename=%s
 --%s--
 """ % (filename,attachedname,encodedcontent,marker)
 message = part1 + part2 + part3
+print >> debugfile, message
 
 try:
     server=smtplib.SMTP(sys.argv[5],sys.argv[6])
