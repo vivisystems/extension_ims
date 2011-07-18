@@ -10,3 +10,4 @@ skin ims ecr-800x600/1.0 chrome/skin/ecr-800x600/
 overlay chrome://vivipos/content/mainUIOverlay.xul chrome://ims/content/overlays/main_overlay.xul
 overlay chrome://viviecr/content/plusearch.xul chrome://ims/content/overlays/plusearch_overlay.xul
 overlay chrome://viviecr/content/plus.xul chrome://ims/content/overlays/plus_overlay.xul
+overlay chrome://viviecr/content/sysprefs.xul chrome://ims/content/overlays/sysprefs.xul

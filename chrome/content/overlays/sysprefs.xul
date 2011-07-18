@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE window SYSTEM "chrome://ims/locale/sysprefs.dtd">
+
+<overlay id="IMSPrefsOverlay"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <prefwindow id="prefwin">
+        
+        <prefpane id="imsSettingsPane" label="&ims.tab.title;" >
+            
+            <preferences>
+                <preference id="pref_ims_AutoGenerate_SupplierCode" name="vivipos.fec.settings.ims.AutoGenerateSupplierCode" type="bool"/>
+                <preference id="pref_ims_Format_SupplierCode" name="vivipos.fec.settings.ims.FormatSupplierCode" type="unichar"/>
+                <preference id="pref_ims_AutoGenerate_PurchaseOrderNumber" name="vivipos.fec.settings.ims.AutoGeneratePurchaseOrderNumber" type="bool"/>
+                <preference id="pref_ims_Format_PurchaseOrderNumber" name="vivipos.fec.settings.ims.FormatPurchaseOrderNumber" type="unichar"/>
+                <preference id="pref_ims_AutoGenerate_ReceivingFormNumber" name="vivipos.fec.settings.ims.AutoGenerateReceivingFormNumber" type="bool"/>
+                <preference id="pref_ims_Format_ReceivingFormNumber" name="vivipos.fec.settings.ims.FormatReceivingFormNumber" type="unichar"/>
+            </preferences>
+
+            <grid class="data-form data-form-options">
+                <columns>
+                    <column flex="1"/>
+                    <column flex="1"/>
+                </columns>
+                <rows>
+                    <row>
+                        <checkbox preference="pref_ims_AutoGenerate_SupplierCode" id="pref_ims_AutoGenerate_SupplierCodeCtrl"
+                                  label="&ims.options.autogenerate.supplier.code;"/>
+                        <hbox align="center">
+                            <label control="pref_ims_Format_SupplierCodeCtrl" value="&ims.options.format.supplier.code;"/>
+                            <spacer width="15px"/>
+                            <textbox flex="1" preference="pref_ims_Format_SupplierCode" id="pref_ims_Format_SupplierCodeCtrl"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <checkbox preference="pref_ims_AutoGenerate_PurchaseOrderNumber" id="pref_ims_AutoGenerate_PurchaseOrderNumberCtrl"
+                                  label="&ims.options.autogenerate.po.no;"/>
+                        <hbox align="center">
+                            <label control="pref_ims_Format_PurchaseOrderNumberCtrl" value="&ims.options.format.po.no;"/>
+                            <spacer width="15px"/>
+                            <textbox flex="1" preference="pref_ims_Format_PurchaseOrderNumber" id="pref_ims_Format_PurchaseOrderNumberCtrl"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <checkbox preference="pref_ims_AutoGenerate_ReceivingFormNumber" id="pref_ims_AutoGenerate_ReceivingFormNumberCtrl"
+                                  label="&ims.options.autogenerate.gr.no;"/>
+                        <hbox align="center">
+                            <label control="pref_ims_Format_ReceivingFormNumberCtrl" value="&ims.options.format.gr.no;"/>
+                            <spacer width="15px"/>
+                            <textbox flex="1" preference="pref_ims_Format_ReceivingFormNumber" id="pref_ims_Format_ReceivingFormNumberCtrl"/>
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>
+            <spacer height="40px"/>
+            <vbox flex="1">
+                <label value="&ims.options.format.substitutions;"/>
+                <hbox>
+                    -
+                    <label value="&ims.options.format.date.description;"/>
+                </hbox>
+                <hbox>
+                    -
+                    <label value="&ims.options.format.count.description;"/>
+                </hbox>
+                <hbox>
+                    -
+                    <label value="&ims.options.format.countbydate.description;"/>
+                </hbox>
+            </vbox>
+        </prefpane>
+    </prefwindow>
+</overlay>

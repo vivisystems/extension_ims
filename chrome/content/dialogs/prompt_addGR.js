@@ -36,7 +36,7 @@ var promptAddGR_data;
                     document.getElementById('promptAddGR-field-pos').datasource = promptAddGR_data.POs;
                     document.getElementById('promptAddGR-field-pos').selection.clearSelection();
                     document.getElementById('promptAddGR-field-pos').selectedIndex = -1;
-                    document.getElementById('promptAddGR-field-grnumber').value = '';
+                    document.getElementById('promptAddGR-field-grnumber').value = promptAddGR_data.defaultGR;
                     document.getElementById('promptAddGR-field-desc').value = '';
                 }
                 

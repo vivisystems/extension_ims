@@ -5,6 +5,8 @@
 
         uses: ['Supplier'],
 
+        components: ['FormatString'],
+
         _listDatas: [],
         _tabboxObj: null,
         _tabObj: null,
@@ -16,6 +18,8 @@
         _terminal: GeckoJS.Session.get('terminal_no'),
         _user: _('unknown user'),
         _username: _('unknown username'),
+        _autoGen: GeckoJS.Configure.read("vivipos.fec.settings.ims.AutoGenerateSupplierCode"),
+        _autoFormat: GeckoJS.Configure.read("vivipos.fec.settings.ims.FormatSupplierCode"),
 
         load: function () {
             if (this.Acl) {
@@ -154,7 +158,13 @@
             var screenwidth = parseInt((GeckoJS.Configure.read('vivipos.fec.mainscreen.width') || 800) * .7) || 500;
             var screenheight = parseInt((GeckoJS.Configure.read('vivipos.fec.mainscreen.height') || 600) * .85) || 500;
             var aFeatures = 'chrome,titlebar,toolbar,centerscreen,modal,width=' + screenwidth + ',height=' + screenheight;
-            var inputObj = {input0:null, require0:true, input1:null, require1:true, numpad:true};
+
+            var defaultSupplierCode = null;
+            if (this._autoGen) {
+                defaultSupplierCode = this.FormatString.autoGenString(this._autoFormat, this.Supplier);
+            }
+            
+            var inputObj = {input0:defaultSupplierCode, require0:true, input1:null, require1:true, numpad:true};
 
             GREUtils.Dialog.openWindow(this.topmostWindow, aURL, _('Add Supplier'), aFeatures, _('New Supplier'), '', _('Code'), _('Name'), inputObj);
 

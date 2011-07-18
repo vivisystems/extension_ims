@@ -26,7 +26,6 @@
     <script type="application/x-javascript" src="chrome://vivipos/content/init_geckojs.js"/>
     <script type="application/x-javascript" src="chrome://ims/content/suppliers.js"/>
 
-
     <keyset id="keyset_extensions">
         <key id="key_clear" keycode="VK_ESCAPE" oncommand="document.getElementById('search_ok').click()"/>
     </keyset>

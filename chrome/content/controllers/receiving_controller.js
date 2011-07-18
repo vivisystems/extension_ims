@@ -6,7 +6,7 @@
 
         uses: ['PO', 'PODetail', 'GR', 'GRDetail', 'StockRecord', 'ProductCost', 'Supplier', 'InventoryCommitment', 'InventoryRecord'],
 
-        components: ['Utility'],
+        components: ['Utility', 'FormatString'],
         
         screenwidth: GeckoJS.Configure.read('vivipos.fec.mainscreen.width') || 800,
         screenheight: GeckoJS.Configure.read('vivipos.fec.mainscreen.height') || 600,
@@ -24,6 +24,8 @@
         _username: _('unknown username'),
         _branchId: '',
         _precision: GeckoJS.Configure.read('vivipos.fec.settings.PrecisionPrices') || 0,
+        _autoGen: GeckoJS.Configure.read("vivipos.fec.settings.ims.AutoGenerateReceivingFormNumber"),
+        _autoFormat: GeckoJS.Configure.read("vivipos.fec.settings.ims.FormatReceivingFormNumber"),
         _grAttrs: ['id',
                    'no',
                    'desc',
@@ -296,8 +298,14 @@
         },
 
         addGR: function(clear) {
+            var defaultGR = '';
+            if (this._autoGen) {
+                defaultGR = this.FormatString.autoGenString(this._autoFormat, this.GR);
+            }
+
             $.popupPanel('promptAddGRPanel', {POs: this._POs,
                                               okCB: this.createMode,
+                                              defaultGR: defaultGR,
                                               clear: clear,
                                               scope: this});
         },

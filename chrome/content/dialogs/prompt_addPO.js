@@ -36,7 +36,7 @@ var promptAddPO_data;
                     document.getElementById('promptAddPO-field-suppliers').datasource = promptAddPO_data.suppliers;
                     document.getElementById('promptAddPO-field-suppliers').selection.clearSelection();
                     document.getElementById('promptAddPO-field-suppliers').selectedIndex = -1;
-                    document.getElementById('promptAddPO-field-ponumber').value = '';
+                    document.getElementById('promptAddPO-field-ponumber').value = promptAddPO_data.defaultPO;
                     document.getElementById('promptAddPO-field-desc').value = '';
                 }
                 

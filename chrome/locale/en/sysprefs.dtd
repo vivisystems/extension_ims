@@ -1,0 +1,11 @@
+<!ENTITY ims.options.autogenerate.supplier.code "Automatically generate Supplier Code">
+<!ENTITY ims.options.autogenerate.po.no "Automatically generate Purchase Order Number">
+<!ENTITY ims.options.autogenerate.gr.no "Automatically generate Receiving Form Number">
+<!ENTITY ims.options.format.supplier.code "Format">
+<!ENTITY ims.options.format.po.no "Format">
+<!ENTITY ims.options.format.gr.no "Format">
+<!ENTITY ims.tab.title "Inventory Management">
+<!ENTITY ims.options.format.substitutions "The format string is used in a C-like 'sprintf' manner, with three parameters:">
+<!ENTITY ims.options.format.date.description "Today's date in 'YYYYMMDD' format">
+<!ENTITY ims.options.format.count.description "Total number of existing entries">
+<!ENTITY ims.options.format.countbydate.description "Number of entries created today">

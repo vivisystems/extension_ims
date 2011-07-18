@@ -6,7 +6,7 @@
 
         uses: ['PO', 'PODetail', 'StockRecord', 'ProductCost', 'Supplier'],
 
-        components: ['Utility'],
+        components: ['Utility', 'FormatString'],
         
         screenwidth: GeckoJS.Configure.read('vivipos.fec.mainscreen.width') || 800,
         screenheight: GeckoJS.Configure.read('vivipos.fec.mainscreen.height') || 600,
@@ -23,6 +23,8 @@
         _user: _('unknown user'),
         _username: _('unknown username'),
         _precision: GeckoJS.Configure.read('vivipos.fec.settings.PrecisionPrices') || 0,
+        _autoGen: GeckoJS.Configure.read("vivipos.fec.settings.ims.AutoGeneratePurchaseOrderNumber"),
+        _autoFormat: GeckoJS.Configure.read("vivipos.fec.settings.ims.FormatPurchaseOrderNumber"),
         _poAttrs: ['id',
                    'no',
                    'desc',
@@ -338,9 +340,15 @@
         },
 
         addPO: function(clear) {
+            var defaultPO = '';
+            if (this._autoGen) {
+                defaultPO = this.FormatString.autoGenString(this._autoFormat, this.PO);
+            }
+
             $.popupPanel('promptAddPOPanel', {suppliers: this._suppliers,
                                               okCB: this.createMode,
                                               clear: clear,
+                                              defaultPO: defaultPO,
                                               scope: this});
         },
 
@@ -348,11 +356,16 @@
             var selectedIndex = this.getPOListObj().selectedIndex;
             if (selectedIndex > -1) {
                 var po = this._poList[selectedIndex];
+                var defaultPO = '';
+                if (this._autoGen) {
+                    defaultPO = this.FormatString.autoGenString(this._autoFormat, this.PO);
+                }
 
                 $.popupPanel('promptAddPOPanel', {suppliers: this._suppliers,
                                                   okCB: this.createMode,
                                                   clear: clear,
                                                   clone: po,
+                                                  defaultPO: defaultPO,
                                                   scope: this});
             }
         },

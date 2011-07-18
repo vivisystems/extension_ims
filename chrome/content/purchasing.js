@@ -11,8 +11,12 @@
     GeckoJS.include('chrome://ims/content/models/GR_detail.js');
     GeckoJS.include('chrome://ims/content/models/product_cost.js');
 
+    // include jquery extensions
+    GeckoJS.include('chrome://ims/content/libs/sprintf.js');
+
     // include purchasing controller
     GeckoJS.include('chrome://ims/content/controllers/components/utilities.js');
+    GeckoJS.include('chrome://ims/content/controllers/components/format_string.js');
     GeckoJS.include('chrome://ims/content/controllers/purchasing_controller.js');
 
     /**
