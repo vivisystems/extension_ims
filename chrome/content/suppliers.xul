@@ -76,12 +76,12 @@
 
                                         <vbox>
                                             <label control="supplier_id" value="&suppliers.filter.id;"/>
-                                            <textbox id="filter_supplier_code" form="searchForm" name="code" default="" onfocus="select()"/>
+                                            <textbox id="filter_supplier_code" class="search_textbox" form="searchForm" name="code" default="" onfocus="select()"/>
                                         </vbox>
 
                                         <vbox>
                                             <label control="supplier_name" value="&suppliers.filter.name;"/>
-                                            <textbox id="filter_name" form="searchForm" name="name" default=""  onfocus="select()"/>
+                                            <textbox id="filter_name" class="search_textbox" form="searchForm" name="name" default=""  onfocus="select()"/>
                                         </vbox>
 
                                         <vbox>

@@ -1,0 +1,35 @@
+/*-----------------------------------------------------------------------------
+ *
+ * Custom Styles for PLUSearch Overlay
+ *
+ *-----------------------------------------------------------------------------
+ */
+
+.last-price-list treechildren:-moz-tree-cell {
+    padding: 0px 5px;
+}
+
+.last-price-list treechildren:-moz-tree-cell-text {font-size: 12px !important;}
+
+.last-price-list tree #ponumber {
+    text-align: center;
+}
+
+.last-price-list tree #modified {
+    max-width: 100px;
+    text-align: center;
+}
+
+.last-price-list tree #supplier {
+    text-align: left;
+}
+
+.last-price-list tree #unitprice {
+    max-width: 100px;
+    text-align: right;
+}
+
+.last-price-list tree #qty {
+    max-width: 60px;
+    text-align: right;
+}

@@ -108,7 +108,7 @@
                 <td style="text-align: right; border-left: 1px solid gray">${category.summary.adjusted|default:0|viviFormatTaxes:true}</td>
                 <td style="text-align: right;">${category.summary.cost|default:0|viviFormatTaxes:true}</td>
                 <td style="text-align: right;">${category.summary.gp|default:0|viviFormatTaxes:true}</td>
-{if item.gm == null}
+{if category.summary.gm == null}
                 <td style="border-right: 1px solid;"/>
 {else}
                 <td style="text-align: right; border-right: 1px solid;">${category.summary.gm.toFixed(2)}%</td>
@@ -201,7 +201,7 @@
                 <td style="text-align: right; border-left: 1px solid;">${category.summary.adjusted|default:0|viviFormatTaxes:true}</td>
                 <td style="text-align: right;">${category.summary.cost|default:0|viviFormatTaxes:true}</td>
                 <td style="text-align: right;">${category.summary.gp|default:0|viviFormatTaxes:true}</td>
-{if item.gm == null}
+{if category.summary.gm == null}
                 <td style="border-right: 1px solid;"/>
 {else}
                 <td style="text-align: right; border-right: 1px solid;">${category.summary.gm.toFixed(2)}%</td>
@@ -255,7 +255,7 @@
                 <td style="text-align: right;">${foot.total_adjusted|default:0|viviFormatTaxes:true}</td>
                 <td style="text-align: right;">${foot.total_cost|default:0|viviFormatTaxes:true}</td>
                 <td style="text-align: right;">${foot.total_gp|default:0|viviFormatTaxes:true}</td>
-{if item.gm == null}
+{if foot.total_gm == null}
                 <td/>
 {else}
                 <td style="text-align: right;">${foot.total_gm.toFixed(2)}%</td>

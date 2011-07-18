@@ -1,0 +1,147 @@
+/*-----------------------------------------------------------------------------
+ *
+ * Back-End Custom Styles for Receiving
+ *
+ *-----------------------------------------------------------------------------
+ */
+
+.custom-be-content-gr-list treechildren:-moz-tree-cell {
+    padding: 0px 5px;
+}
+
+.custom-be-content-gr-list treechildren:-moz-tree-cell-text {font-size: 12px !important;}
+
+.custom-be-content-gr-list tree #no,
+.custom-be-content-gr-list tree #po_no {
+    text-align: center;
+}
+
+.custom-be-content-gr-list tree #status {
+    max-width: 60px;
+    text-align: center;
+}
+
+.custom-be-content-gr-list tree #created_date {
+    max-width: 100px;
+    text-align: center;
+}
+
+.custom-be-content-gr-list tree #supplier,
+.custom-be-content-gr-list tree #desc {
+    text-align: left;
+}
+
+.search_limit {
+    max-width:130px;
+}
+
+.search_date {
+    max-width:200px;
+}
+
+.search_gr_number {
+    max-width:200px;
+}
+
+.search_po_number {
+    max-width:200px;
+}
+
+/*----------------------------------------------------------------------------
+ *
+ * editForm
+ *
+ *----------------------------------------------------------------------------
+ */
+
+.edit_description {
+     max-width: 320px;
+     min-width: 320px;
+     width: 320px;
+}
+
+.edit_supplier {
+     max-width: 320px;
+     min-width: 320px;
+     width: 320px;
+}
+
+#editForm_total_display {
+    text-align: right;
+}
+
+.custom-be-content-detail-list treechildren:-moz-tree-cell {
+    padding: 0px 5px;
+}
+
+.custom-be-content-detail-list treechildren:-moz-tree-cell-text {font-size: 12px !important;}
+
+.custom-be-content-detail-list #seq {
+    max-width: 50px;
+    text-align: center;
+}
+
+.custom-be-content-detail-list #pending {
+    max-width: 18px;
+    text-align: center;
+}
+
+.custom-be-content-detail-list #no {
+    max-width: 120px;
+    text-align: center;
+}
+
+.custom-be-content-detail-list #name {
+    text-align: left;
+}
+
+.custom-be-content-detail-list #order_qty {
+    max-width: 60px;
+    text-align: center;
+}
+
+.custom-be-content-detail-list #qty {
+    max-width: 60px;
+    text-align: center;
+}
+
+.custom-be-content-detail-list #unit_display {
+    max-width: 60px;
+    text-align: center;
+}
+
+.custom-be-content-detail-list #recv_qty {
+    max-width: 60px;
+    text-align: center;
+}
+
+.custom-be-content-detail-list #price_display {
+    max-width: 80px;
+    text-align: right;
+}
+
+.custom-be-content-detail-list #total_display {
+    max-width: 90px;
+    text-align: right;
+}
+
+
+/*----------------------------------------------------------------------------
+ *
+ * popup Panel
+ *
+ *----------------------------------------------------------------------------
+ */
+
+ .layout-dialog .layout-popup-custom-prompt {
+    background: white;
+    height: 320px;
+    margin: 352px 240px;
+    max-height: 320px;
+    max-width: 800px;
+    min-height: 320px;
+    min-width: 800px;
+    overflow: hidden;
+    width: 800px;
+}
+
