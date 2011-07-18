@@ -16,6 +16,9 @@
         _prefix: 'vivipos.fec.reportpanels.ims_profitandloss',
         
         _setData: function( start, end, periodType, shiftNo, sortby, terminalNo, department, empty_department, noSalesProduct, limit, selectCategory ) {
+            // initial order history if user selected it.
+            var useDbConfig = this.initOrderHistoryDatabase();
+
             var start_str = ( new Date( start ) ).toString( 'yyyy/MM/dd HH:mm' );
             var end_str = ( new Date( end ) ).toString( 'yyyy/MM/dd HH:mm' );
 
@@ -35,9 +38,6 @@
             
             start = parseInt( start / 1000, 10 );
             end = parseInt( end / 1000, 10 );
-
-            // initial order history if user selected it.
-            var useDbConfig = this.initOrderHistoryDatabase();
 
             // used to check if multiple non-unit sale units exist
             var saleUnit = 'unit';

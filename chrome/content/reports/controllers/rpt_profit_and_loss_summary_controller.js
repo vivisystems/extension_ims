@@ -15,6 +15,10 @@
         _prefix: 'vivipos.fec.reportpanels.ims_profitandlosssummary',
 
         _set_reportRecords: function( limit ) {
+            // initial order history if user selected it.
+            var useDbConfig = this.initOrderHistoryDatabase();
+            this.Order.useDbConfig = useDbConfig; // udpate dbconfig
+            this.OrderItem.useDbConfig = useDbConfig; // udpate dbconfig
 
             limit = parseInt( limit );
             if ( isNaN( limit ) || limit <= 0 ) limit = this._stdLimit;
