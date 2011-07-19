@@ -5,7 +5,7 @@
 <!ENTITY ims.options.format.po.no "Format">
 <!ENTITY ims.options.format.gr.no "Format">
 <!ENTITY ims.tab.title "Inventory Management">
-<!ENTITY ims.options.format.substitutions "The format string is used in a C-like 'sprintf' manner, with three parameters:">
+<!ENTITY ims.options.format.substitutions "The format string is used in a 'sprintf'-like manner, with three parameters:">
 <!ENTITY ims.options.format.date.description "Today's date in 'YYYYMMDD' format">
 <!ENTITY ims.options.format.count.description "Total number of existing entries">
 <!ENTITY ims.options.format.countbydate.description "Number of entries created today">

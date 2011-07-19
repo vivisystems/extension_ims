@@ -56,7 +56,7 @@ msgstr "Manage Purchasing"
 msgid "acl_ims_manage_receiving"
 msgstr "Manage Goods Receiving"
 
-msgid "acl_manage_suppliers"
+msgid "acl_ims_manage_suppliers"
 msgstr "Manage Supplier"
 
 msgid "acl_ims_email_settings"
