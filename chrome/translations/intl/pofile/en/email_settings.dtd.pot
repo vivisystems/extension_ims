@@ -1,0 +1,67 @@
+#. extracted from ../locale/en/email_settings.dtd
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-20 13:25+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"X-Accelerator-Marker: &\n"
+
+#: email_report.title
+msgid "E-mail Configuration"
+msgstr ""
+
+#: email_report.report.title
+msgid "Reports"
+msgstr ""
+
+#: email_report.po.title
+msgid "Purchase Order"
+msgstr ""
+
+#: email_report.gr.title
+msgid "Goods Receiving"
+msgstr ""
+
+#: email_report.sender.label
+msgid "Sender"
+msgstr ""
+
+#: email_report.recipient.label
+msgid "Recipient"
+msgstr ""
+
+#: email_report.subject.label
+msgid "Subject"
+msgstr ""
+
+#: email_report.sendcopy.label
+msgid "CC to Sender"
+msgstr ""
+
+#: email_report.sendsupplier.label
+msgid "Send to Supplier"
+msgstr ""
+
+#: email_report.smtphost.label
+msgid "SMTP Host"
+msgstr ""
+
+#: email_report.smtpport.label
+msgid "SMTP Port"
+msgstr ""
+
+#: email_report.smtpuser.label
+msgid "SMTP Username"
+msgstr ""
+
+#: email_report.smtppass.label
+msgid "SMTP Password"
+msgstr ""

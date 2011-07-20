@@ -1,12 +1,12 @@
 # extracted from ../locale/en/receiving.dtd
-#, fuzzy
+#. extracted from ../locale/en/receiving.dtd
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-22 18:31+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-07-20 13:25+0800\n"
+"PO-Revision-Date: 2011-07-20 13:20+0800\n"
+"Last-Translator: VIVIECR Language Packs <viviecr-langpacks@vivipos.com.tw>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,244 +17,244 @@ msgstr ""
 #: receiving.title
 msgctxt "receiving.title"
 msgid "Goods Receiving"
-msgstr ""
+msgstr "Goods Receiving"
 
 #: receiving.tab.search
 msgctxt "receiving.tab.search"
 msgid "Search"
-msgstr ""
+msgstr "Search"
 
 #: receiving.tab.detail
 msgctxt "receiving.tab.detail"
 msgid "Goods Receiving"
-msgstr ""
+msgstr "Goods Receiving"
 
 #: receiving.field.created
 msgctxt "receiving.field.created"
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
 #: receiving.field.detail
 msgctxt "receiving.field.detail"
 msgid "GR Number"
-msgstr ""
+msgstr "GR Number"
 
 #: receiving.field.desc
 msgctxt "receiving.field.desc"
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: receiving.field.no
 msgctxt "receiving.field.no"
 msgid "GR Number"
-msgstr ""
+msgstr "GR Number"
 
 #: receiving.field.po
 msgctxt "receiving.field.po"
 msgid "PO Number"
-msgstr ""
+msgstr "PO Number"
 
 #: receiving.field.supplier
 msgctxt "receiving.field.supplier"
 msgid "Supplier"
-msgstr ""
+msgstr "Supplier"
 
 #: receiving.field.total
 msgctxt "receiving.field.total"
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #: receiving.field.qty
 msgid "Ordered"
-msgstr ""
+msgstr "Ordered"
 
 #: receiving.field.recv.qty
 msgid "Recvd"
-msgstr ""
+msgstr "Recvd"
 
 #: receiving.field.status
 msgctxt "receiving.field.status"
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: receiving.field.row
 msgid "Row"
-msgstr ""
+msgstr "Row"
 
 #: receiving.field.plu
 msgid "No."
-msgstr ""
+msgstr "No."
 
 #: receiving.field.pluname
 msgid "Product"
-msgstr ""
+msgstr "Product"
 
 #: receiving.field.stockunit
 msgid "Unit"
-msgstr ""
+msgstr "Unit"
 
 #: receiving.field.unitprice
 msgid "Price"
-msgstr ""
+msgstr "Price"
 
 #: receiving.field.cost
 msgctxt "receiving.field.cost"
 msgid "Cost"
-msgstr ""
+msgstr "Cost"
 
 #: receiving.field.buy.price
 msgctxt "receiving.field.buy.price"
 msgid "Cost"
-msgstr ""
+msgstr "Cost"
 
 #: receiving.result.count
 msgid "Matching Count: "
-msgstr ""
+msgstr "Matching Count: "
 
 #: receiving.result.displayed
 msgid "Display Count: "
-msgstr ""
+msgstr "Display Count: "
 
 #: receiving.result.total
 msgid "Total Count: "
-msgstr ""
+msgstr "Total Count: "
 
 #: receiving.filter.startdate
 msgid "Start Date"
-msgstr ""
+msgstr "Start Date"
 
 #: receiving.filter.enddate
 msgid "End Date"
-msgstr ""
+msgstr "End Date"
 
 #: receiving.filter.gr.number
 msgctxt "receiving.filter.gr.number"
 msgid "GR Number"
-msgstr ""
+msgstr "GR Number"
 
 #: receiving.filter.po.number
 msgctxt "receiving.filter.po.number"
 msgid "PO Number"
-msgstr ""
+msgstr "PO Number"
 
 #: receiving.filter.start
 msgid "Start Record"
-msgstr ""
+msgstr "Start Record"
 
 #: receiving.filter.limit
 msgid "Record Limit"
-msgstr ""
+msgstr "Record Limit"
 
 #: receiving.filter.supplier
 msgctxt "receiving.filter.supplier"
 msgid "Supplier"
-msgstr ""
+msgstr "Supplier"
 
 #: receiving.filter.status
 msgctxt "receiving.filter.status"
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: receiving.filter.status.open
 msgid "Open"
-msgstr ""
+msgstr "Open"
 
 #: receiving.filter.status.closed
 msgid "Closed"
-msgstr ""
+msgstr "Closed"
 
 #: receiving.filter.goods.status
 msgid "Goods Received"
-msgstr ""
+msgstr "Goods Received"
 
 #: receiving.filter.goods.received
 msgid "Received"
-msgstr ""
+msgstr "Received"
 
 #: receiving.filter.goods.notreceived
 msgid "Not Received"
-msgstr ""
+msgstr "Not Received"
 
 #: receiving.button.search
 msgctxt "receiving.button.search"
 msgid "Search"
-msgstr ""
+msgstr "Search"
 
 #: receiving.button.add
 msgid "Add"
-msgstr ""
+msgstr "Add"
 
 #: receiving.button.delete
 msgid "Delete"
-msgstr ""
+msgstr "Delete"
 
 #: receiving.button.save
 msgid "Save"
-msgstr ""
+msgstr "Save"
 
 #: receiving.button.discard
 msgid "Discard Changes"
-msgstr ""
+msgstr "Discard Changes"
 
 #: receiving.button.create
 msgid "Create"
-msgstr ""
+msgstr "Create"
 
 #: receiving.button.cancel
 msgid "Cancel GR"
-msgstr ""
+msgstr "Cancel GR"
 
 #: receiving.button.close
 msgid "Close PO/GR"
-msgstr ""
+msgstr "Close PO/GR"
 
 #: receiving.button.more
 msgid "Select"
-msgstr ""
+msgstr "Select"
 
 #: receiving.form.number
 msgctxt "receiving.form.number"
 msgid "GR Number"
-msgstr ""
+msgstr "GR Number"
 
 #: receiving.form.date
 msgctxt "receiving.form.date"
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
 #: receiving.form.status
 msgctxt "receiving.form.status"
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: receiving.form.supplier
 msgctxt "receiving.form.supplier"
 msgid "Supplier"
-msgstr ""
+msgstr "Supplier"
 
 #: receiving.form.total
 msgctxt "receiving.form.total"
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #: receiving.form.po
 msgctxt "receiving.form.po"
 msgid "PO Number"
-msgstr ""
+msgstr "PO Number"
 
 #: receiving.form.description
 msgctxt "receiving.form.description"
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: receiving.button.print
 msgid "Print"
-msgstr ""
+msgstr "Print"
 
 #: receiving.title.preview
 msgid "Goods Receiving Preview"
-msgstr ""
+msgstr "Goods Receiving Preview"
 
 #: receiving.button.exportpdf
 msgid "Export PDF"
-msgstr ""
+msgstr "Export PDF"

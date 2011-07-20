@@ -13,7 +13,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: support@vivipos.com.tw\n"
-"POT-Creation-Date: 2011-06-22 18:31+0800\n"
+"POT-Creation-Date: 2011-07-20 13:25+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,6 +38,12 @@ msgstr "Receiving"
 msgid "vivipos.fec.settings.controlpanels.product.ims-suppliers.label"
 msgstr "Suppliers"
 
+# ####################
+# Email Configuration
+# ####################
+msgid "vivipos.fec.settings.controlpanels.system.ims_email_settings.label"
+msgstr "PO/GR E-mail Configuration"
+
 # #######################################################################
 #
 # List of Reports
@@ -59,8 +65,14 @@ msgstr "Manage Purchasing"
 msgid "acl_ims_manage_receiving"
 msgstr "Manage Goods Receiving"
 
-msgid "acl_manage_suppliers"
+msgid "acl_ims_manage_suppliers"
 msgstr "Manage Supplier"
+
+msgid "acl_ims_email_settings"
+msgstr "Manage PO/GR Email Configuration"
+
+msgid "acl_ims_report_profitandloss"
+msgstr "Report - P&L Reports"
 
 # #######################################################################
 #
@@ -91,6 +103,17 @@ msgstr "Open"
 
 msgid "(ims)GR Status Closed"
 msgstr "Closed"
+
+# #######################################################################
+#
+# GR status
+#
+# #######################################################################
+msgid "vivipos.fec.reportpanels.ims_profitandloss.label"
+msgstr "Profit and Loss Report"
+
+msgid "vivipos.fec.reportpanels.ims_profitandlosssummary.label"
+msgstr "Profit and Loss Summary Report"
 
 #: ../..//content/controllers/init_controller.js:28
 msgid ""
@@ -134,21 +157,36 @@ msgid ""
 "[message #IMS-01-07]."
 msgstr ""
 
-#: ../..//content/controllers/init_controller.js:81
+#: ../..//content/controllers/init_controller.js:99
+msgid "Stock Syncing"
+msgstr ""
+
+#: ../..//content/controllers/init_controller.js:122
+msgid "Stock Server Connection Error"
+msgstr ""
+
+#: ../..//content/controllers/init_controller.js:123
+msgid ""
+"Failed to connect to stock services (error code %S). Please check the "
+"network connectivity to the terminal designated as the stock server [message "
+"#IMS-01-08]."
+msgstr ""
+
+#: ../..//content/controllers/init_controller.js:129
 #: ../..//content/controllers/plusearch_overlay_controller.js:161
-#: ../..//content/controllers/purchasing_controller.js:952
-#: ../..//content/controllers/receiving_controller.js:1286
-#: ../..//content/controllers/sales_controller.js:145
-#: ../..//content/controllers/supplier_controller.js:500
+#: ../..//content/controllers/purchasing_controller.js:986
+#: ../..//content/controllers/receiving_controller.js:1314
+#: ../..//content/controllers/sales_controller.js:146
+#: ../..//content/controllers/supplier_controller.js:520
 msgid "Data Operation Error"
 msgstr ""
 
-#: ../..//content/controllers/init_controller.js:82
+#: ../..//content/controllers/init_controller.js:130
 #: ../..//content/controllers/plusearch_overlay_controller.js:162
-#: ../..//content/controllers/purchasing_controller.js:953
-#: ../..//content/controllers/receiving_controller.js:1287
-#: ../..//content/controllers/sales_controller.js:146
-#: ../..//content/controllers/supplier_controller.js:501
+#: ../..//content/controllers/purchasing_controller.js:987
+#: ../..//content/controllers/receiving_controller.js:1315
+#: ../..//content/controllers/sales_controller.js:147
+#: ../..//content/controllers/supplier_controller.js:521
 msgid ""
 "Please restart the machine, and if the problem persists, please contact "
 "technical support immediately."
@@ -174,373 +212,378 @@ msgstr ""
 
 #: ../..//content/controllers/purchasing_controller.js:23
 #: ../..//content/controllers/receiving_controller.js:23
-#: ../..//content/controllers/supplier_controller.js:17
+#: ../..//content/controllers/supplier_controller.js:19
 msgid "unknown user"
 msgstr ""
 
 #: ../..//content/controllers/purchasing_controller.js:24
 #: ../..//content/controllers/receiving_controller.js:24
-#: ../..//content/controllers/supplier_controller.js:18
+#: ../..//content/controllers/supplier_controller.js:20
 msgid "unknown username"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:75
+#: ../..//content/controllers/purchasing_controller.js:77
 msgid "Access to Purchase Orders Not Available"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:76
+#: ../..//content/controllers/purchasing_controller.js:78
 msgid ""
 "Purchase Orders may only be managed from the designated Stock Control "
 "Service Master at [%S]"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:96
+#: ../..//content/controllers/purchasing_controller.js:98
 msgid ""
 "Failed to retrieve supplier records from database (error code %S) [message "
 "#IMS-04-01]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:130
+#: ../..//content/controllers/purchasing_controller.js:133
 msgid ""
 "Failed to retrieve purchase order record count from database (error code %S) "
 "[message #IMS-04-02]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:160
+#: ../..//content/controllers/purchasing_controller.js:163
 msgid ""
 "Failed to retrieve supplier records from database (error code %S) [message "
 "#IMS-04-03]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:223
+#: ../..//content/controllers/purchasing_controller.js:207
+#: ../..//content/controllers/receiving_controller.js:97
+msgid ""
+"Failed to retrieve supplier record from database (error code %S) [message "
+"#IMS-04-15]."
+msgstr ""
+
+#: ../..//content/controllers/purchasing_controller.js:239
 msgid ""
 "Failed to retrieve purchase order records from database (error code %S) "
 "[message #IMS-04-04]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:261
+#: ../..//content/controllers/purchasing_controller.js:277
 msgid ""
 "Errors were encounterd while retrieving goods receiving records from "
 "database (error code %S) [message #IMS-04-14]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:300
+#: ../..//content/controllers/purchasing_controller.js:316
 msgid "confirm delete PO [%S]"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:301
+#: ../..//content/controllers/purchasing_controller.js:317
 msgid "Are you sure you want to delete PO [%S]?"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:321
+#: ../..//content/controllers/purchasing_controller.js:337
 msgid ""
 "Failed to delete purchase order record from database (error code %S) "
 "[message #IMS-04-05]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:350
+#: ../..//content/controllers/purchasing_controller.js:377
 msgid "Duplicate PO Number"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:351
+#: ../..//content/controllers/purchasing_controller.js:378
 msgid "PO Number [%S] already exists, please enter a different PO number."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:358
+#: ../..//content/controllers/purchasing_controller.js:385
 msgid ""
 "An error was encountered while validating purchase order number (error code %"
 "S) [message #IMS-04-06]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:441
+#: ../..//content/controllers/purchasing_controller.js:471
 msgid "Failed to update purchase order (error code %S) [message #IMS-04-07]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:449
+#: ../..//content/controllers/purchasing_controller.js:479
 msgid ""
 "Failed to store purchase order detail into database (error code %S) [message "
 "#IMS-04-08]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:457
+#: ../..//content/controllers/purchasing_controller.js:487
 msgid ""
 "Failed to store purchase order detail into database (error code %S) [message "
 "#IMS-04-09]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:465
+#: ../..//content/controllers/purchasing_controller.js:495
 msgid "Purchase Order [%S] successfully updated"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:473
+#: ../..//content/controllers/purchasing_controller.js:503
 msgid "Failed to create purchase order (error code %S) [message #IMS-04-10]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:484
+#: ../..//content/controllers/purchasing_controller.js:514
 msgid ""
 "Failed to insert purchase order detail (error code %S) [message #IMS-04-11]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:492
+#: ../..//content/controllers/purchasing_controller.js:522
 msgid ""
 "Failed to insert purchase order detail (error code %S) [message #IMS-04-12]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:501
+#: ../..//content/controllers/purchasing_controller.js:531
 msgid "Purchase Order [%S] successfully created"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:531
+#: ../..//content/controllers/purchasing_controller.js:561
 msgid ""
 "An error was encountered while retrieving purchase order detail from "
 "database (error code %S) [message #IMS-04-13]."
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:647
-#: ../..//content/controllers/receiving_controller.js:938
+#: ../..//content/controllers/purchasing_controller.js:678
+#: ../..//content/controllers/receiving_controller.js:964
 msgid "Product Search"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:843
+#: ../..//content/controllers/purchasing_controller.js:874
 msgid "Discard PO Changes"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:844
+#: ../..//content/controllers/purchasing_controller.js:875
 msgid "Are you sure you want to discard changes made to this PO?"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:847
+#: ../..//content/controllers/purchasing_controller.js:878
 msgid "Discard New PO"
 msgstr ""
 
-#: ../..//content/controllers/purchasing_controller.js:848
+#: ../..//content/controllers/purchasing_controller.js:879
 msgid "Are you sure you want to discard this PO?"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:78
+#: ../..//content/controllers/receiving_controller.js:80
 msgid "Access to Goods Receiving Not Available"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:79
+#: ../..//content/controllers/receiving_controller.js:81
 msgid ""
 "Goods Receiving may only be managed from the designated Stock Control "
 "Service Master at [%S]"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:98
+#: ../..//content/controllers/receiving_controller.js:113
 msgid ""
 "Failed to retrieve purchase orders from database (error code %S) [message "
 "#IMS-05-01]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:155
+#: ../..//content/controllers/receiving_controller.js:171
 msgid ""
 "Failed to retrieve supplier records from database (error code %S) [message "
 "#IMS-05-02]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:207
+#: ../..//content/controllers/receiving_controller.js:223
 msgid ""
 "Failed to retrieve goods receiving records from database (error code %S) "
 "[message #IMS-05-03]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:258
+#: ../..//content/controllers/receiving_controller.js:274
 msgid "confirm delete GR [%S]"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:259
+#: ../..//content/controllers/receiving_controller.js:275
 msgid "Are you sure you want to delete GR [%S]?"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:279
+#: ../..//content/controllers/receiving_controller.js:295
 msgid ""
 "Failed to delete goods receiving record from database (error code %S) "
 "[message #IMS-05-04]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:295
+#: ../..//content/controllers/receiving_controller.js:317
 msgid "Duplicate GR Number"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:296
+#: ../..//content/controllers/receiving_controller.js:318
 msgid "GR Number [%S] already exists, please enter a different GR number."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:303
+#: ../..//content/controllers/receiving_controller.js:325
 msgid ""
 "An error was encountered while validating goods receiving number (error code "
 "%S) [message #IMS-05-05]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:399
+#: ../..//content/controllers/receiving_controller.js:422
 msgid ""
 "Failed to update goods receiving record (error code %S) [message #IMS-05-06]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:408
+#: ../..//content/controllers/receiving_controller.js:431
 msgid ""
 "Failed to store goods receiving detail into database (error code %S) "
 "[message #IMS-05-07]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:416
+#: ../..//content/controllers/receiving_controller.js:439
 msgid ""
 "Failed to store goods receiving detail into database (error code %S) "
 "[message #IMS-05-08]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:436
+#: ../..//content/controllers/receiving_controller.js:459
 msgid ""
 "Failed to create goods receiving record (error code %S) [message #IMS-05-09]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:452
+#: ../..//content/controllers/receiving_controller.js:475
 msgid ""
 "Failed to insert goods receiving detail into database (error code %S) "
 "[message #IMS-05-10]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:460
+#: ../..//content/controllers/receiving_controller.js:483
 msgid ""
 "Failed to insert goods receiving detail into database (error code %S) "
 "[message #IMS-05-11]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:475
-#: ../..//content/controllers/receiving_controller.js:566
+#: ../..//content/controllers/receiving_controller.js:498
+#: ../..//content/controllers/receiving_controller.js:589
 msgid "Goods Receiving [%S] successfully updated"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:481
+#: ../..//content/controllers/receiving_controller.js:504
 msgid "Goods Receiving [%S] successfully created"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:503
+#: ../..//content/controllers/receiving_controller.js:526
 msgid "Failed to obtain lock on database (error code %S) [message #IMS-05-12]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:560
+#: ../..//content/controllers/receiving_controller.js:583
 msgid ""
 "Failed to commit goods received to inventory (error code %S) [message #IMS-"
 "05-13]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:570
+#: ../..//content/controllers/receiving_controller.js:593
 msgid "Goods Receiving [%S] successfully created and committed"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:573
+#: ../..//content/controllers/receiving_controller.js:596
 msgid "New Goods Receiving [%S] successfully updated and committed"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:576
+#: ../..//content/controllers/receiving_controller.js:599
 msgid "Goods Receiving [%S] successfully committed"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:597
+#: ../..//content/controllers/receiving_controller.js:620
 msgid "Goods Receiving Committed"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:620
+#: ../..//content/controllers/receiving_controller.js:643
 msgid ""
 "An error was encountered while saving stock adjustment records (error code %"
 "S) [message #IMS-05-14]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:658
+#: ../..//content/controllers/receiving_controller.js:681
 msgid ""
 "An error was encountered while saving stock records (error code %S) [message "
 "#IMS-05-15]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:677
+#: ../..//content/controllers/receiving_controller.js:700
 msgid ""
 "An error was encountered while saving stock adjustment details (error code %"
 "S) [message #IMS-05-16]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:690
+#: ../..//content/controllers/receiving_controller.js:713
 msgid "Price Change"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:695
+#: ../..//content/controllers/receiving_controller.js:718
 msgid ""
 "An error was encountered while saving stock adjustment details (error code %"
 "S) [message #IMS-05-17]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:713
+#: ../..//content/controllers/receiving_controller.js:730
+msgid "Close PO/GR"
+msgstr ""
+
+#: ../..//content/controllers/receiving_controller.js:745
 msgid ""
 "An error was encountered while closing purchase order (error code %S) "
 "[message #IMS-05-18]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:723
+#: ../..//content/controllers/receiving_controller.js:755
 msgid ""
 "An error was encountered while closing goods receiving (error code %S) "
 "[message #IMS-05-19]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:746
-msgid ""
-"An error was encountered while retrieving costs for product [%S (%S)] from "
-"database (error code %S) [message #IMS-05-20]."
-msgstr ""
-
-#: ../..//content/controllers/receiving_controller.js:794
+#: ../..//content/controllers/receiving_controller.js:819
 msgid ""
 "Failed to clear costs for product [%S (%S)] from database (error code %S) "
 "[message #IMS-05-21]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:803
+#: ../..//content/controllers/receiving_controller.js:828
 msgid ""
 "Failed to update costs for product [%S (%S)] (error code %S) [message #IMS-"
 "05-22]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:851
+#: ../..//content/controllers/receiving_controller.js:876
 msgid ""
 "An error was encountered while retrieving goods receiving detail from "
 "database (error code %S) [message #IMS-05-23]."
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1003
+#: ../..//content/controllers/receiving_controller.js:1029
 msgid "Remove Committed GR"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1004
+#: ../..//content/controllers/receiving_controller.js:1030
 msgid ""
 "The selected entry has been committed to inventory. Are you sure you want to "
 "remove it by changing its quantity to 0?"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1157
+#: ../..//content/controllers/receiving_controller.js:1183
 msgid "Discard GR Changes"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1158
+#: ../..//content/controllers/receiving_controller.js:1184
 msgid "Are you sure you want to discard changes made to this GR?"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1161
+#: ../..//content/controllers/receiving_controller.js:1187
 msgid "Discard New GR"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1162
+#: ../..//content/controllers/receiving_controller.js:1188
 msgid "Are you sure you want to discard this GR?"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1227
+#: ../..//content/controllers/receiving_controller.js:1255
 msgid "Save & Commit"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1229
+#: ../..//content/controllers/receiving_controller.js:1257
 msgid "Create & Commit"
 msgstr ""
 
-#: ../..//content/controllers/receiving_controller.js:1232
+#: ../..//content/controllers/receiving_controller.js:1260
 msgid "Commit"
 msgstr ""
 
@@ -590,123 +633,415 @@ msgstr ""
 
 #: ../..//content/controllers/sales_controller.js:127
 msgid ""
-"An error was encountered while removing all product cost records (error code "
-"%S) [message #IMS-02-09]."
-msgstr ""
-
-#: ../..//content/controllers/sales_controller.js:134
-msgid ""
 "An error was encountered while removing all item cost records (error code %"
 "S) [message #IMS-02-10]."
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:129
+#: ../..//content/controllers/sales_controller.js:134
+msgid ""
+"An error was encountered while removing all product cost records (error code "
+"%S) [message #IMS-02-09]."
+msgstr ""
+
+#: ../..//content/controllers/settings_controller.js:54
+msgid "Changes saved"
+msgstr ""
+
+#: ../..//content/controllers/settings_controller.js:59
+msgid "No changes to save"
+msgstr ""
+
+#: ../..//content/controllers/settings_controller.js:84
+#: ../..//content/controllers/supplier_controller.js:504
+msgid "Exit"
+msgstr ""
+
+#: ../..//content/controllers/settings_controller.js:85
+msgid ""
+"You have made changes to report email configuration. Save changes before "
+"exiting?"
+msgstr ""
+
+#: ../..//content/controllers/settings_controller.js:86
+#: ../..//content/controllers/supplier_controller.js:506
+msgid "Save"
+msgstr ""
+
+#: ../..//content/controllers/settings_controller.js:86
+#: ../..//content/controllers/supplier_controller.js:482
+msgid "Discard Changes"
+msgstr ""
+
+#: ../..//content/controllers/supplier_controller.js:133
 msgid ""
 "Failed to retrieve supplier records from database (error code %S) [message "
 "#IMS-06-01]."
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:137
+#: ../..//content/controllers/supplier_controller.js:141
 msgid ""
 "Failed to retrieve purchase order record count from database (error code %S) "
 "[message #IMS-06-02]."
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:159
+#: ../..//content/controllers/supplier_controller.js:169
 msgid "Add Supplier"
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:159
-#: ../..//content/controllers/supplier_controller.js:166
+#: ../..//content/controllers/supplier_controller.js:169
+#: ../..//content/controllers/supplier_controller.js:176
 msgid "New Supplier"
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:159
+#: ../..//content/controllers/supplier_controller.js:169
 msgid "Code"
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:159
+#: ../..//content/controllers/supplier_controller.js:169
 msgid "Name"
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:167
+#: ../..//content/controllers/supplier_controller.js:177
 msgid "Supplier Code [%S] has already been assigned"
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:177
+#: ../..//content/controllers/supplier_controller.js:187
 msgid "Failed to create supplier record (error code %S) [message #IMS-06-03]."
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:212
+#: ../..//content/controllers/supplier_controller.js:222
 msgid ""
 "An error was encountered while validating supplier code (error code %S) "
 "[message #IMS-06-04]."
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:246
+#: ../..//content/controllers/supplier_controller.js:256
 msgid ""
 "An error was encountered while modifying supplier code (error code %S) "
 "[message #IMS-06-05]."
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:269
+#: ../..//content/controllers/supplier_controller.js:279
 msgid "Supplier [%S (%S)] modified successfully"
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:284
+#: ../..//content/controllers/supplier_controller.js:294
 msgid ""
 "An error was encountered while updating supplier status (error code %S) "
 "[message #IMS-06-06]."
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:303
+#: ../..//content/controllers/supplier_controller.js:313
 msgid "Supplier [%S (%S)] activated successfully"
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:305
+#: ../..//content/controllers/supplier_controller.js:315
 msgid "Supplier [%S (%S)] suspended successfully"
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:384
-#: ../..//content/controllers/supplier_controller.js:388
-#: ../..//content/controllers/supplier_controller.js:416
+#: ../..//content/controllers/supplier_controller.js:400
+#: ../..//content/controllers/supplier_controller.js:404
+#: ../..//content/controllers/supplier_controller.js:428
 msgid "Suspend"
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:391
-#: ../..//content/controllers/supplier_controller.js:419
+#: ../..//content/controllers/supplier_controller.js:407
+#: ../..//content/controllers/supplier_controller.js:431
 msgid "Activate"
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:452
+#: ../..//content/controllers/supplier_controller.js:472
 msgid ""
 "An error was encountered while retrieving supplier count (error code %S) "
 "[message #IMS-06-06]."
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:462
-msgid "Discard Changes"
-msgstr ""
-
-#: ../..//content/controllers/supplier_controller.js:463
+#: ../..//content/controllers/supplier_controller.js:483
 msgid ""
 "You have made changes to the current supplier. Are you sure you want to "
 "discard the changes?"
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:484
-msgid "Exit"
-msgstr ""
-
-#: ../..//content/controllers/supplier_controller.js:485
+#: ../..//content/controllers/supplier_controller.js:505
 msgid ""
 "You have made changes to the current supplier. Save changes before exiting?"
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:486
-msgid "Save"
+#: ../..//content/controllers/supplier_controller.js:506
+msgid "Discard"
 msgstr ""
 
-#: ../..//content/controllers/supplier_controller.js:486
-msgid "Discard"
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:8
+msgid "GOODS RECEIVING"
+msgstr ""
+
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:9
+#: ../..//content/reports/tpl/purchase_order/purchase_order.tpl:9
+msgid "Generated By ViViPOS"
+msgstr ""
+
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:18
+msgid "In Reference To"
+msgstr ""
+
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:19
+msgid "Purchase Order#"
+msgstr ""
+
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:20
+msgid "P.O. Supplier"
+msgstr ""
+
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:24
+msgid "Goods Receiving Number"
+msgstr ""
+
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:25
+msgid "Goods Receiving Date"
+msgstr ""
+
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:26
+msgid "Created By"
+msgstr ""
+
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:32
+#: ../..//content/reports/tpl/purchase_order/purchase_order.tpl:30
+msgid "No."
+msgstr ""
+
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:33
+#: ../..//content/reports/tpl/purchase_order/purchase_order.tpl:31
+msgid "Product Code"
+msgstr ""
+
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:34
+#: ../..//content/reports/tpl/purchase_order/purchase_order.tpl:32
+msgid "Description"
+msgstr ""
+
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:35
+#: ../..//content/reports/tpl/purchase_order/purchase_order.tpl:33
+msgid "UOM"
+msgstr ""
+
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:36
+#: ../..//content/reports/tpl/purchase_order/purchase_order.tpl:34
+msgid "Qty"
+msgstr ""
+
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:37
+#: ../..//content/reports/tpl/purchase_order/purchase_order.tpl:35
+msgid "Unit Price"
+msgstr ""
+
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:38
+#: ../..//content/reports/tpl/purchase_order/purchase_order.tpl:36
+msgid "Amount"
+msgstr ""
+
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:56
+#: ../..//content/reports/tpl/purchase_order/purchase_order.tpl:54
+msgid "TOTAL"
+msgstr ""
+
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:69
+#: ../..//content/reports/tpl/purchase_order/purchase_order.tpl:67
+msgid "APPROVED BY"
+msgstr ""
+
+#: ../..//content/reports/tpl/goods_receiving/goods_receiving.tpl:74
+#: ../..//content/reports/tpl/purchase_order/purchase_order.tpl:72
+msgid "DATE"
+msgstr ""
+
+#: ../..//content/reports/tpl/purchase_order/purchase_order.tpl:8
+msgid "PURCHASE ORDER"
+msgstr ""
+
+#: ../..//content/reports/tpl/purchase_order/purchase_order.tpl:18
+msgid "The following number must appear on all invoices,bills"
+msgstr ""
+
+#: ../..//content/reports/tpl/purchase_order/purchase_order.tpl:19
+msgid "of lading, and acknowledgements relating to this PO"
+msgstr ""
+
+#: ../..//content/reports/tpl/purchase_order/purchase_order.tpl:20
+msgid "Purchase Order Number"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:10
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:10
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:44
+msgid "(rpt)Terminal"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:11
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:11
+msgid "(rpt)Clerk"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:17
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:17
+msgid "(rpt)Printed Time"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:29
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:29
+msgid "(rpt)Condition"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:52
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:145
+msgid "(rpt)Product Number"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:53
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:146
+msgid "(rpt)Product Name"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:54
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:147
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:235
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:46
+msgid "(rpt)Adjusted Sales"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:55
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:148
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:236
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:47
+msgid "(rpt)Total Cost"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:56
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:149
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:237
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:48
+msgid "(rpt)Gross Profit"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:57
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:150
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:238
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:49
+msgid "(rpt)Gross Margin"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:58
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:151
+msgid "(rpt)Average Net Price"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:59
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:152
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:239
+msgid "(rpt)Units Sold"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:60
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:153
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:240
+msgid "(rpt)Quantities Sold"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:61
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:154
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:241
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:50
+msgid "(rpt)Item Sales"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:62
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:155
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:242
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:51
+msgid "(rpt)Condiment Sales"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:63
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:156
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:243
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:52
+msgid "(rpt)Item Discount"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:64
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:157
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:244
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:53
+msgid "(rpt)Item Surcharge"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:65
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:158
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:245
+msgid "(rpt)Service Charge"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:66
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:159
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:246
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:59
+msgid "(rpt)Add-on Tax"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:67
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:160
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:247
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:60
+msgid "(rpt)Gross Sales"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:68
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:161
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:248
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:61
+msgid "(rpt)Included Service Charge"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:69
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:162
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:249
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:62
+msgid "(rpt)Included Tax"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:107
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:200
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:96
+msgid "(rpt)Records Found"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss/rpt_profit_and_loss.tpl:254
+msgid "(rpt)Total Records Found"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:45
+msgid "(rpt)Date"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:54
+msgid "(rpt)Add-on Service Charge"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:55
+msgid "(rpt)Order Discount"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:56
+msgid "(rpt)Order Surcharge"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:57
+msgid "(rpt)Promotion"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:58
+msgid "(rpt)Revalue"
+msgstr ""
+
+#: ../..//content/reports/tpl/rpt_profit_and_loss_summary/rpt_profit_and_loss_summary.tpl:97
+msgid "(rpt)Summary"
 msgstr ""

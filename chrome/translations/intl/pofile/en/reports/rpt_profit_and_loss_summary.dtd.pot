@@ -1,0 +1,121 @@
+#. extracted from ../locale/en/reports/rpt_profit_and_loss_summary.dtd
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-20 13:25+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"X-Accelerator-Marker: &\n"
+
+#: rptprofitandlosssummary.title
+msgid "Profit And Loss Report - Summary"
+msgstr ""
+
+#: rptprofitandlosssummary.startdate
+msgid "Start Date:"
+msgstr ""
+
+#: rptprofitandlosssummary.enddate
+msgid "End Date:"
+msgstr ""
+
+#: rptprofitandlosssummary.execute
+msgid "Execute"
+msgstr ""
+
+#: rptprofitandlosssummary.exportpdf
+msgid "Export to PDF"
+msgstr ""
+
+#: rptprofitandlosssummary.exportcsv
+msgid "Export to CSV"
+msgstr ""
+
+#: rptprofitandlosssummary.exportrcp
+msgctxt "rptprofitandlosssummary.exportrcp"
+msgid "Print"
+msgstr ""
+
+#: rptprofitandlosssummary.print
+msgctxt "rptprofitandlosssummary.print"
+msgid "Print"
+msgstr ""
+
+#: rptprofitandlosssummary.togglezoom
+msgid "Toggle Zoom"
+msgstr ""
+
+#: rptprofitandlosssummary.terminal_no
+msgid "Terminal:"
+msgstr ""
+
+#: rptprofitandlosssummary.all
+msgid "List All"
+msgstr ""
+
+#: rptprofitandlosssummary.periodtype
+msgid "Period Type:"
+msgstr ""
+
+#: rptprofitandlosssummary.transaction_created
+msgid "Order Opened"
+msgstr ""
+
+#: rptprofitandlosssummary.transaction_submitted
+msgid "Order Closed"
+msgstr ""
+
+#: rptprofitandlosssummary.sale_period
+msgid "Sale Period"
+msgstr ""
+
+#: rptprofitandlosssummary.costtype
+msgid "Cost Type:"
+msgstr ""
+
+#: rptprofitandlosssummary.manual_cost
+msgid "Manual Cost"
+msgstr ""
+
+#: rptprofitandlosssummary.last_cost
+msgid "Last Cost"
+msgstr ""
+
+#: rptprofitandlosssummary.avg_cost
+msgid "Average Cost"
+msgstr ""
+
+#: rptprofitandlosssummary.excludes
+msgid "Excludes:"
+msgstr ""
+
+#: rptprofitandlosssummary.exclude_tax
+msgid "Sales Tax"
+msgstr ""
+
+#: rptprofitandlosssummary.exclude_svc
+msgid "Service Charges"
+msgstr ""
+
+#: rptprofitandlosssummary.exclude_promotion
+msgid "Promotions"
+msgstr ""
+
+#: rptprofitandlosssummary.exclude_revalue
+msgid "Revalues"
+msgstr ""
+
+#: rptprofitandlosssummary.exclude_condiment
+msgid "Condiments"
+msgstr ""
+
+#: rptprofitandlosssummary.exclude_adjustment
+msgid "Discounts/Surcharges"
+msgstr ""

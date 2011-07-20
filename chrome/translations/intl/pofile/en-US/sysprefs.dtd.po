@@ -1,0 +1,64 @@
+# extracted from ../locale/en/sysprefs.dtd
+#. extracted from ../locale/en/sysprefs.dtd
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-20 13:25+0800\n"
+"PO-Revision-Date: 2011-07-20 13:16+0800\n"
+"Last-Translator: VIVIECR Language Packs <viviecr-langpacks@vivipos.com.tw>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"X-Accelerator-Marker: &\n"
+
+#: ims.options.autogenerate.supplier.code
+msgid "Automatically generate Supplier Code"
+msgstr "Automatically generate Supplier Code"
+
+#: ims.options.autogenerate.po.no
+msgid "Automatically generate Purchase Order Number"
+msgstr "Automatically generate Purchase Order Number"
+
+#: ims.options.autogenerate.gr.no
+msgid "Automatically generate Receiving Form Number"
+msgstr "Automatically generate Receiving Form Number"
+
+#: ims.options.format.supplier.code
+msgctxt "ims.options.format.supplier.code"
+msgid "Format"
+msgstr "Format"
+
+#: ims.options.format.po.no
+msgctxt "ims.options.format.po.no"
+msgid "Format"
+msgstr "Format"
+
+#: ims.options.format.gr.no
+msgctxt "ims.options.format.gr.no"
+msgid "Format"
+msgstr "Format"
+
+#: ims.tab.title
+msgid "Inventory Management"
+msgstr "Inventory Management"
+
+#: ims.options.format.substitutions
+msgid ""
+"The format string is used in a 'sprintf'-like manner, with three parameters:"
+msgstr ""
+"The format string is used in a 'sprintf'-like manner, with three parameters:"
+
+#: ims.options.format.date.description
+msgid "Today's date in 'YYYYMMDD' format"
+msgstr "Today's date in 'YYYYMMDD' format"
+
+#: ims.options.format.count.description
+msgid "Total number of existing entries"
+msgstr "Total number of existing entries"
+
+#: ims.options.format.countbydate.description
+msgid "Number of entries created today"
+msgstr "Number of entries created today"

@@ -1,13 +1,12 @@
 # extracted from ../locale/en/add_po.dtd
 #. extracted from ../locale/en/add_po.dtd
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-22 18:31+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-07-20 13:25+0800\n"
+"PO-Revision-Date: 2011-07-20 13:23+0800\n"
+"Last-Translator: VIVIECR Language Packs <viviecr-langpacks@vivipos.com.tw>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,36 +16,36 @@ msgstr ""
 
 #: addPO.title
 msgid "New Purchase Order"
-msgstr ""
+msgstr "New Purchase Order"
 
 #: addPO.description
 msgid "Please fill in the following information"
-msgstr ""
+msgstr "Please fill in the following information"
 
 #: addPO.field.ponumber.label
 msgid "PO Number"
-msgstr ""
+msgstr "PO Number"
 
 #: addPO.field.desc.label
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: addPO.field.supplier.label
 msgid "Supplier"
-msgstr ""
+msgstr "Supplier"
 
 #: addPO.item.title
 msgid "Please enter quantity and price:"
-msgstr ""
+msgstr "Please enter quantity and price:"
 
 #: addPO.item.qty.label
 msgid "Quantity"
-msgstr ""
+msgstr "Quantity"
 
 #: addPO.item.price.label
 msgid "Price"
-msgstr ""
+msgstr "Price"
 
 #: addPO.item.cost.label
 msgid "Total Cost"
-msgstr ""
+msgstr "Total Cost"

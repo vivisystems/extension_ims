@@ -1,0 +1,67 @@
+# extracted from ../locale/en/reports/rpt_profit_and_loss.dtd
+#. extracted from ../locale/en/reports/rpt_profit_and_loss.dtd
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-20 13:25+0800\n"
+"PO-Revision-Date: 2011-07-20 12:42+0800\n"
+"Last-Translator: VIVIECR Language Packs <viviecr-langpacks@vivipos.com.tw>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"X-Accelerator-Marker: &\n"
+
+#: rptprofitandloss.title
+msgid "Profit And Loss Report - Detailed"
+msgstr "Profit And Loss Report - Detailed"
+
+#: rptprofitandloss.sortby.cost
+msgid "Cost"
+msgstr "Cost"
+
+#: rptprofitandloss.sortby.item
+msgid "Item Sales"
+msgstr "Item Sales"
+
+#: rptprofitandloss.sortby.adjusted
+msgid "Adjusted Sales"
+msgstr "Adjusted Sales"
+
+#: rptprofitandloss.costtype
+msgid "Cost Type:"
+msgstr "Cost Type:"
+
+#: rptprofitandloss.manual_cost
+msgid "Manual Cost"
+msgstr "Manual Cost"
+
+#: rptprofitandloss.last_cost
+msgid "Last Cost"
+msgstr "Last Cost"
+
+#: rptprofitandloss.avg_cost
+msgid "Average Cost"
+msgstr "Average Cost"
+
+#: rptprofitandloss.excludes
+msgid "Excludes:"
+msgstr "Excludes:"
+
+#: rptprofitandloss.exclude_tax
+msgid "Sales Tax"
+msgstr "Sales Tax"
+
+#: rptprofitandloss.exclude_svc
+msgid "Service Charges"
+msgstr "Service Charges"
+
+#: rptprofitandloss.exclude_condiment
+msgid "Condiments"
+msgstr "Condiments"
+
+#: rptprofitandloss.exclude_adjustment
+msgid "Discounts/Surcharges"
+msgstr "Discounts/Surcharges"

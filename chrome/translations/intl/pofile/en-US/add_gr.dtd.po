@@ -1,12 +1,12 @@
 # extracted from ../locale/en/add_gr.dtd
-#, fuzzy
+#. extracted from ../locale/en/add_gr.dtd
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-22 18:31+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-07-20 13:25+0800\n"
+"PO-Revision-Date: 2011-07-20 13:23+0800\n"
+"Last-Translator: VIVIECR Language Packs <viviecr-langpacks@vivipos.com.tw>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,40 +16,40 @@ msgstr ""
 
 #: addGR.title
 msgid "New Goods Receiving"
-msgstr ""
+msgstr "New Goods Receiving"
 
 #: addGR.description
 msgid "Please fill in the following information"
-msgstr ""
+msgstr "Please fill in the following information"
 
 #: addGR.field.grnumber.label
 msgid "GR Number"
-msgstr ""
+msgstr "GR Number"
 
 #: addGR.field.desc.label
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: addGR.field.po.label
 msgid "PO Number"
-msgstr ""
+msgstr "PO Number"
 
 #: addGR.field.supplier.label
 msgid "Supplier"
-msgstr ""
+msgstr "Supplier"
 
 #: addGR.item.title
 msgid "Please enter quantity and price:"
-msgstr ""
+msgstr "Please enter quantity and price:"
 
 #: addGR.item.qty.label
 msgid "Quantity"
-msgstr ""
+msgstr "Quantity"
 
 #: addGR.item.price.label
 msgid "Price"
-msgstr ""
+msgstr "Price"
 
 #: addGR.item.cost.label
 msgid "Total Cost"
-msgstr ""
+msgstr "Total Cost"

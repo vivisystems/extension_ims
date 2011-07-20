@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-22 18:31+0800\n"
+"POT-Creation-Date: 2011-07-20 13:25+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,6 +31,13 @@ msgstr "Receiving"
 msgid "vivipos.fec.settings.controlpanels.product.ims-suppliers.label"
 msgstr "Suppliers"
 
+#####################
+# Email Configuration
+#####################
+
+msgid "vivipos.fec.settings.controlpanels.system.ims_email_settings.label"
+msgstr "PO/GR E-mail Configuration"
+
 ########################################################################
 #
 # List of Reports
@@ -55,8 +62,14 @@ msgstr "Manage Purchasing"
 msgid "acl_ims_manage_receiving"
 msgstr "Manage Goods Receiving"
 
-msgid "acl_manage_suppliers"
+msgid "acl_ims_manage_suppliers"
 msgstr "Manage Supplier"
+
+msgid "acl_ims_email_settings"
+msgstr "Manage PO/GR Email Configuration"
+
+msgid "acl_ims_report_profitandloss"
+msgstr "Report - P&L Reports"
 
 ########################################################################
 #
@@ -93,6 +106,21 @@ msgstr "Closed"
 
 ########################################################################
 #
+# GR status
+#
+########################################################################
+
+msgid "vivipos.fec.reportpanels.ims_profitandloss.label"
+msgstr "Profit and Loss Report"
+
+msgid "vivipos.fec.reportpanels.ims_profitandlosssummary.label"
+msgstr "Profit and Loss Summary Report"
+
+########################################################################
+#
 # END OF STATIC MESSAGES
 #
 ########################################################################
+
+#~ msgid "acl_manage_suppliers"
+#~ msgstr "Manage Supplier"

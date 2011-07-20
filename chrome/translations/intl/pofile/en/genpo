@@ -1,7 +1,7 @@
 #!/bin/sh
 APP_DIR=`dirname $0`/../../;
 
-xgettext -o messages1.po --from-code UTF-8 --msgid-bugs-address=support@vivipos.com.tw -Lpython -k_:1 $APP_DIR/content/*.js $APP_DIR/content/controllers/*.js $APP_DIR/content/models/*.js
+xgettext -o messages1.po --from-code UTF-8 --msgid-bugs-address=support@vivipos.com.tw -Lpython -k_:1 $APP_DIR/content/*.js $APP_DIR/content/controllers/*.js $APP_DIR/content/models/*.js $APP_DIR/content/reports/*.js $APP_DIR/content/reports/tpl/*/*.tpl
 
 sed 's/charset=CHARSET/charset=UTF-8/g' messages1.po > messages.po
 

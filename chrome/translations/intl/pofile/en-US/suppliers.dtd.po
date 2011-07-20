@@ -1,12 +1,12 @@
 # extracted from ../locale/en/suppliers.dtd
-#, fuzzy
+#. extracted from ../locale/en/suppliers.dtd
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-22 18:31+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-07-20 13:25+0800\n"
+"PO-Revision-Date: 2011-07-20 13:18+0800\n"
+"Last-Translator: VIVIECR Language Packs <viviecr-langpacks@vivipos.com.tw>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,140 +16,144 @@ msgstr ""
 
 #: suppliers.title
 msgid "Supplier Setup"
-msgstr ""
+msgstr "Supplier Setup"
 
 #: suppliers.tab.search
 msgctxt "suppliers.tab.search"
 msgid "Search"
-msgstr ""
+msgstr "Search"
 
 #: suppliers.tab.supplier
 msgid "Supplier"
-msgstr ""
+msgstr "Supplier"
 
 #: suppliers.result.count
 msgid "Supplier Count:"
-msgstr ""
+msgstr "Supplier Count:"
 
 #: suppliers.result.displayed
 msgid "Supplier Displayed:"
-msgstr ""
+msgstr "Supplier Displayed:"
 
 #: suppliers.result.total
 msgid "Total Suppliers:"
-msgstr ""
+msgstr "Total Suppliers:"
 
 #: suppliers.filter.id
 msgctxt "suppliers.filter.id"
 msgid "Supplier Code"
-msgstr ""
+msgstr "Supplier Code"
 
 #: suppliers.filter.name
 msgctxt "suppliers.filter.name"
 msgid "Supplier Name"
-msgstr ""
+msgstr "Supplier Name"
 
 #: suppliers.filter.active
 msgctxt "suppliers.filter.active"
 msgid "Active"
-msgstr ""
+msgstr "Active"
 
 #: suppliers.filter.start
 msgid "Start"
-msgstr ""
+msgstr "Start"
 
 #: suppliers.filter.limit
 msgid "Limit"
-msgstr ""
+msgstr "Limit"
 
 #: suppliers.button.modify
 msgid "Modify"
-msgstr ""
+msgstr "Modify"
 
 #: suppliers.button.search
 msgctxt "suppliers.button.search"
 msgid "Search"
-msgstr ""
+msgstr "Search"
 
 #: suppliers.button.add
 msgid "Add"
-msgstr ""
+msgstr "Add"
 
 #: suppliers.button.suspend
 msgid "Suspend"
-msgstr ""
+msgstr "Suspend"
 
 #: suppliers.button.delete
 msgid "Delete"
-msgstr ""
+msgstr "Delete"
+
+#: suppliers.button.discard
+msgid "Discard Changes"
+msgstr "Discard Changes"
 
 #: suppliers.field.active
 msgctxt "suppliers.field.active"
 msgid "Active"
-msgstr ""
+msgstr "Active"
 
 #: suppliers.field.id
 msgctxt "suppliers.field.id"
 msgid "Supplier Code"
-msgstr ""
+msgstr "Supplier Code"
 
 #: suppliers.field.name
 msgctxt "suppliers.field.name"
 msgid "Supplier Name"
-msgstr ""
+msgstr "Supplier Name"
 
 #: suppliers.field.email
 msgid "E-mail"
-msgstr ""
+msgstr "E-mail"
 
 #: suppliers.field.ContactPerson
 msgid "Contact Person"
-msgstr ""
+msgstr "Contact Person"
 
 #: suppliers.field.telephone
 msgid "Contact Number"
-msgstr ""
+msgstr "Contact Number"
 
 #: suppliers.field.fax
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 #: suppliers.field.address1
 msgid "Address 1"
-msgstr ""
+msgstr "Address 1"
 
 #: suppliers.field.address2
 msgid "Address 2"
-msgstr ""
+msgstr "Address 2"
 
 #: suppliers.field.address.zip
 msgid "Zip Code"
-msgstr ""
+msgstr "Zip Code"
 
 #: suppliers.field.address.city
 msgid "City"
-msgstr ""
+msgstr "City"
 
 #: suppliers.field.address.state
 msgid "State"
-msgstr ""
+msgstr "State"
 
 #: suppliers.field.address.country
 msgid "Country"
-msgstr ""
+msgstr "Country"
 
 #: suppliers.field.notes
 msgid "Notes"
-msgstr ""
+msgstr "Notes"
 
 #: suppliers.field.created_on
 msgid "Created On"
-msgstr ""
+msgstr "Created On"
 
 #: suppliers.field.created_by
 msgid "Created By"
-msgstr ""
+msgstr "Created By"
 
 #: suppliers.field.created_at
 msgid "Created At"
-msgstr ""
+msgstr "Created At"

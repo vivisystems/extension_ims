@@ -1,0 +1,68 @@
+# extracted from ../locale/en/reports/rpt_profit_and_loss.dtd
+#. extracted from ../locale/en/reports/rpt_profit_and_loss.dtd
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-20 13:25+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.1.1\n"
+"X-Accelerator-Marker: &\n"
+
+#: rptprofitandloss.title
+msgid "Profit And Loss Report - Detailed"
+msgstr ""
+
+#: rptprofitandloss.sortby.cost
+msgid "Cost"
+msgstr ""
+
+#: rptprofitandloss.sortby.item
+msgid "Item Sales"
+msgstr ""
+
+#: rptprofitandloss.sortby.adjusted
+msgid "Adjusted Sales"
+msgstr ""
+
+#: rptprofitandloss.costtype
+msgid "Cost Type:"
+msgstr ""
+
+#: rptprofitandloss.manual_cost
+msgid "Manual Cost"
+msgstr ""
+
+#: rptprofitandloss.last_cost
+msgid "Last Cost"
+msgstr ""
+
+#: rptprofitandloss.avg_cost
+msgid "Average Cost"
+msgstr ""
+
+#: rptprofitandloss.excludes
+msgid "Excludes:"
+msgstr ""
+
+#: rptprofitandloss.exclude_tax
+msgid "Sales Tax"
+msgstr ""
+
+#: rptprofitandloss.exclude_svc
+msgid "Service Charges"
+msgstr ""
+
+#: rptprofitandloss.exclude_condiment
+msgid "Condiments"
+msgstr ""
+
+#: rptprofitandloss.exclude_adjustment
+msgid "Discounts/Surcharges"
+msgstr ""
