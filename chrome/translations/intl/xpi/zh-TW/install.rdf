@@ -4,7 +4,7 @@
     <Description about="urn:mozilla:install-manifest">
         <em:id>customers-zh-TW@firich.com.tw</em:id>
         <em:name>Simple Customer Management Language Pack (zh-TW)</em:name>
-        <em:version>1.0b8</em:version>
+        <em:version>1.0</em:version>
         <em:description>This language pack provides Traditional Chinese translation for Simple Customer Management extension.</em:description>
         <em:creator>Chris Lai @ Firich Enterprises Co., Ltd.</em:creator>
         <em:homepageURL>http://www.vivipos.com.tw</em:homepageURL>
