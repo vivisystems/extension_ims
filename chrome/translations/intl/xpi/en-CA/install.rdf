@@ -2,10 +2,10 @@
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
     <Description about="urn:mozilla:install-manifest">
-        <em:id>customers-en-CA@firich.com.tw</em:id>
-        <em:name>Simple Customer Management Language Pack (en-CA)</em:name>
+        <em:id>ims-en-CA@firich.com.tw</em:id>
+        <em:name>Simple Inventory Management Language Pack (en-CA)</em:name>
         <em:version>1.2.0.6</em:version>
-        <em:description>This language pack provides Canadian English translation for Simple Customer Management extension.</em:description>
+        <em:description>This language pack provides Canadian English translation for Simple Inventory Management extension.</em:description>
         <em:creator>Chris Lai @ Firich Enterprises Co., Ltd.</em:creator>
         <em:homepageURL>http://www.vivipos.com.tw</em:homepageURL>
         <em:type>8</em:type> <!-- type=extension -->

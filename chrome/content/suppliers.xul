@@ -106,7 +106,7 @@
                                 <button id="search_add_supplier"  label="&suppliers.button.add;" class="button-add" oncommand="$do('addSupplier', null, 'Suppliers');"/>
                                 <spacer flex="1"/>
                                 <button id="search_suspend_supplier"  label="&suppliers.button.suspend;" class="button-suspend" oncommand="$do('suspendSupplier', null, 'Suppliers');"/>
-                                <!--<button id="search_delete_supplier"  label="&suppliers.button.delete;" class="button-delete" oncommand="$do('deleteCustomer', null, 'Customers');"  />-->
+                                <!--<button id="search_delete_supplier"  label="&suppliers.button.delete;" class="button-delete" oncommand="$do('deleteSupplier', null, 'Suppliers');"  />-->
                             </hbox>
                             <hbox id="search_dialogButtons" pack="end" class="exitbar">
                                 <button id="search_vkb" class="button-vkb" oncommand="VirtualKeyboard.toggle();"/>

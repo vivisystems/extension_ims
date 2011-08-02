@@ -2,10 +2,10 @@
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
     <Description about="urn:mozilla:install-manifest">
-        <em:id>customers-zh-HK@firich.com.tw</em:id>
-        <em:name>Simple Customer Management Language Pack (zh-HK)</em:name>
+        <em:id>ims-zh-HK@firich.com.tw</em:id>
+        <em:name>Simple Inventory Management Language Pack (zh-HK)</em:name>
         <em:version>1.2.0.6</em:version>
-        <em:description>This language pack provides Traditional Chinese (Hong Kong) translation for Simple Customer Management extension.</em:description>
+        <em:description>This language pack provides Traditional Chinese (Hong Kong) translation for Simple Inventory Management extension.</em:description>
         <em:creator>Chris Lai @ Firich Enterprises Co., Ltd.</em:creator>
         <em:homepageURL>http://www.vivipos.com.tw</em:homepageURL>
         <em:type>8</em:type> <!-- type=extension -->
