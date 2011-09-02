@@ -16,7 +16,6 @@
         _grData: null,
         
         load: function(data) {
-            
             this._grData = data || null;
             
             //this._enableButton( false );

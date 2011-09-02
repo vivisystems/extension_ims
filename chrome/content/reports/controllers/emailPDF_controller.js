@@ -27,6 +27,19 @@
         },
 
         emailReport: function(data) {
+
+            if (!data) {
+                var title = 'Report';
+                var rptBaseController = GeckoJS.Controller.getInstanceByName('RptBase');
+                if (rptBaseController) {
+                    title = rptBaseController._reportRecords.head.title;
+                }
+                data = {
+                    mode: 'report',
+                    title: title
+                }
+            }
+            
             var pdfBtn = document.getElementById('export_pdf');
 
             if (pdfBtn.disabled){
@@ -67,7 +80,7 @@
             }
         },
 		
-        doEmail: function(tmpFile, data, timeout, callback){
+        doEmail: function(tmpFile, data, timeout, callback) {
             var mode = data.mode;
             var report_title = data.title;
             var supplier = data.supplier;

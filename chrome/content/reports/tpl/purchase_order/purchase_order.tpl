@@ -42,7 +42,7 @@
                     <td style="text-align: center;">${detail.seq}</td>
                     <td style="text-align: center;">${detail.no}</td>
                     <td style="text-align: center;">${detail.name}</td>
-                    <td style="text-align: center;">${detail.uom}</td>
+                    <td style="text-align: center;">${detail.unit == 'unit' ? 'X' : detail.unit}</td>
                     <td style="text-align: center;">${detail.qty}</td>
                     <td style="text-align: center;">${detail.price|default:0|viviFormatPrices:true}</td>
                     <td style="text-align: center;">${detail.total|default:0|viviFormatPrices:true}</td>

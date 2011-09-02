@@ -11,3 +11,4 @@ overlay chrome://vivipos/content/mainUIOverlay.xul chrome://ims/content/overlays
 overlay chrome://viviecr/content/plusearch.xul chrome://ims/content/overlays/plusearch_overlay.xul
 overlay chrome://viviecr/content/plus.xul chrome://ims/content/overlays/plus_overlay.xul
 overlay chrome://viviecr/content/sysprefs.xul chrome://ims/content/overlays/sysprefs.xul
+overlay chrome://viviecr/content/reports/rpt_scrollbutton_panel.xul chrome://ims/content/overlays/report_overlay.xul
