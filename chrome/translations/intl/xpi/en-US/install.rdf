@@ -4,12 +4,12 @@
     <Description about="urn:mozilla:install-manifest">
         <em:id>ims-en-US@firich.com.tw</em:id>
         <em:name>Simple Inventory Management Language Pack (en-US)</em:name>
-        <em:version>1.0</em:version>
+        <em:version>1.1.1</em:version>
         <em:description>This language pack provides American English translation for Simple Inventory Management extension.</em:description>
         <em:creator>Chris Lai @ Firich Enterprises Co., Ltd.</em:creator>
         <em:homepageURL>http://www.vivipos.com.tw</em:homepageURL>
         <em:type>8</em:type> <!-- type=extension -->
-	<em:extensionHash>sha1:4b84345ccc839a1698f536985fb1cf313a2f0d52</em:extensionHash>
+	<em:extensionHash>sha1:f102d346e30b9063609941a1253e8349d52ff70c</em:extensionHash>
         <em:updateKey>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC6prvsPdRm+3c4etUSLoJVT5GyYUogo5c5L3dyWgu3yu6weYS9q5aQBlbSFVyfCyIfexacXanGFqVRuBvpVq5Px6LpjisHvXukknGnY6nr5S1zelV9CXgv+17mTMVPpxCUEe2oVB3AFX+l+XWx4fUdW3sTX+uSHo/Pno+8PD79FQIDAQAB</em:updateKey>
 
         <em:targetApplication>

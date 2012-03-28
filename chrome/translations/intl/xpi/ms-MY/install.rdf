@@ -4,7 +4,7 @@
     <Description about="urn:mozilla:install-manifest">
         <em:id>ims-ms-MY@firich.com.tw</em:id>
         <em:name>Simple Inventory Management Language Pack (ms-MY)</em:name>
-        <em:version>1.0</em:version>
+        <em:version>1.1.1</em:version>
         <em:description>This language pack provides Malay translation for Simple Inventory Management extension.</em:description>
         <em:creator>Chris Lai @ Firich Enterprises Co., Ltd.</em:creator>
         <em:homepageURL>http://www.vivipos.com.tw</em:homepageURL>

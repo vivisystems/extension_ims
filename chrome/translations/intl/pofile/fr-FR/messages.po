@@ -22,6 +22,7 @@ msgstr ""
 # PRODUCT
 ###########
 
+#, fuzzy
 msgid "vivipos.fec.settings.controlpanels.product.ims-po.label"
 msgstr "Purchasing"
 
@@ -121,6 +122,3 @@ msgstr "Profit and Loss Summary Report"
 # END OF STATIC MESSAGES
 #
 ########################################################################
-
-#~ msgid "acl_manage_suppliers"
-#~ msgstr "Manage Supplier"
